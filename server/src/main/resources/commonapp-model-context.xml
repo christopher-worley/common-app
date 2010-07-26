@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-2.5.xsd
+    http://www.springframework.org/schema/lang 
+    http://www.springframework.org/schema/lang/spring-lang-2.5.xsd">
+
+	<bean id="userLoginModel" class="core.data.hibernate.security.UserLoginHibernateImpl"  scope="prototype"/>
+	<bean id="userLoginHistoryModel" class="core.data.hibernate.security.UserLoginHistoryHibernateImpl"  scope="prototype"/>
+	<bean id="securityGroupModel" class="core.data.hibernate.security.SecurityGroupHibernateImpl"  scope="prototype"/>
+	<bean id="permissionModel" class="core.data.hibernate.security.PermissionHibernateImpl"  scope="prototype"/>
+	<bean id="permissionSecurityGroupModel" class="core.data.hibernate.security.PermissionSecurityGroupHibernateImpl"  scope="prototype"/>
+	<bean id="userLoginSecurityGroupModel" class="core.data.hibernate.security.UserLoginSecurityGroupHibernateImpl"  scope="prototype"/>
+	<bean id="statusTransitionRoleModel"
+		class="core.data.hibernate.status.StatusTransitionRoleHibernateImpl"  scope="prototype"/>
+	<bean id="statusTypeModel" class="core.data.hibernate.status.StatusTypeHibernateImpl"  scope="prototype"/>
+	<bean id="statusTransitionModel" class="core.data.hibernate.status.StatusTransitionHibernateImpl"  scope="prototype"/>
+	<bean id="statusModel" class="core.data.hibernate.status.StatusHibernateImpl"  scope="prototype"/>
+	<bean id="agreementTypeModel" class="core.data.hibernate.agreement.AgreementTypeHibernateImpl"  scope="prototype"/>
+	<bean id="agreementContactMechModel"
+		class="core.data.hibernate.agreement.AgreementContactMechHibernateImpl"  scope="prototype"/>
+	<bean id="financeAgreementModel" class="core.data.hibernate.agreement.FinanceAgreementHibernateImpl"  scope="prototype"/>
+	<bean id="agreementModel" class="core.data.hibernate.agreement.AgreementHibernateImpl"  scope="prototype"/>
+	<bean id="agreementStatusModel" class="core.data.hibernate.agreement.AgreementStatusHibernateImpl"  scope="prototype"/>
+	<bean id="serviceAgreementModel" class="core.data.hibernate.agreement.ServiceAgreementHibernateImpl"  scope="prototype"/>
+	<bean id="agreementRoleModel" class="core.data.hibernate.agreement.AgreementRoleHibernateImpl"  scope="prototype"/>
+	<bean id="serviceIntervalModel" class="core.data.hibernate.agreement.ServiceIntervalHibernateImpl"  scope="prototype"/>
+	<bean id="geoTypeModel" class="core.data.hibernate.geo.GeoTypeHibernateImpl"  scope="prototype"/>
+	<bean id="geoModel" class="core.data.hibernate.geo.GeoHibernateImpl"  scope="prototype"/>
+	<bean id="partyContactMechModel" class="core.data.hibernate.contact.PartyContactMechHibernateImpl"  scope="prototype"/>
+	<bean id="emailAddressModel" class="core.data.hibernate.contact.EmailAddressHibernateImpl"  scope="prototype"/>
+	<bean id="partyContactMechPurposeModel"
+		class="core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl"  scope="prototype"/>
+	<bean id="contactMechPurposeModel" class="core.data.hibernate.contact.ContactMechPurposeHibernateImpl"  scope="prototype"/>
+	<bean id="postalAddressModel" class="core.data.hibernate.contact.PostalAddressHibernateImpl"  scope="prototype"/>
+	<bean id="phoneNumberModel" class="core.data.hibernate.contact.PhoneNumberHibernateImpl"  scope="prototype"/>
+	<bean id="contactMechTypeModel" class="core.data.hibernate.contact.ContactMechTypeHibernateImpl"  scope="prototype"/>
+	<bean id="contactMechModel" class="core.data.hibernate.contact.ContactMechHibernateImpl"  scope="prototype"/>
+	<bean id="taskDetailModel" class="core.data.hibernate.task.TaskDetailHibernateImpl"  scope="prototype"/>
+	<bean id="taskRelationshipTypeModel" class="core.data.hibernate.task.TaskRelationshipTypeHibernateImpl"  scope="prototype"/>
+	<bean id="taskModel" class="core.data.hibernate.task.TaskHibernateImpl"  scope="prototype"/>
+	<bean id="taskTypeModel" class="core.data.hibernate.task.TaskTypeHibernateImpl"  scope="prototype"/>
+	<bean id="taskRelationshipModel" class="core.data.hibernate.task.TaskRelationshipHibernateImpl"  scope="prototype"/>
+	<bean id="taskRoleModel" class="core.data.hibernate.task.TaskRoleHibernateImpl"  scope="prototype"/>
+	<bean id="taskStatusModel" class="core.data.hibernate.task.TaskStatusHibernateImpl"  scope="prototype"/>
+	<bean id="billingAccountRoleModel" class="core.data.hibernate.billing.BillingAccountRoleHibernateImpl"  scope="prototype"/>
+	<bean id="billingAccountModel" class="core.data.hibernate.billing.BillingAccountHibernateImpl"  scope="prototype"/>
+	<bean id="billingAccountTypeModel" class="core.data.hibernate.billing.BillingAccountTypeHibernateImpl"  scope="prototype"/>
+	<bean id="billingAccountContactMechModel"
+		class="core.data.hibernate.billing.BillingAccountContactMechHibernateImpl"  scope="prototype"/>
+	<bean id="billingAccountStatusModel"
+		class="core.data.hibernate.billing.BillingAccountStatusHibernateImpl"  scope="prototype"/>
+	<bean id="orderContactMechModel" class="core.data.hibernate.order.OrderContactMechHibernateImpl"  scope="prototype"/>
+	<bean id="orderStatusModel" class="core.data.hibernate.order.OrderStatusHibernateImpl"  scope="prototype"/>
+	<bean id="orderItemModel" class="core.data.hibernate.order.OrderItemHibernateImpl"  scope="prototype"/>
+	<bean id="orderRoleModel" class="core.data.hibernate.order.OrderRoleHibernateImpl"  scope="prototype"/>
+	<bean id="orderHeaderModel" class="core.data.hibernate.order.OrderHeaderHibernateImpl"  scope="prototype"/>
+	<bean id="surveyTypeModel" class="core.data.hibernate.survey.SurveyTypeHibernateImpl"  scope="prototype"/>
+	<bean id="surveyModel" class="core.data.hibernate.survey.SurveyHibernateImpl"  scope="prototype"/>
+	<bean id="surveyItemTypeModel" class="core.data.hibernate.survey.SurveyItemTypeHibernateImpl"  scope="prototype"/>
+	<bean id="surveyItemModel" class="core.data.hibernate.survey.SurveyItemHibernateImpl"  scope="prototype"/>
+	<bean id="surveyAssociationTypeModel"
+		class="core.data.hibernate.survey.SurveyAssociationTypeHibernateImpl"  scope="prototype"/>
+	<bean id="surveyItemAssociationModel"
+		class="core.data.hibernate.survey.SurveyItemAssociationHibernateImpl"  scope="prototype"/>
+	<bean id="paymentModel" class="core.data.hibernate.payment.PaymentHibernateImpl"  scope="prototype"/>
+	<bean id="paymentRoleModel" class="core.data.hibernate.payment.PaymentRoleHibernateImpl"  scope="prototype"/>
+	<bean id="paymentTypeModel" class="core.data.hibernate.payment.PaymentTypeHibernateImpl"  scope="prototype"/>
+	<bean id="documentRoleModel" class="core.data.hibernate.document.DocumentRoleHibernateImpl"  scope="prototype"/>
+	<bean id="documentModel" class="core.data.hibernate.document.DocumentHibernateImpl"  scope="prototype"/>
+	<bean id="documentStatusModel" class="core.data.hibernate.document.DocumentStatusHibernateImpl"  scope="prototype"/>
+	<bean id="invoiceStatusModel" class="core.data.hibernate.invoice.InvoiceStatusHibernateImpl"  scope="prototype"/>
+	<bean id="invoiceModel" class="core.data.hibernate.invoice.InvoiceHibernateImpl"  scope="prototype"/>
+	<bean id="invoiceItemModel" class="core.data.hibernate.invoice.InvoiceItemHibernateImpl"  scope="prototype"/>
+	<bean id="invoiceRoleModel" class="core.data.hibernate.invoice.InvoiceRoleHibernateImpl"  scope="prototype"/>
+	<bean id="invoiceContactMechModel" class="core.data.hibernate.invoice.InvoiceContactMechHibernateImpl"  scope="prototype"/>
+	<bean id="salesLeadTypeModel" class="core.data.hibernate.saleslead.SalesLeadTypeHibernateImpl"  scope="prototype"/>
+	<bean id="proposalItemModel" class="core.data.hibernate.saleslead.ProposalItemHibernateImpl"  scope="prototype"/>
+	<bean id="proposalModel" class="core.data.hibernate.saleslead.ProposalHibernateImpl"  scope="prototype"/>
+	<bean id="salesLeadContactMechModel"
+		class="core.data.hibernate.saleslead.SalesLeadContactMechHibernateImpl"  scope="prototype"/>
+	<bean id="salesLeadStatusModel" class="core.data.hibernate.saleslead.SalesLeadStatusHibernateImpl"  scope="prototype"/>
+	<bean id="salesLeadModel" class="core.data.hibernate.saleslead.SalesLeadHibernateImpl"  scope="prototype"/>
+	<bean id="proposalTypeModel" class="core.data.hibernate.saleslead.ProposalTypeHibernateImpl"  scope="prototype"/>
+	<bean id="salesLeadRoleModel" class="core.data.hibernate.saleslead.SalesLeadRoleHibernateImpl"  scope="prototype"/>
+	<bean id="proposalSTatusModel" class="core.data.hibernate.saleslead.ProposalStatusHibernateImpl"  scope="prototype"/>
+	<bean id="organizationUnitModel" class="core.data.hibernate.party.OrganizationUnitHibernateImpl"  scope="prototype"/>
+	<bean id="partyRoleModel" class="core.data.hibernate.party.PartyRoleHibernateImpl"  scope="prototype"/>
+	<bean id="partyTypeModel" class="core.data.hibernate.party.PartyTypeHibernateImpl"  scope="prototype"/>
+	<bean id="partyRelationshipModel" class="core.data.hibernate.party.PartyRelationshipHibernateImpl"  scope="prototype"/>
+	<bean id="partyModel" class="core.data.hibernate.party.PartyHibernateImpl"  scope="prototype"/>
+	<bean id="partyGroupModel" class="core.data.hibernate.party.PartyGroupHibernateImpl"  scope="prototype"/>
+	<bean id="personModel" class="core.data.hibernate.party.PersonHibernateImpl"  scope="prototype"/>
+	<bean id="roleTypeModel" class="core.data.hibernate.party.RoleTypeHibernateImpl"  scope="prototype"/>
+	<bean id="productModel" class="core.data.hibernate.product.ProductHibernateImpl"  scope="prototype"/>
+	<bean id="productTypeModel" class="core.data.hibernate.product.ProductTypeHibernateImpl"  scope="prototype"/>
+
+</beans>

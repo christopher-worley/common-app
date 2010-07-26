@@ -1,0 +1,27 @@
+<project name="Core CommonApp Server">
+	<bannerLeft>
+		<name>Core CommonApp Server</name>
+		<src>logo.gif</src>
+		<href>www.coreinformationsolutions.com</href>
+	</bannerLeft>
+	
+	<body>
+		<links>
+			<item name="Core Information Solutions LLC" href="http://www.coreinformationsolutions.com"/>
+		</links>
+	
+		<menu name="Demo Rolodex">
+			<item name="Overview" href="index.html"/>
+			<item name="Getting Started" href="getting-started.html"/>
+			<item name="Dependencies" href="dependencies.html"/>
+		</menu>
+		
+		<menu name="Core Dependencies">
+			<item name="CommonApp Client" href="http://www.coreinformationsolutions.com/core-commonapp-client/"/>
+			<item name="CommonApp Data Model" href="http://www.coreinformationsolutions.com/core-data-model/"/>
+			<item name="Core Service Framework" href="http://www.coreinformationsolutions.com/core-service/"/>
+			<item name="Core Tooling" href="http://www.coreinformationsolutions.com/core-tooling/"/>
+			<item name="Object Mock" href="http://www.coreinformationsolutions.com/core-object-mock/"/>
+		</menu>
+	</body>
+</project>

@@ -1,0 +1,25 @@
+Overview
+
+	CommonApp Server is a component of the Core CommonApp Framework.  This project provides the the server side functionality for invoking services remotley.  Even though the CommonApp Framework allows for services to be invoked within the same jvm, this project separates the necessary components required to invoke services across a network.
+	
+Download
+
+*------------------------------------------+--------------:
+| Filename                                 |              |
+*------------------------------------------+--------------:
+| core-commonapp-server-0.0.1-SNAPSHOT-bin.tar.bz2      | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-server-0.0.1-SNAPSHOT-bin.tar.bz2}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-server-0.0.1-SNAPSHOT-bin.tar.gz       | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-server-0.0.1-SNAPSHOT-bin.tar.gz}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-server-0.0.1-SNAPSHOT-bin.zip          | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-server-0.0.1-SNAPSHOT-bin.zip}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-server-0.0.1-SNAPSHOT-project.tar.bz2  | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-server-0.0.1-SNAPSHOT-project.tar.bz2}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-server-0.0.1-SNAPSHOT-project.tar.gz   | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-server-0.0.1-SNAPSHOT-project.tar.gz}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-server-0.0.1-SNAPSHOT-project.zip      | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-server-0.0.1-SNAPSHOT-project.zip}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-server-0.0.1-SNAPSHOT.jar              | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-server-0.0.1-SNAPSHOT.jar}Download}}     |
+*------------------------------------------+--------------:
+0.0.1 Snapshot
+	  

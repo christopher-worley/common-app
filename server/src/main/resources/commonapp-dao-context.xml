@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-2.5.xsd
+    http://www.springframework.org/schema/lang 
+    http://www.springframework.org/schema/lang/spring-lang-2.5.xsd">
+
+	<bean id="genericDAO" class="core.commonapp.server.dao.GenericDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Agreement -->
+	<bean id="agreementDAO"
+		class="core.commonapp.server.dao.agreement.AgreementDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="agreementTypeDAO"
+		class="core.commonapp.server.dao.agreement.AgreementTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="serviceInterfalDAO"
+		class="core.commonapp.server.dao.agreement.ServiceIntervalDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Billing -->
+	<bean id="billingAccountTypeDAO"
+		class="core.commonapp.server.dao.billing.BillingAccountTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- ContactMech -->
+	<bean id="contactMechDAO"
+		class="core.commonapp.server.dao.contact.ContactMechDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="contactMechPurposeDAO"
+		class="core.commonapp.server.dao.contact.ContactMechPurposeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="contactMechTypeDAO"
+		class="core.commonapp.server.dao.contact.ContactMechTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="partyContactMechDAO"
+		class="core.commonapp.server.dao.contact.PartyContactMechDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="partyContactMechPurposeDAO"
+		class="core.commonapp.server.dao.contact.PartyContactMechPurposeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Geo -->
+	<bean id="geoDAO" class="core.commonapp.server.dao.geo.GeoDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="geoTypeDAO" class="core.commonapp.server.dao.geo.GeoTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Party -->
+	<bean id="organizationUnitDAO" class="core.commonapp.server.dao.party.OrganizationUnitDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="partyDAO" class="core.commonapp.server.dao.party.PartyDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="partyGroupDAO" class="core.commonapp.server.dao.party.PartyGroupDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="partyRelationshipDAO"
+		class="core.commonapp.server.dao.party.PartyRelationshipDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="partyRoleDAO"
+		class="core.commonapp.server.dao.party.PartyRoleDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="partyTypeDAO"
+		class="core.commonapp.server.dao.party.PartyTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="PersonDAO" class="core.commonapp.server.dao.party.PersonDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="roleTypeDAO"
+		class="core.commonapp.server.dao.party.RoleTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Payment -->
+	<bean id="paymentTypeDAO"
+		class="core.commonapp.server.dao.payment.PaymentTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Product -->
+	<bean id="productDAO"
+		class="core.commonapp.server.dao.product.ProductDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="productTypeDAO"
+		class="core.commonapp.server.dao.product.ProductTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	
+	<!-- Sales -->
+	<bean id="salesLeadDAO" class="core.commonapp.server.dao.saleslead.SalesLeadDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Secutiry -->
+	<bean id="permissionDAO" class="core.commonapp.server.dao.security.PermissionDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="permissionSecurityGroupDAO" class="core.commonapp.server.dao.security.PermissionSecurityGroupDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="securityGroupDAO" class="core.commonapp.server.dao.security.SecurityGroupDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="userLoginDAO" class="core.commonapp.server.dao.security.UserLoginDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="userLoginSecurityGroupDAO" class="core.commonapp.server.dao.security.UserLoginSecurityGroupDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="userLoginHistoryDAO"
+		class="core.commonapp.server.dao.security.UserLoginHistoryDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Status -->
+	<bean id="statusDAO" class="core.commonapp.server.dao.status.StatusDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="statusTransactionDAO"
+		class="core.commonapp.server.dao.status.StatusTransitionDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="statusTransactionRoleDAO"
+		class="core.commonapp.server.dao.status.StatusTransitionRoleDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="statusTypeDAO"
+		class="core.commonapp.server.dao.status.StatusTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Survey -->
+	<bean id="surveyTypeDAO"
+		class="core.commonapp.server.dao.survey.SurveyTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="surveyItemTypeDAO"
+		class="core.commonapp.server.dao.survey.SurveyItemTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<!-- Task -->
+	<bean id="taskDAO" class="core.commonapp.server.dao.task.TaskDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="taskDetailDAO"
+		class="core.commonapp.server.dao.task.TaskDetailDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="taskRelationshipDAO"
+		class="core.commonapp.server.dao.task.TaskRelationshipDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="taskRelationshipTypeDAO"
+		class="core.commonapp.server.dao.task.TaskRelationshipTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="taskRoleDAO" class="core.commonapp.server.dao.task.TaskRoleDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="taskStatusDAO"
+		class="core.commonapp.server.dao.task.TaskStatusDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="taskTypeDAO" class="core.commonapp.server.dao.task.TaskTypeDAOHibernateImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+</beans>

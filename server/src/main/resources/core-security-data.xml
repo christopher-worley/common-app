@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+	
+	<!--  System Administrator -->
+	<record bean="personModel" refId="Person.sysAdmin" partyType="${PartyType._PERSON}" firstName="System" lastName="Administrator"/>
+	<record bean="userLoginModel" username="sysadmin" password="sysadmin" party="${Person.sysAdmin}"/>
+
+</data>

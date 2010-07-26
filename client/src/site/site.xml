@@ -1,0 +1,21 @@
+<project name="Core CommonApp Client">
+	<bannerLeft>
+		<name>CommonApp Client</name>
+		<src>logo.gif</src>
+		<href>www.coreinformationsolutions.com</href>
+	</bannerLeft>
+	
+	<body>
+		<links>
+			<item name="Core Information Solutions LLC" href="http://www.coreinformationsolutions.com"/>
+		</links>
+
+		<menu name="Core CommonApp Client">
+			<item name="Overview" href="index.html"/>
+		</menu>
+
+		<menu name="Core Dependencies">
+			<item name="Core Tooling" href="http://www.coreinformationsolutions.com/core-tooling"/>
+		</menu>
+	</body>
+</project>

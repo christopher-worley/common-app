@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:lang="http://www.springframework.org/schema/lang"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-2.5.xsd
+    http://www.springframework.org/schema/lang 
+    http://www.springframework.org/schema/lang/spring-lang-2.5.xsd">
+    
+	<!-- Agreement -->
+	<bean id="agreementService" class="core.commonapp.server.service.agreement.AgreementServiceImpl"/>
+	
+	<!-- Billing -->
+	<bean id="billingAccountService" class="core.commonapp.server.service.billing.BillingAccountServiceImpl"/>
+	
+	<!-- ContactMech -->
+	<bean id="contactMechService" class="core.commonapp.server.service.contact.ContactMechServiceImpl"/>
+	<bean id="createContactMechService" class="core.commonapp.server.service.contact.CreateContactMechServiceImpl"/>
+	<bean id="createPartyContactMechService" class="core.commonapp.server.service.contact.CreatePartyContactMechServiceImpl"/>
+	<bean id="partyContactMechService" class="core.commonapp.server.service.contact.PartyContactMechServiceImpl"/>
+	
+	<!-- Geo -->
+	<bean id="geoService" class="core.commonapp.server.service.geo.GeoServiceImpl"/>
+	
+	<!-- Party -->
+	<bean id="organizationUnitService" class="core.commonapp.server.service.party.OrganizationUnitServiceImpl"/>
+	<bean id="createPartyService" class="core.commonapp.server.service.party.CreatePartyServiceImpl"/>
+	<bean id="partyService" class="core.commonapp.server.service.party.PartyServiceImpl"/>
+
+	<!--  Party: Contact Person -->
+	<bean id="contactPersonService" class="core.commonapp.server.service.party.ContactPersonServiceImpl" />
+	
+	<!-- Payment -->
+	<bean id="paymentService" class="core.commonapp.server.service.payment.PaymentServiceImpl"/>
+	
+	<!-- Product -->
+	<bean id="productService" class="core.commonapp.server.service.product.ProductServiceImpl"/>
+	
+	<!-- SalesLead - ->
+	<bean id="proposalService" class="core.commonapp.server.service.saleslead.ProposalServiceImpl"/>
+	<bean id="salesLeadService" class="core.commonapp.server.service.saleslead.SalesLeadServiceImpl"/>
+	-->
+	<!-- Security -->
+	<bean id="securityService" class="core.commonapp.server.service.security.SecurityServiceImpl"/>
+	<bean id="securityGroupService" class="core.commonapp.server.service.security.SecurityGroupServiceImpl"/>
+	<bean id="userService" class="core.commonapp.server.service.security.UserServiceImpl"/>
+	
+	<!-- Status -->
+	<bean id="statusService" class="core.commonapp.server.service.status.StatusServiceImpl"/>
+	
+	<!-- Survey -->
+	<bean id="surveyService" class="core.commonapp.server.service.survey.SurveyServiceImpl"/>
+	
+	<!-- Task -->
+	<bean id="taskService" class="core.commonapp.server.service.task.TaskServiceImpl"/>
+    
+    
+</beans>

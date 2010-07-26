@@ -1,0 +1,24 @@
+Overview
+
+	CommonApp Client is a component of the Core CommonApp Framework.  This component separates out the client side components necessary for invoking service remotely.
+
+Download
+
+*------------------------------------------+--------------:
+| Filename                                 |              |
+*------------------------------------------+--------------:
+| core-commonapp-client-0.0.1-SNAPSHOT-bin.tar.bz2      | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-client-0.0.1-SNAPSHOT-bin.tar.bz2}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-client-0.0.1-SNAPSHOT-bin.tar.gz       | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-client-0.0.1-SNAPSHOT-bin.tar.gz}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-client-0.0.1-SNAPSHOT-bin.zip          | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-client-0.0.1-SNAPSHOT-bin.zip}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-client-0.0.1-SNAPSHOT-project.tar.bz2  | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-client-0.0.1-SNAPSHOT-project.tar.bz2}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-client-0.0.1-SNAPSHOT-project.tar.gz   | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-client-0.0.1-SNAPSHOT-project.tar.gz}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-client-0.0.1-SNAPSHOT-project.zip      | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-client-0.0.1-SNAPSHOT-project.zip}Download}}     |
+*------------------------------------------+--------------:
+| core-commonapp-client-0.0.1-SNAPSHOT.jar              | {{{http://www.coreinformationsolutions.com/downloads/core-commonapp-client-0.0.1-SNAPSHOT.jar}Download}}     |
+*------------------------------------------+--------------:
+0.0.1 Snapshot

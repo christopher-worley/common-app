@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+	<!--
+		<record class="core.data.model." description="" key=""/>
+	-->
+
+	<!-- Contact Mech Type -->
+	<record bean="contactMechTypeModel" description="Phone Number" key="_PHONE_NUMBER"/>
+	<record bean="contactMechTypeModel" description="Postal Address" key="_POSTAL_ADDRESS"/>
+	<record bean="contactMechTypeModel" description="Email Address" key="_EMAIL_ADDRESS"/>
+	
+	<!-- Contact Mech Purpose Type -->
+	<record bean="contactMechPurposeModel" description="Primary" key="_PRIMARY"/>
+	<record bean="contactMechPurposeModel" description="Secondary" key="_SECONDARY"/>
+	<record bean="contactMechPurposeModel" description="Fax Number" key="_FAX"/>
+	<record bean="contactMechPurposeModel" description="House Number" key="_HOME"/>
+	<record bean="contactMechPurposeModel" description="Work Number" key="_WORK"/>
+	<record bean="contactMechPurposeModel" description="Shipping Address" key="_SHIPPING"/>
+	<record bean="contactMechPurposeModel" description="Billing Address" key="_BILLING"/>
+	
+	<!-- Geo Type -->
+	<record bean="geoTypeModel" description="Country" key="_COUNTRY"/>
+	<record bean="geoTypeModel" description="State" key="_STATE"/>
+
+	<!-- Geo - Countries -->
+	<record bean="geoModel" name="UNITED STATES" abbreviation="US" key="_COUNTRY_US" geoType="${GeoType._COUNTRY}"/>
+	
+	<!-- Geo - States -->
+	<record bean="geoModel" name="ALABAMA" abbreviation="AL" key="_STATE_AL" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="ALASKA" abbreviation="AK" key="_STATE_AK" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="AMERICAN SAMOA" abbreviation="AS" key="_STATE_AS" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="ARIZONA" abbreviation="AZ" key="_STATE_AZ" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="ARKANSAS" abbreviation="AR" key="_STATE_AR" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="CALIFORNIA" abbreviation="CA" key="_STATE_CA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="COLORADO" abbreviation="CO" key="_STATE_CO" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="CONNECTICUT" abbreviation="CT" key="_STATE_CT" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="DELAWARE" abbreviation="DE" key="_STATE_DE" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="DISTRICT OF COLUMBIA" abbreviation="DC" key="_STATE_DC" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="FEDERATED STATES OF MICRONESIA" abbreviation="FM" key="_STATE_FM" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="FLORIDA" abbreviation="FL" key="_STATE_FL" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="GEORGIA" abbreviation="GA" key="_STATE_GA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="GUAM" abbreviation="GU" key="_STATE_GU" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="HAWAII" abbreviation="HI" key="_STATE_HI" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="IDAHO" abbreviation="ID" key="_STATE_ID" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="ILLINOIS" abbreviation="IL" key="_STATE_IL" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="INDIANA" abbreviation="IN" key="_STATE_IN" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="IOWA" abbreviation="IA" key="_STATE_IA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="KANSAS" abbreviation="KS" key="_STATE_KS" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="KENTUCKY" abbreviation="KY" key="_STATE_KY" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="LOUISIANA" abbreviation="LA" key="_STATE_LA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MAINE" abbreviation="ME" key="_STATE_ME" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MARSHALL ISLANDS" abbreviation="MH" key="_STATE_MH" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MARYLAND" abbreviation="MD" key="_STATE_MD" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MASSACHUSETTS" abbreviation="MA" key="_STATE_MA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MICHIGAN" abbreviation="MI" key="_STATE_MI" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MINNESOTA" abbreviation="MN" key="_STATE_MN" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MISSISSIPPI" abbreviation="MS" key="_STATE_MS" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MISSOURI" abbreviation="MO" key="_STATE_MO" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="MONTANA" abbreviation="MT" key="_STATE_MT" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NEBRASKA" abbreviation="NE" key="_STATE_NE" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NEVADA" abbreviation="NV" key="_STATE_NV" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NEW HAMPSHIRE" abbreviation="NH" key="_STATE_NH" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NEW JERSEY" abbreviation="NJ" key="_STATE_NJ" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NEW MEXICO" abbreviation="NM" key="_STATE_NM" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NEW YORK" abbreviation="NY" key="_STATE_NY" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NORTH CAROLINA" abbreviation="NC" key="_STATE_NC" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NORTH DAKOTA" abbreviation="ND" key="_STATE_ND" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="NORTHERN MARIANA ISLANDS" abbreviation="MP" key="_STATE_MP" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="OHIO" abbreviation="OH" key="_STATE_OH" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="OKLAHOMA" abbreviation="OK" key="_STATE_OK" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="OREGON" abbreviation="OR" key="_STATE_OR" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="PALAU" abbreviation="PW" key="_STATE_PW" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="PENNSYLVANIA" abbreviation="PA" key="_STATE_PA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="PUERTO RICO" abbreviation="PR" key="_STATE_PR" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="RHODE ISLAND" abbreviation="RI" key="_STATE_RI" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="SOUTH CAROLINA" abbreviation="SC" key="_STATE_SC" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="SOUTH DAKOTA" abbreviation="SD" key="_STATE_SD" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="TENNESSEE" abbreviation="TN" key="_STATE_TN" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="TEXAS" abbreviation="TX" key="_STATE_TX" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="UTAH" abbreviation="UT" key="_STATE_UT" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="VERMONT" abbreviation="VT" key="_STATE_VT" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="VIRGIN ISLANDS" abbreviation="VI" key="_STATE_VI" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="VIRGINIA" abbreviation="VA" key="_STATE_VA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="WASHINGTON" abbreviation="WA" key="_STATE_WA" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="WEST VIRGINIA" abbreviation="WV" key="_STATE_WV" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="WISCONSIN" abbreviation="WI" key="_STATE_WI" geoType="${GeoType._STATE}"/>
+	<record bean="geoModel" name="WYOMING" abbreviation="WY" key="_STATE_WY" geoType="${GeoType._STATE}"/>
+	
+	<!-- Party Type -->
+	<record bean="partyTypeModel" description="Person" key="_PERSON"/>
+	<record bean="partyTypeModel" description="Party Group" key="_PARTY_GROUP"/>
+	
+	<!-- Product Type -->	
+	<record bean="productTypeModel" description="Finished Good" key="_FINISHED_GOOD"/>
+	<record bean="productTypeModel" description="Service" key="_SERVICE"/>
+	<record bean="productTypeModel" description="Bundle" key="_BUNDLE"/>
+	
+	<!-- Role Type -->
+	<record bean="roleTypeModel" description="Buyer" key="_BUYER"/>
+	<record bean="roleTypeModel" description="Contact Person" key="_CONTACT_PERSON"/>
+	<record bean="roleTypeModel" description="Created By" key="_CREATED_BY"/>
+	<record bean="roleTypeModel" description="Responsible Party" key="_RESPONSIBLE_PARTY"/>
+	<record bean="roleTypeModel" description="Sales Person" key="_SALES_PERSON"/>
+	<record bean="roleTypeModel" description="Sales Team" key="_SALES_TEAM"/>
+	<!--
+	<record bean="roleTypeModel" description="" key=""/>
+	-->
+	
+	<!-- Security -->
+	<record bean="permissionModel" code="ROOT" description="Root privileges" key="_ROOT"/>
+	<record bean="permissionModel" code="CREATE_USER_LOGIN" description="Create User Login" key="_CREATE_USER_LOGIN"/>
+	<record bean="permissionModel" code="MODIFY_USER_LOGIN" description="Modify User Login" key="_MODIFY_USER_LOGIN"/>
+	<record bean="permissionModel" code="CREATE_SECURITY_GROUP" description="Create Security Group" key="_CREATE_SECURITY_GROUP"/>
+	<record bean="permissionModel" code="MODIFY_SECURITY_GROUP" description="Modify Security Group" key="_MODIFY_SECURITY_GROUP"/>
+	<record bean="permissionModel" code="CREATE_SALES_LEAD" description="Create Sales Lead" key="_CREATE_SALES_LEAD"/>
+	<record bean="permissionModel" code="MODIFY_SALES_LEAD" description="Modify Sales Lead" key="_MODIFY_SALES_LEAD"/>
+	<record bean="permissionModel" code="CREATE_SALES_PERSON" description="Create Sales Person" key="_CREATE_SALES_PERSON"/>
+	<record bean="permissionModel" code="MODIFY_SALES_PERSON" description="Modify Sales Person" key="_MODIFY_SALES_PERSON"/>
+	<record bean="permissionModel" code="CREATE_SALES_TEAM" description="Create Sales Team" key="_CREATE_SALES_TEAM"/>
+	<record bean="permissionModel" code="MODIFY_SALES_TEAM" description="Modify Sales Team" key="_MODIFY_SALES_TEAM"/>
+	
+	<record bean="securityGroupModel" code="ROOT" description="Root Group" key="_ROOT"/>
+	<record bean="permissionSecurityGroupModel" permission="${Permission._ROOT}" securityGroup="${SecurityGroup._ROOT}"/>
+
+	<record bean="securityGroupModel" code="SALES_MANAGER" description="Sales Manager" key="_SALES_MANAGER"/>
+	<record bean="permissionSecurityGroupModel" permission="${Permission._CREATE_SALES_LEAD}" securityGroup="${SecurityGroup._SALES_MANAGER}"/>
+	<record bean="permissionSecurityGroupModel" permission="${Permission._MODIFY_SALES_LEAD}" securityGroup="${SecurityGroup._SALES_MANAGER}"/>
+	<record bean="permissionSecurityGroupModel" permission="${Permission._CREATE_SALES_PERSON}" securityGroup="${SecurityGroup._SALES_MANAGER}"/>
+	<record bean="permissionSecurityGroupModel" permission="${Permission._MODIFY_SALES_PERSON}" securityGroup="${SecurityGroup._SALES_MANAGER}"/>
+	<record bean="permissionSecurityGroupModel" permission="${Permission._CREATE_SALES_TEAM}" securityGroup="${SecurityGroup._SALES_MANAGER}"/>
+	<record bean="permissionSecurityGroupModel" permission="${Permission._MODIFY_SALES_TEAM}" securityGroup="${SecurityGroup._SALES_MANAGER}"/>
+
+	<record bean="personModel" refId="Party.sysAdmin" partyType="${PartyType._PERSON}" firstName="System" lastName="Administrator"/>
+	<record bean="userLoginModel" refId="UserLogin.sysAdmin" party="${Party.sysAdmin}" username="sysadmin" password="sysadmin"/>
+	<record bean="userLoginSecurityGroupModel" userLogin="${UserLogin.sysAdmin}" securityGroup="${SecurityGroup._ROOT}"/>
+	
+	<!-- Status Type -->
+	<record bean="statusTypeModel" description="Task" key="_TASK"/>
+	<record bean="statusTypeModel" description="Sales Order" key="_SALES_ORDER"/>
+	<record bean="statusTypeModel" description="Work Order" key="_WORK_ORDER"/>
+	<record bean="statusTypeModel" description="Sales Lead" key="_SALES_LEAD"/>
+	
+	<!-- Status -->
+	<record bean="statusModel" description="Open" key="_OPEN" statusType="${StatusType._TASK}"/>
+	<record bean="statusModel" description="Closed" key="_CLOSED" statusType="${StatusType._TASK}"/>
+	<record bean="statusModel" description="In Progress" key="_IN_PROG" statusType="${StatusType._TASK}"/>
+	<record bean="statusModel" description="Reopen" key="_REOPEN" statusType="${StatusType._TASK}"/>
+	<record bean="statusModel" description="Resolved" key="_RESOLVED" statusType="${StatusType._TASK}"/>
+	
+	<!-- Status Transition -->
+	<record bean="statusTransitionModel" description="Start Task" key="_START_TASK" statusFrom="${Status._OPEN}" statusTo="${Status._IN_PROG}"/>
+	<record bean="statusTransitionModel" description="Close Task" key="_CLOSE_OPEN_TASK" statusFrom="${Status._OPEN}" statusTo="${Status._CLOSED}"/>
+	<record bean="statusTransitionModel" description="Resolve Task" key="_RESOLVE_OPEN_TASK" statusFrom="${Status._OPEN}" statusTo="${Status._RESOLVED}"/>
+	<record bean="statusTransitionModel" description="Close Task" key="_CLOSE_IN_PROG_TASK" statusFrom="${Status._IN_PROG}" statusTo="${Status._CLOSED}"/>
+	<record bean="statusTransitionModel" description="Resolve Task" key="_RESOLVE_IN_PROG_TASK" statusFrom="${Status._IN_PROG}" statusTo="${Status._RESOLVED}"/>
+	<record bean="statusTransitionModel" description="Reopen Task" key="_REOPEN_CLOSED_TASK" statusFrom="${Status._CLOSED}" statusTo="${Status._OPEN}"/>
+	<record bean="statusTransitionModel" description="Reopen Task" key="_REOPEN_RESOLVED_TASK" statusFrom="${Status._RESOLVED}" statusTo="${Status._OPEN}"/>
+	<record bean="statusTransitionModel" description="Stop Task" key="_STOP_TASK" statusFrom="${Status._IN_PROG}" statusTo="${Status._OPEN}"/>
+	
+	<!-- Task Type -->
+	<record bean="taskTypeModel" description="Basic" key="_BASIC"/>
+	
+	<!-- Task Relationship Type -->
+	<record bean="taskRelationshipTypeModel" description="Parent" key="_PARENT"/>
+	<record bean="taskRelationshipTypeModel" description="Child" key="_CHILD"/>
+	<record bean="taskRelationshipTypeModel" description="Requirement" key="_REQUIREMENT"/>
+
+</data>
