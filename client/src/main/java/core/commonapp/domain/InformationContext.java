@@ -33,7 +33,7 @@ public class InformationContext
     private ApplicationContext applicationContext;
 
     /** service factory */
-    private ServiceFactory serviceFactory = new ServiceFactory();
+    private ServiceFactory serviceFactory;;
     
     /**
      * @param applicationContext
@@ -42,6 +42,7 @@ public class InformationContext
     {
         super();
         this.applicationContext = applicationContext;
+        this.serviceFactory = (ServiceFactory) applicationContext.getBean("serviceFactory");
     }
     
     /**
