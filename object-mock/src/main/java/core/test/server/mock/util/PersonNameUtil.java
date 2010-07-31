@@ -21,6 +21,7 @@ package core.test.server.mock.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,9 +51,6 @@ public class PersonNameUtil {
     
     /** male names list */
     List<String> maleNames = new ArrayList<String>();
-    
-    /** file path prefix */
-    private String filePrefix = "/home/worleyc/archive/core/object-mock/";
 
     /** singleton instance */
     private static PersonNameUtil instance = new PersonNameUtil();
@@ -98,7 +96,8 @@ public class PersonNameUtil {
      */
     private void initializeFemaleNames() throws IOException
     {
-    	File file = new File(filePrefix + "/data/people-names/female-names.txt");
+    	URL url = getClass().getClassLoader().getResource("people-names/female-names.txt");
+    	File file = new File(url.getFile());
     	femaleNames = FileUtils.readLines(file, "UTF-8");
     }
     
@@ -108,7 +107,8 @@ public class PersonNameUtil {
      */
     private void initializeLastNames() throws IOException
     {
-        File file = new File(filePrefix + "/data/people-names/last-names.txt");
+    	URL url = getClass().getClassLoader().getResource("people-names/last-names.txt");
+    	File file = new File(url.getFile());
         lastNames = FileUtils.readLines(file, "UTF-8");
     }
     
@@ -119,8 +119,9 @@ public class PersonNameUtil {
      */
     private void initializeMaleNames() throws IOException
     {
-        File file = new File(filePrefix + "/data/people-names/male-names.txt");
-        maleNames = FileUtils.readLines(file, "UTF-8");
+    	URL url = getClass().getClassLoader().getResource("people-names/male-names.txt");
+    	File file = new File(url.getFile());
+    	maleNames = FileUtils.readLines(file, "UTF-8");
     }
 
 }

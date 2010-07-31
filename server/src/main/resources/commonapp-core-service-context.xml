@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/aop 
+	                       http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	                       http://www.springframework.org/schema/beans 
+						   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						   http://www.springframework.org/schema/tx 
+						   http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+						   http://www.springframework.org/schema/util 
+						   http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+						   
+
+	<bean id="serviceFactory" class="core.service.factory.ServiceFactoryImpl" scope="prototype"/>
+	
+	<bean id="clientServiceSessionFactory" class="core.service.session.ClientServiceSessionFactoryImpl" scope="prototype"/>
+	
+	<bean id="clientServiceSession" class="core.service.session.ClientServiceSessionImpl" scope="prototype"/>
+
+	<bean id="serviceSecurity" class="core.service.security.ServiceSecurityImpl"/>
+
+	<bean id="serviceExecutor" class="core.service.executor.local.LocalServiceExecutor" scope="prototype"/>
+
+	<bean id="serviceInstantiator" class="core.commonapp.server.service.CommonAppServiceInstantiator" scope="prototype"/>
+
+	<bean id="serviceBus" class="core.service.bus.socket.DedicatedServiceBus" scope="prototype"/>
+	<!--bean id="serviceBus" class="core.service.bus.socket.SimpleServiceBus" scope="prototype"/-->
+
+</beans>

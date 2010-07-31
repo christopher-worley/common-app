@@ -19,32 +19,129 @@
  */
 package core.data.hibernate.document;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.document.Document;
 
-//TODO: Implement model and dao
+@Entity
+@Table (name="documet")
 public class DocumentHibernateImpl extends LightEntity implements Document
 {
 
+	@Id
+    @GeneratedValue (strategy=GenerationType.IDENTITY)
+    @Column (name="document_id")
+    private Integer documentId;
+	
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="description")
+	private String description;
+	
+	@Column(name="path_prefix")
+	private String pathPrefix;
+	
+	@Column(name="path_suffix")
+	private String pathSuffix;
+	
+	@Column(name="filename")
+	private String filename;
     
-    public Integer getId()
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public String getDescription()
+	{
+		return description;
+	}
 
     
-    public boolean isEquivalent(Object object)
+    public Integer getDocumentId()
+	{
+		return documentId;
+	}
+
+
+	public String getFilename()
+	{
+		return filename;
+	}
+
+
+	public Integer getId()
+    {
+		return getDocumentId();
+    }
+
+
+	public String getName()
+	{
+		return name;
+	}
+
+
+	public String getPathPrefix()
+	{
+		return pathPrefix;
+	}
+
+
+	public String getPathSuffix()
+	{
+		return pathSuffix;
+	}
+
+
+	public boolean isEquivalent(Object object)
     {
         // TODO Auto-generated method stub
         return false;
     }
 
-    
-    public void setId(Integer id)
-    {
-        // TODO Auto-generated method stub
 
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+
+	public void setDocumentId(Integer documentId)
+	{
+		this.documentId = documentId;
+	}
+
+
+	public void setFilename(String filename)
+	{
+		this.filename = filename;
+	}
+
+
+	public void setId(Integer id)
+    {
+		setDocumentId(id);
     }
+
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+
+	public void setPathPrefix(String pathPrefix)
+	{
+		this.pathPrefix = pathPrefix;
+	}
+
+    
+    public void setPathSuffix(String pathSuffix)
+	{
+		this.pathSuffix = pathSuffix;
+	}
 
 }
