@@ -26,7 +26,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.DataObject;
 import core.data.model.Keyable;
 import core.data.model.status.StatusType;
@@ -34,7 +33,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="status_type")
-public class StatusTypeHibernateImpl extends LightEntity implements DataObject, Keyable, StatusType
+public class StatusTypeHibernateImpl implements DataObject, Keyable, StatusType
 {
     
     @Id

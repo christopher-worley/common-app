@@ -22,7 +22,8 @@ package core.commonapp.client.dao;
 import java.util.List;
 
 import core.data.model.DataObject;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean (beanName="genericDAO")
 public interface GenericDAO<T extends DataObject>

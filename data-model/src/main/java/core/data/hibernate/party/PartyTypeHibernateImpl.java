@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.party.PartyType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table(name = "party_type")
-public class PartyTypeHibernateImpl extends LightEntity implements PartyType 
+public class PartyTypeHibernateImpl implements PartyType 
 {
     /* (non-Javadoc)
      * @see java.lang.Object#equals(java.lang.Object)

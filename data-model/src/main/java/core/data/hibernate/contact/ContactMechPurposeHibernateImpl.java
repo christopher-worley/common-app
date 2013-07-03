@@ -28,14 +28,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.DataObject;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table(name = "contact_mech_purpose")
-public class ContactMechPurposeHibernateImpl extends LightEntity implements DataObject, ContactMechPurpose, Serializable
+public class ContactMechPurposeHibernateImpl implements DataObject, ContactMechPurpose, Serializable
 {
     
     @Id

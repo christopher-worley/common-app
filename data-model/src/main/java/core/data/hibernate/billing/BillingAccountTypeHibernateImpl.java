@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.billing.BillingAccountType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="billing_account_type")
-public class BillingAccountTypeHibernateImpl extends LightEntity implements BillingAccountType
+public class BillingAccountTypeHibernateImpl implements BillingAccountType
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

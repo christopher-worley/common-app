@@ -22,7 +22,8 @@ package core.commonapp.client.dao.party;
 import java.util.List;
 
 import core.data.model.party.OrganizationUnit;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean(beanName="organizationUnitDAO")
 public interface OrganizationUnitDAO

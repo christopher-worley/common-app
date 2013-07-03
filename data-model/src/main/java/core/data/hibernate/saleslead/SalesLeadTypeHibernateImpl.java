@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.saleslead.SalesLeadType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="sales_lead_type")
-public class SalesLeadTypeHibernateImpl extends LightEntity implements SalesLeadType
+public class SalesLeadTypeHibernateImpl implements SalesLeadType
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

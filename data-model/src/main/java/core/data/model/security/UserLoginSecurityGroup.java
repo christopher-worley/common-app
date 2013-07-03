@@ -21,7 +21,8 @@ package core.data.model.security;
 
 import core.data.model.DataObject;
 import core.data.model.Expirable;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean (beanName="userLoginSecurityGroupModel")
 public interface UserLoginSecurityGroup extends DataObject, Expirable

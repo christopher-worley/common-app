@@ -32,13 +32,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.party.OrganizationUnit;
 import core.data.model.party.RoleType;
 
 @Entity
 @Table(name="organization_unit")
-public class OrganizationUnitHibernateImpl extends LightEntity  implements OrganizationUnit
+public class OrganizationUnitHibernateImpl  implements OrganizationUnit
 {
     /**
      * 

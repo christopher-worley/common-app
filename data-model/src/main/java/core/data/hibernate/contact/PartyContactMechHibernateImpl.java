@@ -34,7 +34,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.party.PartyHibernateImpl;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.PartyContactMech;
@@ -44,7 +43,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table(name = "party_contact_mech")
-public class PartyContactMechHibernateImpl extends LightEntity implements PartyContactMech
+public class PartyContactMechHibernateImpl implements PartyContactMech
 {
 
     /**

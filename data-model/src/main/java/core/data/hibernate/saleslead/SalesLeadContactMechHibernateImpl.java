@@ -32,7 +32,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.contact.ContactMechHibernateImpl;
 import core.data.hibernate.contact.ContactMechPurposeHibernateImpl;
 import core.data.model.contact.ContactMech;
@@ -43,7 +42,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="sales_lead_contact_mech")
-public class SalesLeadContactMechHibernateImpl extends LightEntity implements SalesLeadContactMech
+public class SalesLeadContactMechHibernateImpl implements SalesLeadContactMech
 {
 
     @Id

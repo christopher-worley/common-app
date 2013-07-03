@@ -30,7 +30,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.party.PartyHibernateImpl;
 import core.data.hibernate.party.RoleTypeHibernateImpl;
 import core.data.model.agreement.Agreement;
@@ -41,7 +40,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="agreement_role")
-public class AgreementRoleHibernateImpl extends LightEntity implements AgreementRole
+public class AgreementRoleHibernateImpl implements AgreementRole
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

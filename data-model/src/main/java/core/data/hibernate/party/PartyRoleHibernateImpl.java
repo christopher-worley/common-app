@@ -32,7 +32,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.party.Party;
 import core.data.model.party.PartyRole;
 import core.data.model.party.RoleType;
@@ -46,7 +45,7 @@ import core.data.model.util.DataUtil;
  */
 @Entity
 @Table(name = "party_role")
-public class PartyRoleHibernateImpl extends LightEntity implements PartyRole
+public class PartyRoleHibernateImpl implements PartyRole
 {
 
     @Id

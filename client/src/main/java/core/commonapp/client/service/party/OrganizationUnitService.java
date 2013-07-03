@@ -21,10 +21,9 @@ package core.commonapp.client.service.party;
 
 import core.data.model.party.OrganizationUnit;
 import core.data.model.party.PartyGroup;
-import core.data.model.party.RoleType;
 import core.data.model.security.UserLogin;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean (beanName="organizationUnitService")

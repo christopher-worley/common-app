@@ -23,9 +23,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Version;
 
-import net.sf.gilead.pojo.base.ILightEntity;
 import core.data.model.party.Person;
 import core.data.model.util.DataUtil;
 
@@ -38,7 +36,7 @@ import core.data.model.util.DataUtil;
 @Entity
 @Table(name = "person")
 @PrimaryKeyJoinColumn(name="party_id")
-public class PersonHibernateImpl extends PartyHibernateImpl implements Person, ILightEntity
+public class PersonHibernateImpl extends PartyHibernateImpl implements Person
 {
 
     @Column(name = "first_name")

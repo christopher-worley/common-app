@@ -32,7 +32,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.DataObject;
 import core.data.model.security.PermissionSecurityGroup;
 import core.data.model.security.SecurityGroup;
@@ -40,7 +39,7 @@ import core.data.model.security.UserLoginSecurityGroup;
 
 @Entity
 @Table(name = "security_group")
-public class SecurityGroupHibernateImpl extends LightEntity implements DataObject, Serializable, SecurityGroup
+public class SecurityGroupHibernateImpl implements DataObject, Serializable, SecurityGroup
 {
 
     /**

@@ -26,12 +26,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.agreement.ServiceInterval;
 
 @Entity
 @Table (name="service_interval")
-public class ServiceIntervalHibernateImpl extends LightEntity implements ServiceInterval
+public class ServiceIntervalHibernateImpl implements ServiceInterval
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

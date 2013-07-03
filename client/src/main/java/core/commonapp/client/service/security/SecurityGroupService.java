@@ -27,8 +27,8 @@ import core.data.model.security.PermissionSecurityGroup;
 import core.data.model.security.SecurityGroup;
 import core.data.model.security.UserLogin;
 import core.data.model.security.UserLoginSecurityGroup;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean(beanName = "securityGroupService")

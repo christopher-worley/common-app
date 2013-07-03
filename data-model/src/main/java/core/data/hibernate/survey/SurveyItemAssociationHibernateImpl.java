@@ -30,14 +30,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.survey.SurveyAssociationType;
 import core.data.model.survey.SurveyItem;
 import core.data.model.survey.SurveyItemAssociation;
 
 @Entity
 @Table (name="survey_item_association")
-public class SurveyItemAssociationHibernateImpl extends LightEntity implements SurveyItemAssociation
+public class SurveyItemAssociationHibernateImpl implements SurveyItemAssociation
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

@@ -30,14 +30,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.security.UserLogin;
 import core.data.model.security.UserLoginHistory;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="user_login_history")
-public class UserLoginHistoryHibernateImpl extends LightEntity implements UserLoginHistory
+public class UserLoginHistoryHibernateImpl implements UserLoginHistory
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

@@ -27,8 +27,8 @@ import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
 import core.data.model.party.Person;
 import core.data.model.security.UserLogin;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean (beanName="contactPersonService")

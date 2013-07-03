@@ -31,7 +31,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.party.PartyHibernateImpl;
 import core.data.hibernate.party.RoleTypeHibernateImpl;
 import core.data.model.billing.BillingAccount;
@@ -42,7 +41,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="billing_account_role")
-public class BillingAccountRoleHibernateImpl extends LightEntity implements BillingAccountRole
+public class BillingAccountRoleHibernateImpl implements BillingAccountRole
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

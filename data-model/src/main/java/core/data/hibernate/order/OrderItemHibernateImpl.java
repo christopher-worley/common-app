@@ -19,12 +19,11 @@
  */
 package core.data.hibernate.order;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.order.OrderItem;
 
 
 //TODO: Implement model and dao
-public class OrderItemHibernateImpl extends LightEntity implements OrderItem
+public class OrderItemHibernateImpl implements OrderItem
 {
 
     

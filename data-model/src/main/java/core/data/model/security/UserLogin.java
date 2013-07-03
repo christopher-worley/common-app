@@ -24,7 +24,8 @@ import java.util.Date;
 
 import core.data.model.DataObject;
 import core.data.model.party.Party;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean(beanName="userLoginModel")
 public interface UserLogin extends DataObject

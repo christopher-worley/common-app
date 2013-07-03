@@ -19,7 +19,8 @@
  */
 package core.data.cache.party;
 
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean (beanName="roleTypeCache")
 public interface RoleTypeKey

@@ -20,8 +20,8 @@
 package core.commonapp.client.service.party;
 
 import core.data.model.party.Party;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean(beanName="partyService")

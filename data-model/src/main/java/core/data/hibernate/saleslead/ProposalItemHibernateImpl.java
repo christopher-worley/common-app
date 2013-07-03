@@ -28,7 +28,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.product.ProductHibernateImpl;
 import core.data.model.product.Product;
 import core.data.model.saleslead.Proposal;
@@ -37,7 +36,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="proposal_item")
-public class ProposalItemHibernateImpl extends LightEntity implements ProposalItem
+public class ProposalItemHibernateImpl implements ProposalItem
 {
     
     @Id

@@ -21,9 +21,8 @@ package core.data.model;
 
 import java.io.Serializable;
 
-import net.sf.gilead.pojo.base.ILightEntity;
 
-public interface DataObject extends Serializable, ILightEntity
+public interface DataObject extends Serializable
 {
 
     /**

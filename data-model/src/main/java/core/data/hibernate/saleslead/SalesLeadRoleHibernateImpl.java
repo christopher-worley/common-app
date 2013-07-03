@@ -32,7 +32,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.party.PartyHibernateImpl;
 import core.data.hibernate.party.RoleTypeHibernateImpl;
 import core.data.model.party.Party;
@@ -43,7 +42,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="sales_lead_role")
-public class SalesLeadRoleHibernateImpl extends LightEntity implements SalesLeadRole
+public class SalesLeadRoleHibernateImpl implements SalesLeadRole
 {
     
     @Id

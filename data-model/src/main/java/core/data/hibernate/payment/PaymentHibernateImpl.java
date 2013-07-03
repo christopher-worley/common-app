@@ -30,14 +30,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.payment.Payment;
 import core.data.model.payment.PaymentType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="payment")
-public class PaymentHibernateImpl extends LightEntity implements Payment
+public class PaymentHibernateImpl implements Payment
 {
  
     @Id

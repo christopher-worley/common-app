@@ -30,7 +30,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.geo.Geo;
 import core.data.model.geo.GeoType;
 import core.data.model.util.DataUtil;
@@ -43,7 +42,7 @@ import core.data.model.util.DataUtil;
  */
 @Entity
 @Table(name = "geo")
-public class GeoHibernateImpl extends LightEntity  implements Geo, Serializable
+public class GeoHibernateImpl  implements Geo, Serializable
 {
     /**
      * 

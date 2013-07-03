@@ -28,14 +28,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.status.Status;
 import core.data.model.status.StatusType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="status")
-public class StatusHibernateImpl extends LightEntity implements Status
+public class StatusHibernateImpl implements Status
 {
 
     @Id

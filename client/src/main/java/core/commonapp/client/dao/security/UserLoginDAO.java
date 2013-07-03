@@ -22,7 +22,8 @@ package core.commonapp.client.dao.security;
 import java.util.Set;
 
 import core.data.model.security.UserLogin;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean(beanName="userLoginDAO")
 public interface UserLoginDAO

@@ -26,7 +26,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.geo.GeoType;
 import core.data.model.util.DataUtil;
 
@@ -38,7 +37,7 @@ import core.data.model.util.DataUtil;
  */
 @Entity
 @Table (name="geo_type")
-public class GeoTypeHibernateImpl extends LightEntity implements GeoType
+public class GeoTypeHibernateImpl implements GeoType
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

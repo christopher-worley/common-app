@@ -23,7 +23,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Version;
 
 import core.data.model.party.PartyGroup;
 import core.data.model.util.DataUtil;

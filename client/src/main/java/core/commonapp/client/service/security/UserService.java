@@ -24,9 +24,9 @@ import java.util.Set;
 import core.data.cache.security.PermissionKey;
 import core.data.model.party.Person;
 import core.data.model.security.UserLogin;
-import core.service.InformationBean;
-import core.service.Security;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
+import core.service.annotation.Security;
 import core.service.result.ServiceResult;
 
 @InformationBean(beanName="userService")

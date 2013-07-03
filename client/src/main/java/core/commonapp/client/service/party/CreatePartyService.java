@@ -27,8 +27,8 @@ import core.data.model.party.PartyRelationship;
 import core.data.model.party.PartyRole;
 import core.data.model.party.Person;
 import core.data.model.party.RoleType;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean(beanName="createPartyService")

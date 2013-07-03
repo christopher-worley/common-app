@@ -31,7 +31,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.ContactMechType;
 import core.data.model.util.DataUtil;
@@ -45,7 +44,7 @@ import core.data.model.util.DataUtil;
 @Entity
 @Table(name = "contact_mech")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class ContactMechHibernateImpl extends LightEntity implements ContactMech
+public class ContactMechHibernateImpl implements ContactMech
 {
 
     @Id

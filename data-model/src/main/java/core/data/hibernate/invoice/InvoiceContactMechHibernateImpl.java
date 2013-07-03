@@ -19,12 +19,11 @@
  */
 package core.data.hibernate.invoice;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.invoice.InvoiceContactMech;
 
 
 //TODO: Implement model and dao
-public class InvoiceContactMechHibernateImpl extends LightEntity implements InvoiceContactMech
+public class InvoiceContactMechHibernateImpl implements InvoiceContactMech
 {
 
     

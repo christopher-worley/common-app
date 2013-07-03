@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.survey.SurveyType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="survey_type")
-public class SurveyTypeHibernateImpl extends LightEntity implements SurveyType
+public class SurveyTypeHibernateImpl implements SurveyType
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

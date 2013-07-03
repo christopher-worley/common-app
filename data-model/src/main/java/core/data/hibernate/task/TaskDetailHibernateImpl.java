@@ -30,7 +30,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.security.UserLoginHibernateImpl;
 import core.data.model.security.UserLogin;
 import core.data.model.task.Task;
@@ -39,7 +38,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="task_detail")
-public class TaskDetailHibernateImpl extends LightEntity implements TaskDetail
+public class TaskDetailHibernateImpl implements TaskDetail
 {
 
     @Id

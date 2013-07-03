@@ -20,7 +20,8 @@
 package core.data.model.contact;
 
 import core.data.model.DataObject;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean (beanName="phoneNumberModel")
 public interface PhoneNumber extends ContactMech, DataObject

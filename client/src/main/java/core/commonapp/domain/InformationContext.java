@@ -21,8 +21,8 @@ package core.commonapp.domain;
 
 import org.springframework.context.ApplicationContext;
 
-import core.service.InformationBean;
-import core.service.context.ServiceContext;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.factory.ServiceFactory;
 
 public class InformationContext

@@ -19,12 +19,11 @@
  */
 package core.data.hibernate.document;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.document.DocumentRole;
 
 
 //TODO: Implement model and dao
-public class DocumentRoleHibernateImpl extends LightEntity implements DocumentRole
+public class DocumentRoleHibernateImpl implements DocumentRole
 {
 
     

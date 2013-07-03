@@ -36,7 +36,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.contact.PartyContactMechHibernateImpl;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.party.Party;
@@ -54,7 +53,7 @@ import core.data.model.util.DataUtil;
 @Entity
 @Table(name = "party")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class PartyHibernateImpl extends LightEntity implements Party
+public class PartyHibernateImpl implements Party
 {
 
     /**

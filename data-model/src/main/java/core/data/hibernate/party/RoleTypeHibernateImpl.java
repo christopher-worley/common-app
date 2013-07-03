@@ -26,7 +26,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.party.RoleType;
 import core.data.model.util.DataUtil;
 
@@ -38,7 +37,7 @@ import core.data.model.util.DataUtil;
  */
 @Entity
 @Table(name = "role_type")
-public class RoleTypeHibernateImpl extends LightEntity implements RoleType
+public class RoleTypeHibernateImpl implements RoleType
 {
     
     @Id

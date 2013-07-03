@@ -31,14 +31,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.billing.BillingAccount;
 import core.data.model.billing.BillingAccountType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="billing_account")
-public class BillingAccountHibernateImpl extends LightEntity implements BillingAccount
+public class BillingAccountHibernateImpl implements BillingAccount
 {
     
     @Id

@@ -23,8 +23,8 @@ import java.util.Set;
 
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.EmailAddress;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean(beanName="contactMechService")

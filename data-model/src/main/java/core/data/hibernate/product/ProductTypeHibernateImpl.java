@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.product.ProductType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="product_type")
-public class ProductTypeHibernateImpl extends LightEntity implements ProductType
+public class ProductTypeHibernateImpl implements ProductType
 {
     
     @Id

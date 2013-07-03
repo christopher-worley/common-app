@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.saleslead.ProposalType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="proposal_type")
-public class ProposalTypeHibernateImpl extends LightEntity implements ProposalType
+public class ProposalTypeHibernateImpl implements ProposalType
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

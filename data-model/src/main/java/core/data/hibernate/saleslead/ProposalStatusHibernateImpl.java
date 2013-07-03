@@ -30,7 +30,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.status.StatusHibernateImpl;
 import core.data.model.saleslead.Proposal;
 import core.data.model.saleslead.ProposalStatus;
@@ -39,7 +38,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="proposal_status")
-public class ProposalStatusHibernateImpl extends LightEntity implements ProposalStatus
+public class ProposalStatusHibernateImpl implements ProposalStatus
 {
  
     @Id

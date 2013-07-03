@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.payment.PaymentType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table(name = "payment_type")
-public class PaymentTypeHibernateImpl extends LightEntity implements PaymentType
+public class PaymentTypeHibernateImpl implements PaymentType
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -34,7 +34,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.task.Task;
 import core.data.model.task.TaskRole;
 import core.data.model.task.TaskStatus;
@@ -43,7 +42,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="task")
-public class TaskHibernateImpl extends LightEntity implements Task
+public class TaskHibernateImpl implements Task
 {
     
     @Id

@@ -19,12 +19,11 @@
  */
 package core.data.hibernate.invoice;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.invoice.InvoiceRole;
 
 
 //TODO: Implement model and dao
-public class InvoiceRoleHibernateImpl extends LightEntity implements InvoiceRole
+public class InvoiceRoleHibernateImpl implements InvoiceRole
 {
 
     

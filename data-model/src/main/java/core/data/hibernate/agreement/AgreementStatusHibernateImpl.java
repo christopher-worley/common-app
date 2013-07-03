@@ -30,7 +30,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.status.StatusHibernateImpl;
 import core.data.model.agreement.Agreement;
 import core.data.model.agreement.AgreementStatus;
@@ -39,7 +38,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="agreement_status")
-public class AgreementStatusHibernateImpl extends LightEntity implements AgreementStatus
+public class AgreementStatusHibernateImpl implements AgreementStatus
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

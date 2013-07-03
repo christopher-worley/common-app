@@ -30,7 +30,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.party.RoleTypeHibernateImpl;
 import core.data.model.party.RoleType;
 import core.data.model.status.StatusTransition;
@@ -39,7 +38,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="status_transition_role")
-public class StatusTransitionRoleHibernateImpl extends LightEntity implements StatusTransitionRole
+public class StatusTransitionRoleHibernateImpl implements StatusTransitionRole
 {
  
     @Id

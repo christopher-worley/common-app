@@ -33,7 +33,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.saleslead.Proposal;
 import core.data.model.saleslead.ProposalItem;
 import core.data.model.saleslead.ProposalStatus;
@@ -43,7 +42,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="proposal")
-public class ProposalHibernateImpl extends LightEntity implements Proposal
+public class ProposalHibernateImpl implements Proposal
 {
     
     @Id

@@ -30,14 +30,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.product.Product;
 import core.data.model.product.ProductType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="product")
-public class ProductHibernateImpl extends LightEntity implements Product
+public class ProductHibernateImpl implements Product
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

@@ -26,12 +26,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.document.Document;
 
 @Entity
 @Table (name="documet")
-public class DocumentHibernateImpl extends LightEntity implements Document
+public class DocumentHibernateImpl implements Document
 {
 
 	@Id

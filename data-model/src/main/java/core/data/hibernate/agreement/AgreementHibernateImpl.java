@@ -33,7 +33,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.agreement.Agreement;
 import core.data.model.agreement.AgreementContactMech;
 import core.data.model.agreement.AgreementRole;
@@ -43,7 +42,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="agreement")
-public class AgreementHibernateImpl extends LightEntity implements Agreement
+public class AgreementHibernateImpl implements Agreement
 {
     
     @Id

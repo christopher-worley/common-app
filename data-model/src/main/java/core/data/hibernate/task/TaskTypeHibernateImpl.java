@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.task.TaskType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="task_type")
-public class TaskTypeHibernateImpl extends LightEntity implements TaskType
+public class TaskTypeHibernateImpl implements TaskType
 {
     
     @Id

@@ -19,12 +19,11 @@
  */
 package core.data.hibernate.document;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.document.DocumentStatus;
 
 
 //TODO: Implement model and dao
-public class DocumentStatusHibernateImpl extends LightEntity  implements DocumentStatus
+public class DocumentStatusHibernateImpl  implements DocumentStatus
 {
 
     

@@ -32,7 +32,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.party.PartyHibernateImpl;
 import core.data.model.DataObject;
 import core.data.model.party.Party;
@@ -41,7 +40,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="user_login")
-public class UserLoginHibernateImpl extends LightEntity implements DataObject, UserLogin, Serializable
+public class UserLoginHibernateImpl implements DataObject, UserLogin, Serializable
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

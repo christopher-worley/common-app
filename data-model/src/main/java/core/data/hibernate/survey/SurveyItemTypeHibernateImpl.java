@@ -26,13 +26,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.survey.SurveyItemType;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="survey_item_type")
-public class SurveyItemTypeHibernateImpl extends LightEntity implements SurveyItemType
+public class SurveyItemTypeHibernateImpl implements SurveyItemType
 {
     
     @Id

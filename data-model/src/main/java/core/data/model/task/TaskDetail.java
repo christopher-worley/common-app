@@ -24,7 +24,6 @@ import java.util.Date;
 import core.data.model.DataObject;
 import core.data.model.Expirable;
 import core.data.model.security.UserLogin;
-import core.data.model.task.Task;
 
 public interface TaskDetail extends DataObject, Expirable
 {

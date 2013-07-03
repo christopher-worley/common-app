@@ -23,7 +23,8 @@ import java.util.List;
 
 import core.data.model.DataObject;
 import core.data.model.Keyable;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean(beanName="securityGroupModel")
 public interface SecurityGroup extends DataObject, Keyable

@@ -20,7 +20,8 @@
 package core.data.model.party;
 
 import core.data.model.DataObject;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 
 @InformationBean (beanName="personModel")
 public interface Person extends DataObject, Party

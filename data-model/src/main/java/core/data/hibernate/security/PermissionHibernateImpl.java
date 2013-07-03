@@ -28,14 +28,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.DataObject;
 import core.data.model.security.Permission;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table(name = "permission")
-public class PermissionHibernateImpl extends LightEntity implements Permission, DataObject, Serializable
+public class PermissionHibernateImpl implements Permission, DataObject, Serializable
 {
 
     @Id

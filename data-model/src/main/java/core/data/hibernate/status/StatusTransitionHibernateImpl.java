@@ -31,7 +31,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.status.Status;
 import core.data.model.status.StatusTransition;
 import core.data.model.status.StatusTransitionRole;
@@ -39,7 +38,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="status_transition")
-public class StatusTransitionHibernateImpl extends LightEntity implements StatusTransition
+public class StatusTransitionHibernateImpl implements StatusTransition
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)

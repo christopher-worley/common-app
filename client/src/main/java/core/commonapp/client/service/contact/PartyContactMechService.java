@@ -21,8 +21,8 @@ package core.commonapp.client.service.contact;
 
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.PartyContactMech;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean(beanName="partyContactMechService")

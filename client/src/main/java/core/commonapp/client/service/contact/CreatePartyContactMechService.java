@@ -26,8 +26,8 @@ import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
 import core.data.model.party.Party;
-import core.service.InformationBean;
-import core.service.Service;
+import core.service.annotation.InformationBean;
+import core.service.annotation.Service;
 import core.service.result.ServiceResult;
 
 @InformationBean(beanName="createPartyContactMechService")

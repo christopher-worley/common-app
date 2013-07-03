@@ -19,12 +19,11 @@
  */
 package core.data.hibernate.order;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.order.OrderRole;
 
 
 //TODO: Implement model and dao
-public class OrderRoleHibernateImpl extends LightEntity implements OrderRole
+public class OrderRoleHibernateImpl implements OrderRole
 {
 
     

@@ -33,7 +33,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.DataObject;
 import core.data.model.saleslead.SalesLead;
 import core.data.model.saleslead.SalesLeadContactMech;
@@ -44,7 +43,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table(name = "sales_lead")
-public class SalesLeadHibernateImpl extends LightEntity implements DataObject, SalesLead
+public class SalesLeadHibernateImpl implements DataObject, SalesLead
 {
     
     @Id

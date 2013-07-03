@@ -33,7 +33,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.model.survey.Survey;
 import core.data.model.survey.SurveyItem;
 import core.data.model.survey.SurveyType;
@@ -41,7 +40,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="survey")
-public class SurveyHibernateImpl extends LightEntity implements Survey
+public class SurveyHibernateImpl implements Survey
 {
     
     @Id

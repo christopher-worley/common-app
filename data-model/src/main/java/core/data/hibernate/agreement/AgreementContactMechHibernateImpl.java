@@ -31,7 +31,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import net.sf.gilead.pojo.java5.LightEntity;
 import core.data.hibernate.contact.ContactMechHibernateImpl;
 import core.data.hibernate.contact.ContactMechPurposeHibernateImpl;
 import core.data.model.agreement.Agreement;
@@ -42,7 +41,7 @@ import core.data.model.util.DataUtil;
 
 @Entity
 @Table (name="agreement_contact_mech")
-public class AgreementContactMechHibernateImpl extends LightEntity implements AgreementContactMech
+public class AgreementContactMechHibernateImpl implements AgreementContactMech
 {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)
