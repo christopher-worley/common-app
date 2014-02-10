@@ -6,6 +6,27 @@
 	<name>server</name>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<hibernate.version>4.3.1.Final</hibernate.version>
+		<hibernate-annotations.version>4.0.4.Final</hibernate-annotations.version>
+
+		<jetty.version>6.1.4</jetty.version>
+
+		<spring.version>3.0.1.RELEASE</spring.version>
+
+		<wicket.version>6.11.0</wicket.version>
+
+		<gwt.version>2.5.1</gwt.version>
+
+	</properties>
+
+	<scm>
+		<connection>scm:git:ssh://githost/repository.git</connection>
+	</scm>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>com.coreinformationsolutions</groupId>
@@ -33,17 +54,39 @@
 			<artifactId>core-commonapp-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
-			<version>2.5.6</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>2.5.6</version>
+			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+
+		<!-- Testing -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -51,7 +94,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -70,30 +113,13 @@
 				</configuration>
 			</plugin>
 
-<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2-beta-4</version>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<descriptors>
-								<descriptor>assembly-bin.xml</descriptor>
-								<descriptor>assembly-project.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
--->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-assembly-plugin</artifactId> 
+				<version>2.2-beta-4</version> <executions> <execution> <id>make-assembly</id> 
+				<phase>package</phase> <goals> <goal>single</goal> </goals> <configuration> 
+				<descriptors> <descriptor>assembly-bin.xml</descriptor> <descriptor>assembly-project.xml</descriptor> 
+				</descriptors> </configuration> </execution> </executions> </plugin> -->
 
-			<!--  surefire -->
+			<!-- surefire -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>

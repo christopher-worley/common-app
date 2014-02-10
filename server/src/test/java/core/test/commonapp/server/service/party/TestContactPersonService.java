@@ -37,7 +37,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.service.party.ContactPersonService;
 import core.commonapp.client.service.security.UserService;
-import core.commonapp.server.service.CommonAppServiceInstantiator;
 import core.data.cache.KeyedCache;
 import core.data.helper.party.PartyHelper;
 import core.data.hibernate.contact.PhoneNumberHibernateImpl;
@@ -48,9 +47,6 @@ import core.data.model.party.Person;
 import core.data.model.security.UserLogin;
 import core.service.result.ServiceResult;
 import core.test.commonapp.server.CommonAppServerTest;
-import core.test.server.mock.contact.ContactMechMock;
-import core.test.server.mock.party.PartyMock;
-import core.test.server.mock.security.UserLoginMock;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 import core.tooling.property.SystemPropertyFileReader;
