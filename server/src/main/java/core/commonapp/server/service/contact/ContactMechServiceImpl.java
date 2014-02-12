@@ -25,9 +25,9 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.contact.ContactMechPurposeDAO;
-import core.commonapp.client.dao.contact.ContactMechTypeDAO;
-import core.commonapp.client.dao.contact.PartyContactMechDAO;
+import core.commonapp.client.dao.contact.ContactMechPurposeDao;
+import core.commonapp.client.dao.contact.ContactMechTypeDao;
+import core.commonapp.client.dao.contact.PartyContactMechDao;
 import core.commonapp.client.service.contact.ContactMechService;
 import core.data.helper.contact.PartyContactMechHelper;
 import core.data.hibernate.contact.EmailAddressHibernateImpl;
@@ -42,13 +42,13 @@ import core.service.result.ServiceResult;
 public class ContactMechServiceImpl implements ContactMechService
 {
     /** contact mech purpose dao */
-    private ContactMechPurposeDAO contactMechPurposeDAO;
+    private ContactMechPurposeDao contactMechPurposeDao;
 
     /** contact mech type dao */
-    private ContactMechTypeDAO contactMechTypeDAO;
+    private ContactMechTypeDao contactMechTypeDao;
     
     /** party contact mech dao */
-    private PartyContactMechDAO partyContactMechDAO;
+    private PartyContactMechDao partyContactMechDao;
     
     public ContactMechServiceImpl()
     {
@@ -59,28 +59,28 @@ public class ContactMechServiceImpl implements ContactMechService
     /**
      * Default constructor
      * 
-     * @param contactMechPurposeDAO
-     * @param contactMechTypeDAO
+     * @param contactMechPurposeDao
+     * @param contactMechTypeDao
      */
     @Autowired
-    public ContactMechServiceImpl(ContactMechPurposeDAO contactMechPurposeDAO, ContactMechTypeDAO contactMechTypeDAO, PartyContactMechDAO partyContactMechDAO)
+    public ContactMechServiceImpl(ContactMechPurposeDao contactMechPurposeDao, ContactMechTypeDao contactMechTypeDao, PartyContactMechDao partyContactMechDao)
     {
         super();
-        this.contactMechPurposeDAO = contactMechPurposeDAO;
-        this.contactMechTypeDAO = contactMechTypeDAO;
-        this.partyContactMechDAO = partyContactMechDAO;
+        this.contactMechPurposeDao = contactMechPurposeDao;
+        this.contactMechTypeDao = contactMechTypeDao;
+        this.partyContactMechDao = partyContactMechDao;
     }
 
     @Override
     public ServiceResult findAllContactMechPurposes()
     {
-        return new ServiceResult(contactMechPurposeDAO.findAll());
+        return new ServiceResult(contactMechPurposeDao.findAll());
     }
 
     @Override
     public ServiceResult findAllContactMechTypes()
     {
-        return new ServiceResult(contactMechTypeDAO.findAll());
+        return new ServiceResult(contactMechTypeDao.findAll());
     }
 
     @Override
@@ -94,13 +94,13 @@ public class ContactMechServiceImpl implements ContactMechService
         newEmailAddress.setEmailAddress(emailAddress.getEmailAddress());
 
         // expire old and create new PartyContactMech objects
-        Set<PartyContactMech> partyContactMechs = partyContactMechDAO.findByContactMechId(emailAddress.getContactMechId());
+        Set<PartyContactMech> partyContactMechs = partyContactMechDao.findByContactMechId(emailAddress.getContactMechId());
         Set<PartyContactMech> newPartyContactMechs = new HashSet();
         for (PartyContactMech partyContactMech : partyContactMechs)
         {
             // expire old
             partyContactMech.setThruDate(currentDate);
-            partyContactMechDAO.save(partyContactMech);
+            partyContactMechDao.save(partyContactMech);
             
             // new party contact mech
             PartyContactMech newPartyContactMech = new PartyContactMechHibernateImpl();
@@ -116,7 +116,7 @@ public class ContactMechServiceImpl implements ContactMechService
                 helper.addContactMechPurpose(purpose);
             }
             //save new
-            partyContactMechDAO.save(newPartyContactMech);
+            partyContactMechDao.save(newPartyContactMech);
         }
         
         return ServiceResult.success("Email address updated successfully", newEmailAddress);

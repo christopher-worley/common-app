@@ -36,7 +36,7 @@
 				</configuration>
 			</plugin>
 
-			<!--  Assembly -->
+			<!--  Assembly - ->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -57,7 +57,8 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			-->
+			
 			<!--  surefire -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

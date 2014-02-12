@@ -23,9 +23,9 @@ import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.party.PartyDAO;
-import core.commonapp.client.dao.party.PartyRelationshipDAO;
-import core.commonapp.client.dao.party.PartyRoleDAO;
+import core.commonapp.client.dao.party.PartyDao;
+import core.commonapp.client.dao.party.PartyRelationshipDao;
+import core.commonapp.client.dao.party.PartyRoleDao;
 import core.commonapp.client.service.party.CreatePartyService;
 import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
@@ -51,17 +51,17 @@ public class CreatePartyServiceImpl implements CreatePartyService
     /** logger for this class */
     private static Logger log = LogFactory.getLogger(CreatePartyServiceImpl.class);
 
-    /** party DAO */
+    /** party Dao */
     @Autowired
-    private PartyDAO partyDAO;
+    private PartyDao partyDao;
 
-    /** party relationship DAO */
+    /** party relationship Dao */
     @Autowired
-    private PartyRelationshipDAO partyRelationshipDAO;
+    private PartyRelationshipDao partyRelationshipDao;
     
-    /** party role DAO */
+    /** party role Dao */
     @Autowired
-    private PartyRoleDAO partyRoleDAO;
+    private PartyRoleDao partyRoleDao;
     
     @Autowired
     private KeyedCache keyedCache;
@@ -80,7 +80,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
         partyGroup.setPartyType(getPartyTypeCache().getObject(PartyTypeKey.KEY_PARTY_GROUP));
         partyGroup.setGroupName(groupName);
         
-        partyDAO.save(partyGroup);
+        partyDao.save(partyGroup);
         log.debug("PartyGroup created with id {0}: ", partyGroup.getId());
         
         return new ServiceResult(partyGroup);
@@ -98,7 +98,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
         partyRelationship.setRoleTypeTo(roleTypeTo);
         partyRelationship.setFromDate(fromDate);
         
-        partyRelationshipDAO.save(partyRelationship);
+        partyRelationshipDao.save(partyRelationship);
         log.debug("PartyRelationship created with id {0}: ", partyRelationship.getId());
         
         return new ServiceResult(partyRelationship);
@@ -113,7 +113,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
         partyRole.setRoleType(roleType);
         partyRole.setFromDate(fromDate);
         
-        partyRoleDAO.save(partyRole);
+        partyRoleDao.save(partyRole);
         log.debug("PartyRole created with id {0}: ", partyRole.getId());
         
         return new ServiceResult(partyRole);
@@ -135,7 +135,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
             }
         }
         
-        person = (Person) partyDAO.save(person);
+        person = (Person) partyDao.save(person);
         log.debug("Person created with id {0}: ", person.getId());
         
         return new ServiceResult(person);

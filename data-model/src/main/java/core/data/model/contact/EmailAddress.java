@@ -19,10 +19,7 @@
  */
 package core.data.model.contact;
 
-import core.service.annotation.InformationBean;
-import core.service.annotation.Service;
 
-@InformationBean(beanName="emailAddressModel")
 public interface EmailAddress extends ContactMech
 {
 

@@ -22,7 +22,7 @@ package core.commonapp.server.service;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import core.commonapp.domain.InformationContext;
-import core.service.InformationBean;
+import core.service.annotation.InformationBean;
 import core.service.executor.local.ServiceInstantiator;
 
 public class CommonAppServiceInstantiator implements ServiceInstantiator

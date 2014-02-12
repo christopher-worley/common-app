@@ -2,6 +2,7 @@ package core.test.commonapp.server.service.task;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ import core.data.model.task.TaskType;
 import core.service.result.ServiceResult;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
-import core.tooling.test.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="/commonapp-server-test-context.xml")

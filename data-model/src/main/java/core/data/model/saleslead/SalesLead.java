@@ -23,10 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 import core.data.model.DataObject;
-import core.service.annotation.InformationBean;
-import core.service.annotation.Service;
 
-@InformationBean(beanName="salesLeadModel")
 public interface SalesLead extends DataObject
 {
 

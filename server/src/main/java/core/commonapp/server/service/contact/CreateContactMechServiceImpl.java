@@ -21,7 +21,7 @@ package core.commonapp.server.service.contact;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.contact.ContactMechDAO;
+import core.commonapp.client.dao.contact.ContactMechDao;
 import core.commonapp.client.service.contact.CreateContactMechService;
 import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
@@ -45,7 +45,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
 
     /** contact mech dao */
     @Autowired
-    private ContactMechDAO contactMechDAO;
+    private ContactMechDao contactMechDao;
 
     /** keyed cache */
     @Autowired
@@ -68,7 +68,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
         log.debug("CreateContactMechImpl.createEmailAddress({0})", emailAddress);
 
         emailAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_EMAIL_ADDRESS));
-        contactMechDAO.save(emailAddress);
+        contactMechDao.save(emailAddress);
         log.debug("Email address saved with id {0}: ", emailAddress.getContactMechId());
 
         return new ServiceResult(emailAddress);
@@ -96,7 +96,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
         log.debug("CreateContactMechImpl.createPhoneNumber({0})", phoneNumber);
 
         phoneNumber.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_PHONE_NUMBER));
-        contactMechDAO.save(phoneNumber);
+        contactMechDao.save(phoneNumber);
         log.debug("Phone number created with id {0}: ", phoneNumber.getContactMechId());
 
         return new ServiceResult(phoneNumber);
@@ -131,7 +131,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
         log.debug("CreateContactMechImpl.createPostalAddress({0})", postalAddress);
 
         postalAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_POSTAL_ADDRESS));
-        contactMechDAO.save(postalAddress);
+        contactMechDao.save(postalAddress);
         log.debug("Postal address created with id {0}", postalAddress.getId());
 
         return new ServiceResult(postalAddress);

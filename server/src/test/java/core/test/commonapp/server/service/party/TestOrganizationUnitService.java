@@ -29,8 +29,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.client.dao.party.OrganizationUnitDAO;
-import core.commonapp.client.dao.party.PartyGroupDAO;
+import core.commonapp.client.dao.party.OrganizationUnitDao;
+import core.commonapp.client.dao.party.PartyGroupDao;
 import core.commonapp.client.service.party.OrganizationUnitService;
 import core.data.model.party.OrganizationUnit;
 import core.data.model.party.PartyGroup;
@@ -47,13 +47,13 @@ public class TestOrganizationUnitService extends CommonAppServerTest
 {
     
     @Autowired
-    private OrganizationUnitDAO organizationUnitDAO;
+    private OrganizationUnitDao organizationUnitDao;
     
     @Autowired 
     private OrganizationUnitService organizationService;
     
     @Autowired
-    private PartyGroupDAO partyGroupDAO;
+    private PartyGroupDao partyGroupDao;
     
     /**
      * 
@@ -100,7 +100,7 @@ public class TestOrganizationUnitService extends CommonAppServerTest
         // validate the returned result then second find the party group and validate again
         Assert.assertEquals(test1Name, test1.getGroupName());
         Assert.assertEquals(unit.getRoleType(), test1.getPartyRoles().get(0).getRoleType());
-        PartyGroup foundTest1 = partyGroupDAO.findById(test1.getPartyId());
+        PartyGroup foundTest1 = partyGroupDao.findById(test1.getPartyId());
         Assert.assertEquals(test1Name, foundTest1.getGroupName());
         Assert.assertEquals(unit.getRoleType(), foundTest1.getPartyRoles().get(0).getRoleType());
                 
@@ -114,7 +114,7 @@ public class TestOrganizationUnitService extends CommonAppServerTest
         Assert.assertEquals(test2Name, test2.getGroupName());
         Assert.assertEquals(unit.getRoleType(), test2.getPartyRoles().get(0).getRoleType());
         Assert.assertEquals(test1.getPartyId(), test2.getPartyToRelationships().get(0).getPartyFrom().getPartyId());
-        PartyGroup foundTest2 = partyGroupDAO.findById(test2.getPartyId());
+        PartyGroup foundTest2 = partyGroupDao.findById(test2.getPartyId());
         Assert.assertEquals(test2Name, foundTest2.getGroupName());
         Assert.assertEquals(unit.getRoleType(), foundTest2.getPartyRoles().get(0).getRoleType());
         Assert.assertEquals(test1.getPartyId(), foundTest2.getPartyToRelationships().get(0).getPartyFrom().getPartyId());

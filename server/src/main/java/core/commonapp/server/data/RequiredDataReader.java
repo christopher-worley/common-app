@@ -27,12 +27,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.SubnodeConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.configuration.tree.ConfigurationNode;
 
-import core.commonapp.client.dao.GenericDAO;
 import core.commonapp.domain.InformationContext;
 import core.data.model.Keyable;
 import core.tooling.logging.LogFactory;
@@ -110,7 +111,7 @@ public class RequiredDataReader
      */
     public void read(String filename)
     {
-        GenericDAO genericDao = (GenericDAO) context.getBean("genericDAO");
+    	EntityManager entityManager = (EntityManager) context.getBean(EntityManager.class);
 
         try
         {
@@ -131,7 +132,7 @@ public class RequiredDataReader
                 if (object instanceof Keyable &&  key != null)
                 {
                     Keyable keyable = (Keyable) object;
-                    dbObject = genericDao.findByField(object.getClass(), "key", key);
+                    dbObject = entityManager.createQuery(" from " + object.getClass() + " where key = " + key);
                     if (dbObject != null)
                     {
                         log.debug("Found keyed object in database (dbObject={0}).", dbObject);

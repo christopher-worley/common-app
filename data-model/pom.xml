@@ -8,16 +8,6 @@
 	<packaging>jar</packaging>
 	<description />
 
-	<repositories>
-		<!--  Gilead -->
-		<repository>
-			<id>gilead</id>
-			<url>
-				https://gilead.svn.sourceforge.net/svnroot/gilead/gilead/maven-repo/
-			</url>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -25,46 +15,14 @@
 			<version>4.5</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate</artifactId>
-			<version>3.2.0.cr4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.2.0.cr2</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.persistence</groupId>
-					<artifactId>ejb</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.gilead</groupId>
-			<artifactId>adapter-core</artifactId>
-			<version>1.2.3</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring</artifactId>
-				</exclusion>
-			</exclusions>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.coreinformationsolutions</groupId>
-			<artifactId>core-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
@@ -92,7 +50,7 @@
 				</configuration>
 			</plugin>
 
-			<!--  Assembly -->
+			<!-- Assembly - ->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -113,8 +71,9 @@
 					</execution>
 				</executions>
 			</plugin>
+			-->
 
-			<!--  surefire -->
+			<!-- surefire -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>

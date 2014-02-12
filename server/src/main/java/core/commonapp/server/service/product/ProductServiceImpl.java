@@ -21,14 +21,14 @@ package core.commonapp.server.service.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.product.ProductTypeDAO;
+import core.commonapp.client.dao.product.ProductTypeDao;
 import core.commonapp.client.service.product.ProductService;
 import core.service.result.ServiceResult;
 
 public class ProductServiceImpl implements ProductService
 {
     /** product type dao */
-    private ProductTypeDAO productTypeDAO;
+    private ProductTypeDao productTypeDao;
 
 
 
@@ -43,13 +43,13 @@ public class ProductServiceImpl implements ProductService
     /**
      * Default constructor
      * 
-     * @param productTypeDAO
+     * @param productTypeDao
      */
     @Autowired
-    public ProductServiceImpl(ProductTypeDAO productTypeDAO)
+    public ProductServiceImpl(ProductTypeDao productTypeDao)
     {
         super();
-        this.productTypeDAO = productTypeDAO;
+        this.productTypeDao = productTypeDao;
     }
 
 
@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService
     @Override
     public ServiceResult findAllProductTypes()
     {
-        return new ServiceResult(productTypeDAO.findAll());
+        return new ServiceResult(productTypeDao.findAll());
     }
 
 }

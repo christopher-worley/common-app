@@ -20,6 +20,7 @@
 package core.commonapp.server.service.security;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.client.dao.GenericDAO;
-import core.commonapp.client.dao.security.UserLoginDAO;
+import core.commonapp.client.dao.security.UserLoginDao;
 import core.commonapp.client.service.security.UserService;
 import core.commonapp.domain.InformationContext;
 import core.data.model.party.Person;
@@ -38,12 +38,11 @@ import core.service.result.ServiceResult;
 public class UserServiceImpl implements UserService, ApplicationContextAware
 {
     /** user dao */
-    private UserLoginDAO userLoginDAO;
+    @Autowired
+    private UserLoginDao userLoginDao;
     
     private InformationContext context;
 
-    @Autowired
-    private GenericDAO genericDAO;
     
 
     public UserServiceImpl()
@@ -52,17 +51,11 @@ public class UserServiceImpl implements UserService, ApplicationContextAware
         
     }
 
-    @Autowired
-    public UserServiceImpl(UserLoginDAO userLoginDAO)
-    {
-        super();
-        this.userLoginDAO = userLoginDAO;
-    }
-
     @Override
     @Transactional
     public ServiceResult<UserLogin> createUserLogin(Person person, String username, String password)
     {
+    	/// ????: should use spring directory
         UserLogin userLogin = (UserLogin) context.getBean(UserLogin.class);
         userLogin.setParty(person);
         userLogin.setUsername(username);
@@ -77,27 +70,28 @@ public class UserServiceImpl implements UserService, ApplicationContextAware
     @Transactional
     public ServiceResult<UserLogin> createUserLogin(UserLogin userLogin)
     {
-        if (userLoginDAO.existByUsername(userLogin.getUsername()))
+        if (userLoginDao.existByUsername(userLogin.getUsername()))
         {
             return ServiceResult.error("User login exist with username " + userLogin.getUsername() + ".");
         }
         
-        userLoginDAO.save(userLogin);
+        userLoginDao.save(userLogin);
         
         return new ServiceResult(userLogin);
     }
 
     @Override
+    @Transactional
     public ServiceResult<Set<UserLogin>> findAll()
     {
-        return ServiceResult.success("Found all user logins.", genericDAO.findAll(UserLogin.class)); 
+        return ServiceResult.success("Found all user logins.", userLoginDao.findAll()); 
     }
 
     @Override
     @Transactional
     public ServiceResult<Set<UserLogin>> findAllLikeUsername(UserLogin userLogin, String username)
     {
-        Set<UserLogin> userLogins = userLoginDAO.findAllLikeUsername(username);
+        List<UserLogin> userLogins = userLoginDao.findAllLikeUsername(username);
         return ServiceResult.success("Found all matching user logins.", userLogins);
     }
 
@@ -105,7 +99,7 @@ public class UserServiceImpl implements UserService, ApplicationContextAware
     @Transactional
     public ServiceResult<UserLogin> findById(Integer id)
     {
-        UserLogin userLogin = userLoginDAO.findById(id);
+        UserLogin userLogin = userLoginDao.findById(id);
         // populate party
         userLogin.getParty();
         return ServiceResult.success("Found user login.", userLogin);
@@ -115,7 +109,7 @@ public class UserServiceImpl implements UserService, ApplicationContextAware
     @Transactional
     public ServiceResult<UserLogin> findByUsernameAndPassword(String username, String password)
     {
-        UserLogin user = userLoginDAO.findByUsernameAndPassword(username, password);
+        UserLogin user = userLoginDao.findByUsernameAndPassword(username, password);
         if (user != null)
         {
             return new ServiceResult(user);

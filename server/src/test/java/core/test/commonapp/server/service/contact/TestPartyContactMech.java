@@ -32,9 +32,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.client.dao.contact.ContactMechDAO;
-import core.commonapp.client.dao.contact.PartyContactMechDAO;
-import core.commonapp.client.dao.contact.PartyContactMechPurposeDAO;
+import core.commonapp.client.dao.contact.ContactMechDao;
+import core.commonapp.client.dao.contact.PartyContactMechDao;
+import core.commonapp.client.dao.contact.PartyContactMechPurposeDao;
 import core.commonapp.client.service.contact.CreatePartyContactMechService;
 import core.commonapp.client.service.contact.PartyContactMechService;
 import core.commonapp.server.service.CommonAppServiceInstantiator;
@@ -70,13 +70,13 @@ public class TestPartyContactMech extends CommonAppServerTest
     private  PartyContactMechService partyContactMechService;
 
     @Autowired
-    private  PartyContactMechDAO partyContactMechDAO;
+    private  PartyContactMechDao partyContactMechDao;
 
     @Autowired
-    private ContactMechDAO contactMechDAO;
+    private ContactMechDao contactMechDao;
     
     @Autowired
-    private  PartyContactMechPurposeDAO partyContactMechPurposeDAO;
+    private  PartyContactMechPurposeDao partyContactMechPurposeDao;
     
     /** party mock */
     private PartyMock partyMock;
@@ -118,10 +118,10 @@ public class TestPartyContactMech extends CommonAppServerTest
         ContactMechPurpose contactMechPurpose2 = contactMechMock.generateContactMechPurpose();
         helper.addContactMechPurpose(contactMechPurpose2);
         // save PartyContactMech
-        partyContactMechDAO.save(partyContactMech);
+        partyContactMechDao.save(partyContactMech);
         PartyContactMechPurpose savedPurpose = partyContactMech.getPartyContactMechPurposes().get(0);
 
-        PartyContactMechPurpose foundPurpose = partyContactMechPurposeDAO.findById(savedPurpose.getId());
+        PartyContactMechPurpose foundPurpose = partyContactMechPurposeDao.findById(savedPurpose.getId());
         Assert.assertEquals(savedPurpose.getFromDate(), foundPurpose.getFromDate());
         Assert.assertEquals(savedPurpose.getThruDate(), foundPurpose.getThruDate());
         Assert.assertEquals(savedPurpose.getPartyContactMechPurposeId(), foundPurpose.getPartyContactMechPurposeId());
@@ -133,7 +133,7 @@ public class TestPartyContactMech extends CommonAppServerTest
         // TODO: ??? may need to compare all purposes
         savedPurpose = partyContactMech.getPartyContactMechPurposes().get(0);
         Assert.assertTrue(expireResult.isSuccess());
-        foundPurpose = partyContactMechPurposeDAO.findById(savedPurpose.getId());
+        foundPurpose = partyContactMechPurposeDao.findById(savedPurpose.getId());
         Assert.assertEquals(savedPurpose.getFromDate(), foundPurpose.getFromDate());
         Assert.assertEquals(savedPurpose.getThruDate(), foundPurpose.getThruDate());
         Assert.assertEquals(savedPurpose.getPartyContactMechPurposeId(), foundPurpose.getPartyContactMechPurposeId());
@@ -156,7 +156,7 @@ public class TestPartyContactMech extends CommonAppServerTest
         KeyedCacheStore<ContactMechPurpose> store = keyedCache.getCacheStore(ContactMechPurpose.class);
         PartyContactMech partyContactMech = partyHelper.addPhoneNumber(phoneNumber, store.getObject(ContactMechPurposeKey.KEY_FAX));
 
-        partyContactMechDAO.save(partyContactMech);
+        partyContactMechDao.save(partyContactMech);
 
         // test update with phone number
         PhoneNumber newPhoneNumber = contactMechMock.generatePhoneNumber();
@@ -168,19 +168,19 @@ public class TestPartyContactMech extends CommonAppServerTest
         // test results
         Assert.assertTrue(result.isSuccess());
         // test that old party contact mech is expired
-        PartyContactMech foundPartyContactMech = partyContactMechDAO.findById(partyContactMech.getPartyContactMechId());
+        PartyContactMech foundPartyContactMech = partyContactMechDao.findById(partyContactMech.getPartyContactMechId());
         // TODO: finish testing
 
         // test the new party contact mech
-        foundPartyContactMech = partyContactMechDAO.findById(newPartyContactMech.getPartyContactMechId());
+        foundPartyContactMech = partyContactMechDao.findById(newPartyContactMech.getPartyContactMechId());
         // TODO: finish testing
 
         // test the old phone number
-        PhoneNumber foundPhoneNumber = (PhoneNumber) contactMechDAO.findById(phoneNumber.getContactMechId());
+        PhoneNumber foundPhoneNumber = (PhoneNumber) contactMechDao.findById(phoneNumber.getContactMechId());
         // TODO: finish testing
 
         // test the new phone number
-        foundPhoneNumber = (PhoneNumber) contactMechDAO.findById(newPhoneNumber.getContactMechId());
+        foundPhoneNumber = (PhoneNumber) contactMechDao.findById(newPhoneNumber.getContactMechId());
         // TODO: finish testing
     }
 

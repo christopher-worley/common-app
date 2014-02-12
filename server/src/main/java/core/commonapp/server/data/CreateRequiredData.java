@@ -23,17 +23,18 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import core.commonapp.client.dao.GenericDAO;
 import core.commonapp.domain.InformationContext;
 import core.data.model.DataObject;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
 /**
- * For the core framework to work properley there is
+ * For the core framework to work properly there is
  * certain required data that must exist in the database.
  * This class will ensure that the data does exist the 
  * database.
@@ -90,8 +91,8 @@ public class CreateRequiredData
             // save the data object
             try 
             {
-                GenericDAO genericDAO = (GenericDAO) context.getBean("genericDAO");
-                genericDAO.save(object);
+            	EntityManager entityManager = (EntityManager) context.getBean(EntityManager.class);
+                entityManager.persist(object);
                 log.info("Data object saved: {0}", object);
             }
             catch (Exception e)

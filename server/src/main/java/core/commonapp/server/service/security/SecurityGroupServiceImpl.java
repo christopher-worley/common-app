@@ -28,10 +28,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import core.commonapp.client.dao.GenericDAO;
-import core.commonapp.client.dao.security.PermissionSecurityGroupDAO;
-import core.commonapp.client.dao.security.SecurityGroupDAO;
-import core.commonapp.client.dao.security.UserLoginSecurityGroupDAO;
+import core.commonapp.client.dao.security.PermissionSecurityGroupDao;
+import core.commonapp.client.dao.security.SecurityGroupDao;
+import core.commonapp.client.dao.security.UserLoginSecurityGroupDao;
 import core.commonapp.client.service.security.SecurityGroupService;
 import core.commonapp.domain.InformationContext;
 import core.data.cache.security.PermissionKey;
@@ -40,7 +39,7 @@ import core.data.model.security.PermissionSecurityGroup;
 import core.data.model.security.SecurityGroup;
 import core.data.model.security.UserLogin;
 import core.data.model.security.UserLoginSecurityGroup;
-import core.service.Security;
+import core.service.annotation.Security;
 import core.service.exception.ServiceException;
 import core.service.result.ServiceResult;
 
@@ -48,16 +47,13 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
 {
 
     @Autowired
-    private GenericDAO genericDAO;
+    private PermissionSecurityGroupDao permissionSecurityGroupDao;
     
     @Autowired
-    private PermissionSecurityGroupDAO permissionSecurityGroupDAO;
+    private UserLoginSecurityGroupDao userLoginSecurityGroupDao;
     
     @Autowired
-    private UserLoginSecurityGroupDAO userLoginSecurityGroupDAO;
-    
-    @Autowired
-    private SecurityGroupDAO securityGroupDAO;
+    private SecurityGroupDao securityGroupDao;
     
     /** set when service is created */
     private InformationContext context;
@@ -78,7 +74,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
         for (UserLogin userToAdd : users)
         {
             // Check if user already exist
-            List<UserLoginSecurityGroup> exists = userLoginSecurityGroupDAO.findByUserLoginAndSecurityGroup(userToAdd, securityGroup, false);
+            List<UserLoginSecurityGroup> exists = userLoginSecurityGroupDao.findByUserLoginAndSecurityGroup(userToAdd, securityGroup, false);
             if (exists.size() > 0) 
             {
                 throw new ServiceException("User login already exist for security group (username=" + userLogin.getUsername() + ").");
@@ -90,7 +86,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
             userLoginGroup.setUserLogin(userToAdd);
             // TODO: Handle service date
             userLoginGroup.setFromDate(new Date());
-            genericDAO.save(userLoginGroup);
+            userLoginSecurityGroupDao.save(userLoginGroup);
         }
 
         return ServiceResult.success("Added users to security group.", userLoginGroups);
@@ -110,7 +106,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
         securityGroup.setCode(code);
         securityGroup.setKey(code.toUpperCase());
 
-        genericDAO.save(securityGroup);
+        securityGroupDao.save(securityGroup);
 
         return ServiceResult.success("Security group created successfully", securityGroup);
     }
@@ -118,14 +114,14 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
     @Override
     public ServiceResult<List<SecurityGroup>> findAllSecurityGroups()
     {
-        List<SecurityGroup> securityGroups = securityGroupDAO.findAll();
+        List<SecurityGroup> securityGroups = securityGroupDao.findAll();
         return ServiceResult.success("Successfully found all security groups.", securityGroups);
     }
 
     @Override
     public ServiceResult<Set<SecurityGroup>> findAllSecurityGroupsForUserLogin(UserLogin userLogin)
     {
-        Set<SecurityGroup> securityGroups = securityGroupDAO.findAllByUserLogin(userLogin);
+        Set<SecurityGroup> securityGroups = securityGroupDao.findAllByUserLogin(userLogin);
         return ServiceResult.success("Successfully found security groups for user.", securityGroups);
     }
 
@@ -134,7 +130,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
     public ServiceResult<List<UserLoginSecurityGroup>> removeUsersFromSecurityGroup(UserLogin userLogin, SecurityGroup securityGroup,
             List<UserLogin> users)
     {
-        List<UserLoginSecurityGroup> existing = userLoginSecurityGroupDAO.findBySecurityGroup(securityGroup, false);
+        List<UserLoginSecurityGroup> existing = userLoginSecurityGroupDao.findBySecurityGroup(securityGroup, false);
         List<UserLoginSecurityGroup> modified = new ArrayList<UserLoginSecurityGroup>(existing.size());
         for (UserLogin userToRemove : users) 
         {
@@ -152,7 +148,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
             }
             // TODO: handle service date
             toExpire.setThruDate(new Date());
-            modified.add((UserLoginSecurityGroup)genericDAO.save(toExpire));
+            modified.add((UserLoginSecurityGroup)userLoginSecurityGroupDao.save(toExpire));
         }
         return ServiceResult.success("Users removed from security group.", modified);
     }
@@ -164,7 +160,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
     {
         List<PermissionSecurityGroup> permissionGroups = new ArrayList<PermissionSecurityGroup>(permissions.size());
         // Check for existing permission
-        List<PermissionSecurityGroup> existing = permissionSecurityGroupDAO.findAllBySecurityGroup(securityGroup, false);
+        List<PermissionSecurityGroup> existing = permissionSecurityGroupDao.findAllBySecurityGroup(securityGroup, false);
         
         // remove any existing relations not in permissions list
         for (PermissionSecurityGroup permissionSecurityGroup : existing) 
@@ -181,7 +177,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
             {
                 // TODO: handle service date
                 permissionSecurityGroup.setThruDate(new Date());
-                genericDAO.save(permissionSecurityGroup);
+                permissionSecurityGroupDao.save(permissionSecurityGroup);
             }
             
         }
@@ -211,7 +207,7 @@ public class SecurityGroupServiceImpl implements SecurityGroupService, Applicati
             }
         }
         
-        genericDAO.saveAll(permissionGroups);
+        permissionSecurityGroupDao.saveAll(permissionGroups);
 
         return ServiceResult.success("Added permissions to group successfully.", permissionGroups);
     }

@@ -21,13 +21,12 @@ package core.test.commonapp.server;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
 
 import core.commonapp.client.service.security.UserService;
 import core.commonapp.domain.InformationContext;
 import core.data.model.security.UserLogin;
 
-public class CommonAppServerTest extends AbstractTransactionalDataSourceSpringContextTests 
+public class CommonAppServerTest  
 {
     
     @Autowired

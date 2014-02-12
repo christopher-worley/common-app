@@ -21,7 +21,7 @@ package core.commonapp.server.service.billing;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.billing.BillingAccountTypeDAO;
+import core.commonapp.client.dao.billing.BillingAccountTypeDao;
 import core.commonapp.client.service.billing.BillingAccountService;
 import core.service.result.ServiceResult;
 
@@ -29,7 +29,7 @@ public class BillingAccountServiceImpl implements BillingAccountService
 {
     
     /** billing account type dao */
-    private BillingAccountTypeDAO billingAccountTypeDAO;
+    private BillingAccountTypeDao billingAccountTypeDao;
 
 
 
@@ -43,13 +43,13 @@ public class BillingAccountServiceImpl implements BillingAccountService
     /**
      * default constructor
      * 
-     * @param billingAccountTypeDAO
+     * @param billingAccountTypeDao
      */
     @Autowired
-    public BillingAccountServiceImpl(BillingAccountTypeDAO billingAccountTypeDAO)
+    public BillingAccountServiceImpl(BillingAccountTypeDao billingAccountTypeDao)
     {
         super();
-        this.billingAccountTypeDAO = billingAccountTypeDAO;
+        this.billingAccountTypeDao = billingAccountTypeDao;
     }
 
 
@@ -57,7 +57,7 @@ public class BillingAccountServiceImpl implements BillingAccountService
     @Override
     public ServiceResult findAllBillingAccountTypes()
     {
-        return new ServiceResult(billingAccountTypeDAO.findAll());
+        return new ServiceResult(billingAccountTypeDao.findAll());
     }
 
 }
