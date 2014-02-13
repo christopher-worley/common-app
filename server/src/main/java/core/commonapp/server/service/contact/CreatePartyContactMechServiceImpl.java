@@ -28,12 +28,12 @@ import core.commonapp.client.dao.contact.PartyContactMechPurposeDao;
 import core.commonapp.client.service.contact.CreatePartyContactMechService;
 import core.data.cache.KeyedCache;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.contact.PartyContactMechHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.PartyContactMechJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
 import core.data.model.party.Party;
 import core.service.result.ServiceResult;
 import core.tooling.logging.LogFactory;
@@ -79,7 +79,7 @@ public class CreatePartyContactMechServiceImpl implements CreatePartyContactMech
     public ServiceResult<PartyContactMech> createPartyContactMech(Party party, ContactMech contactMech, Timestamp fromDate)
     {
         log.debug("CreatePartyContactMechServiceImpl.createPartyContactMech({0}, {1}, {2})", party, contactMech, fromDate);
-        PartyContactMechHibernateImpl partyContactMech = new PartyContactMechHibernateImpl();
+        PartyContactMechJpaImpl partyContactMech = new PartyContactMechJpaImpl();
         partyContactMech.setParty(party);
         partyContactMech.setContactMech(contactMech);
         partyContactMech.setFromDate(fromDate);
@@ -99,7 +99,7 @@ public class CreatePartyContactMechServiceImpl implements CreatePartyContactMech
             ContactMechPurpose contactMechPurpose, Timestamp fromDate)
     {
         log.debug("CreatePartyContactMechServiceImpl.createPartyContactMechPurposeType({0}, {1}, {2})", partyContactMech, contactMechPurpose, fromDate);
-        PartyContactMechPurposeHibernateImpl partyContactMechPurpose = new PartyContactMechPurposeHibernateImpl();
+        PartyContactMechPurposeJpaImpl partyContactMechPurpose = new PartyContactMechPurposeJpaImpl();
         partyContactMechPurpose.setPartyContactMech(partyContactMech);
         partyContactMechPurpose.setContactMechPurpose(contactMechPurpose);
         partyContactMechPurpose.setFromDate(fromDate);

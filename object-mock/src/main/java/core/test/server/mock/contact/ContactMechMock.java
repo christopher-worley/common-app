@@ -25,15 +25,15 @@ import java.util.Random;
 import core.commonapp.domain.InformationContext;
 import core.data.cache.KeyedCacheStore;
 import core.data.cache.geo.GeoKey;
-import core.data.hibernate.contact.ContactMechHibernateImpl;
-import core.data.hibernate.contact.EmailAddressHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechHibernateImpl;
-import core.data.hibernate.contact.PhoneNumberHibernateImpl;
-import core.data.hibernate.contact.PostalAddressHibernateImpl;
-import core.data.hibernate.geo.GeoHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.ContactMechType;
 import core.data.model.geo.Geo;
+import core.data.model.jpa.contact.ContactMechJpaImpl;
+import core.data.model.jpa.contact.EmailAddressJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechJpaImpl;
+import core.data.model.jpa.contact.PhoneNumberJpaImpl;
+import core.data.model.jpa.contact.PostalAddressJpaImpl;
+import core.data.model.jpa.geo.GeoJpaImpl;
 import core.test.server.mock.AbstractObjectMock;
 import core.test.server.mock.geo.GeoMock;
 import core.test.server.mock.party.PartyMock;
@@ -90,7 +90,7 @@ public class ContactMechMock extends AbstractObjectMock
      * 
      * @return
      */
-    public ContactMechHibernateImpl generateContactMech()
+    public ContactMechJpaImpl generateContactMech()
     {
         int random = new Random().nextInt(3);
         
@@ -123,10 +123,10 @@ public class ContactMechMock extends AbstractObjectMock
      * 
      * @return
      */
-    public EmailAddressHibernateImpl generateEmailAddress()
+    public EmailAddressJpaImpl generateEmailAddress()
     {
 
-        EmailAddressHibernateImpl emailAddress = new EmailAddressHibernateImpl();
+        EmailAddressJpaImpl emailAddress = new EmailAddressJpaImpl();
         
         int index = new Random().nextInt(emailAddresses.length);
        // emailAddress.setContactMechType(contactMechTypeCache.getEmailAddressType());
@@ -140,11 +140,11 @@ public class ContactMechMock extends AbstractObjectMock
      * 
      * @return
      */
-    public PartyContactMechHibernateImpl generatePartyContactMech()
+    public PartyContactMechJpaImpl generatePartyContactMech()
     {
         PartyMock partyMock = new PartyMock(getInformationContext());
         
-        PartyContactMechHibernateImpl partyContactMech = new PartyContactMechHibernateImpl();
+        PartyContactMechJpaImpl partyContactMech = new PartyContactMechJpaImpl();
         partyContactMech.setParty(partyMock.generateParty());
         partyContactMech.setContactMech(generateContactMech());
         partyContactMech.setFromDate(new Timestamp(System.currentTimeMillis()));
@@ -157,9 +157,9 @@ public class ContactMechMock extends AbstractObjectMock
      * 
      * @return
      */
-    public PhoneNumberHibernateImpl generatePhoneNumber()
+    public PhoneNumberJpaImpl generatePhoneNumber()
     {
-        PhoneNumberHibernateImpl phoneNumber = new PhoneNumberHibernateImpl();
+        PhoneNumberJpaImpl phoneNumber = new PhoneNumberJpaImpl();
         
         int index = new Random().nextInt(phoneNumbers.length);
         phoneNumber.setCountryCode(phoneNumbers[index][0]);
@@ -175,17 +175,17 @@ public class ContactMechMock extends AbstractObjectMock
      * 
      * @return
      */
-    public PostalAddressHibernateImpl generatePostalAddress()
+    public PostalAddressJpaImpl generatePostalAddress()
     {
-        PostalAddressHibernateImpl postalAddress = new PostalAddressHibernateImpl();
+        PostalAddressJpaImpl postalAddress = new PostalAddressJpaImpl();
         
         int index = new Random().nextInt(postalAddresses.length);
         postalAddress.setAddressLine1((String)postalAddresses[index][0]);
         postalAddress.setAddressLine2((String)postalAddresses[index][1]);
         postalAddress.setCity((String)postalAddresses[index][2]);
         postalAddress.setPostalCode((String)postalAddresses[index][3]);
-        postalAddress.setStateGeo((GeoHibernateImpl)postalAddresses[index][4]);
-        postalAddress.setCountryGeo((GeoHibernateImpl)postalAddresses[index][5]);
+        postalAddress.setStateGeo((GeoJpaImpl)postalAddresses[index][4]);
+        postalAddress.setCountryGeo((GeoJpaImpl)postalAddresses[index][5]);
 
         return postalAddress;
     }

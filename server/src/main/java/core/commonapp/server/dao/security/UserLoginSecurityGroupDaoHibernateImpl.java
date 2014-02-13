@@ -31,7 +31,7 @@ import org.springframework.stereotype.Repository;
 
 import core.commonapp.client.dao.security.UserLoginSecurityGroupDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
-import core.data.hibernate.security.UserLoginSecurityGroupHibernateImpl;
+import core.data.model.jpa.security.UserLoginSecurityGroupJpaImpl;
 import core.data.model.security.PermissionSecurityGroup;
 import core.data.model.security.SecurityGroup;
 import core.data.model.security.UserLogin;

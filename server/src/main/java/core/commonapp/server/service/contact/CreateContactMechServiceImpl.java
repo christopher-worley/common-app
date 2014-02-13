@@ -26,14 +26,14 @@ import core.commonapp.client.service.contact.CreateContactMechService;
 import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
 import core.data.cache.contact.ContactMechTypeKey;
-import core.data.hibernate.contact.EmailAddressHibernateImpl;
-import core.data.hibernate.contact.PhoneNumberHibernateImpl;
-import core.data.hibernate.contact.PostalAddressHibernateImpl;
 import core.data.model.contact.ContactMechType;
 import core.data.model.contact.EmailAddress;
 import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
 import core.data.model.geo.Geo;
+import core.data.model.jpa.contact.EmailAddressJpaImpl;
+import core.data.model.jpa.contact.PhoneNumberJpaImpl;
+import core.data.model.jpa.contact.PostalAddressJpaImpl;
 import core.service.result.ServiceResult;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
@@ -63,7 +63,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
      * @param emailAddress
      * @return
      */
-    public ServiceResult createEmailAddress(EmailAddressHibernateImpl emailAddress)
+    public ServiceResult createEmailAddress(EmailAddressJpaImpl emailAddress)
     {
         log.debug("CreateContactMechImpl.createEmailAddress({0})", emailAddress);
 
@@ -84,14 +84,14 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
     {
         log.debug("CreateContactMechImpl.createEmailAddress({0})", contactAddress);
 
-        EmailAddressHibernateImpl emailAddress = new EmailAddressHibernateImpl();
+        EmailAddressJpaImpl emailAddress = new EmailAddressJpaImpl();
         emailAddress.setEmailAddress(contactAddress);
 
         return createEmailAddress(emailAddress);
     }
 
     @Override
-    public ServiceResult createPhoneNumber(PhoneNumberHibernateImpl phoneNumber)
+    public ServiceResult createPhoneNumber(PhoneNumberJpaImpl phoneNumber)
     {
         log.debug("CreateContactMechImpl.createPhoneNumber({0})", phoneNumber);
 
@@ -116,7 +116,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
         log.debug("CreateContactMechImpl.createPhoneNumber({0}, {1}, {2}, {3})", countryCode, areaCode, contactNumber,
                 extension);
 
-        PhoneNumberHibernateImpl phoneNumber = new PhoneNumberHibernateImpl();
+        PhoneNumberJpaImpl phoneNumber = new PhoneNumberJpaImpl();
         phoneNumber.setCountryCode(countryCode);
         phoneNumber.setAreaCode(areaCode);
         phoneNumber.setContactNumber(contactNumber);
@@ -126,7 +126,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
     }
 
     @Override
-    public ServiceResult createPostalAddress(PostalAddressHibernateImpl postalAddress)
+    public ServiceResult createPostalAddress(PostalAddressJpaImpl postalAddress)
     {
         log.debug("CreateContactMechImpl.createPostalAddress({0})", postalAddress);
 
@@ -153,7 +153,7 @@ public class CreateContactMechServiceImpl implements CreateContactMechService
     {
         log.debug("CreateContactMechImpl.createPostalAddress({0}, {1}, {2}, {3}, {4}, {5})", address1, address2, city,
                 postalCode, stateGeo, country);
-        PostalAddressHibernateImpl postalAddress = new PostalAddressHibernateImpl();
+        PostalAddressJpaImpl postalAddress = new PostalAddressJpaImpl();
         postalAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_POSTAL_ADDRESS));
         postalAddress.setAddressLine1(address1);
         postalAddress.setAddressLine2(address2);

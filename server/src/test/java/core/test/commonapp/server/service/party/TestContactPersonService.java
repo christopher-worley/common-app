@@ -41,10 +41,10 @@ import core.commonapp.server.config.ServerConfiguration;
 import core.commonapp.server.service.CommonAppServiceInstantiator;
 import core.data.cache.KeyedCache;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.contact.PhoneNumberHibernateImpl;
 import core.data.model.contact.EmailAddress;
 import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
+import core.data.model.jpa.contact.PhoneNumberJpaImpl;
 import core.data.model.party.Person;
 import core.data.model.security.UserLogin;
 import core.service.result.ServiceResult;
@@ -212,7 +212,7 @@ public class TestContactPersonService extends CommonAppServerTest
         {
             PhoneNumber partyPhoneNumber = (PhoneNumber) iter.next();
             
-            phoneNumber = new PhoneNumberHibernateImpl();
+            phoneNumber = new PhoneNumberJpaImpl();
             phoneNumber.setContactNumber(partyPhoneNumber.getContactNumber());
             log.debug("*** Find contact person by phoneNumber: [contactNumber]");
             Set<Person> people = findBy(null, phoneNumber, null, null);
@@ -233,7 +233,7 @@ public class TestContactPersonService extends CommonAppServerTest
             Assert.assertTrue(foundPhoneNumber);
             
             
-            phoneNumber = new PhoneNumberHibernateImpl();
+            phoneNumber = new PhoneNumberJpaImpl();
             phoneNumber.setExtension(partyPhoneNumber.getExtension());
             phoneNumber.setAreaCode(partyPhoneNumber.getAreaCode());
             log.debug("*** Find contact person by phoneNumber: [areaCode] [extension]");

@@ -26,11 +26,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import core.commonapp.client.dao.contact.PartyContactMechDao;
 import core.commonapp.client.service.contact.PartyContactMechService;
 import core.data.helper.contact.PartyContactMechHelper;
-import core.data.hibernate.contact.PartyContactMechHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.PartyContactMechJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
 import core.service.result.ServiceResult;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
@@ -86,7 +86,7 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
 		
 		// create new
 		// TODO: should implement clone?
-		PartyContactMech newPartyContactMech = new PartyContactMechHibernateImpl();
+		PartyContactMech newPartyContactMech = new PartyContactMechJpaImpl();
 		newPartyContactMech.setFromDate(currentDate);
 		newPartyContactMech.setParty(partyContactMech.getParty());
 		newPartyContactMech.setContactMech(contactMech);
@@ -95,7 +95,7 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
 			PartyContactMechHelper helper = new PartyContactMechHelper(newPartyContactMech);
 			for (PartyContactMechPurpose purpose : newPartyContactMech.getPartyContactMechPurposes())
 			{
-				PartyContactMechPurpose newPurpose = new PartyContactMechPurposeHibernateImpl();
+				PartyContactMechPurpose newPurpose = new PartyContactMechPurposeJpaImpl();
 				newPurpose.setPartyContactMech(newPartyContactMech);
 				newPurpose.setContactMechPurpose(purpose.getContactMechPurpose());
 				newPurpose.setFromDate(purpose.getFromDate());

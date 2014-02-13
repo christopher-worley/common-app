@@ -39,13 +39,13 @@ import core.data.cache.contact.ContactMechPurposeKey;
 import core.data.cache.contact.ContactMechTypeKey;
 import core.data.cache.party.RoleTypeKey;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.contact.EmailAddressHibernateImpl;
-import core.data.hibernate.contact.PostalAddressHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.ContactMechType;
 import core.data.model.contact.EmailAddress;
 import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
+import core.data.model.jpa.contact.EmailAddressJpaImpl;
+import core.data.model.jpa.contact.PostalAddressJpaImpl;
 import core.data.model.party.Person;
 import core.data.model.party.RoleType;
 import core.data.model.security.UserLogin;
@@ -144,14 +144,14 @@ public class ContactPersonServiceImpl implements ContactPersonService
 
         // postal address
         // TODO: Hibernate specific code move it to a helper
-        if (postalAddress != null && !((PostalAddressHibernateImpl) postalAddress).isEmpty())
+        if (postalAddress != null && !((PostalAddressJpaImpl) postalAddress).isEmpty())
         {
             postalAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_POSTAL_ADDRESS));
             helper.addPostalAddress(postalAddress, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
         }
 
         // create email address
-        if (emailAddress != null && !((EmailAddressHibernateImpl) emailAddress).isEmpty())
+        if (emailAddress != null && !((EmailAddressJpaImpl) emailAddress).isEmpty())
         {
             helper.addEmailAddress(emailAddress, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
             emailAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_EMAIL_ADDRESS));

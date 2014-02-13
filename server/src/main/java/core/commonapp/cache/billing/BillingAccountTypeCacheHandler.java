@@ -25,8 +25,8 @@ import core.commonapp.cache.AbstractCacheHandler;
 import core.commonapp.client.service.billing.BillingAccountService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
-import core.data.hibernate.billing.BillingAccountTypeHibernateImpl;
 import core.data.model.Keyable;
+import core.data.model.jpa.billing.BillingAccountTypeJpaImpl;
 import core.service.result.ServiceResult;
 
 public class BillingAccountTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
@@ -35,7 +35,7 @@ public class BillingAccountTypeCacheHandler extends AbstractCacheHandler impleme
     @Override
     public Class getDataClass()
     {
-        return BillingAccountTypeHibernateImpl.class;
+        return BillingAccountTypeJpaImpl.class;
     }
 
     @Override

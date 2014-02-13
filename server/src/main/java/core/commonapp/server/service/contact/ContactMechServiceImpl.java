@@ -30,13 +30,13 @@ import core.commonapp.client.dao.contact.ContactMechTypeDao;
 import core.commonapp.client.dao.contact.PartyContactMechDao;
 import core.commonapp.client.service.contact.ContactMechService;
 import core.data.helper.contact.PartyContactMechHelper;
-import core.data.hibernate.contact.EmailAddressHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.EmailAddress;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.EmailAddressJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
 import core.service.result.ServiceResult;
 
 public class ContactMechServiceImpl implements ContactMechService
@@ -90,7 +90,7 @@ public class ContactMechServiceImpl implements ContactMechService
         // TODO: service timestamp
         Date currentDate = new Date();
         
-        EmailAddress newEmailAddress = new EmailAddressHibernateImpl();
+        EmailAddress newEmailAddress = new EmailAddressJpaImpl();
         newEmailAddress.setEmailAddress(emailAddress.getEmailAddress());
 
         // expire old and create new PartyContactMech objects
@@ -103,13 +103,13 @@ public class ContactMechServiceImpl implements ContactMechService
             partyContactMechDao.save(partyContactMech);
             
             // new party contact mech
-            PartyContactMech newPartyContactMech = new PartyContactMechHibernateImpl();
+            PartyContactMech newPartyContactMech = new PartyContactMechJpaImpl();
             newPartyContactMech.setContactMech(newEmailAddress);
             newPartyContactMech.setParty(partyContactMech.getParty());
             newPartyContactMech.setFromDate(currentDate);
             for (ContactMechPurpose purpose : purposes)
             {
-                PartyContactMechPurpose newPurpose = new PartyContactMechPurposeHibernateImpl();
+                PartyContactMechPurpose newPurpose = new PartyContactMechPurposeJpaImpl();
                 newPurpose.setContactMechPurpose(purpose);
                 newPurpose.setFromDate(currentDate);
                 PartyContactMechHelper helper = new PartyContactMechHelper(newPartyContactMech);

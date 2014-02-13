@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
 
 public class PartyContactMechHelper
 {
@@ -48,7 +48,7 @@ public class PartyContactMechHelper
      */
     public void addContactMechPurpose(ContactMechPurpose purpose)
     {
-        PartyContactMechPurpose partyContactMechPurpose = new PartyContactMechPurposeHibernateImpl();
+        PartyContactMechPurpose partyContactMechPurpose = new PartyContactMechPurposeJpaImpl();
         partyContactMechPurpose.setPartyContactMech(partyContactMech);
         partyContactMechPurpose.setContactMechPurpose(purpose);
         // TOOD: service date

@@ -36,10 +36,10 @@ import core.commonapp.client.dao.contact.PartyContactMechDao;
 import core.commonapp.client.dao.contact.PartyContactMechPurposeDao;
 import core.commonapp.client.service.contact.CreatePartyContactMechService;
 import core.commonapp.server.service.CommonAppServiceInstantiator;
-import core.data.hibernate.contact.ContactMechHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.ContactMechJpaImpl;
 import core.data.model.party.Party;
 import core.service.result.ServiceResult;
 import core.test.commonapp.server.CommonAppServerTest;
@@ -98,7 +98,7 @@ public class TestCreatePartyContactMech extends CommonAppServerTest
     public void testCreatePartyContactMech() 
     {
         Party party = partyMock.generateParty();
-        ContactMechHibernateImpl contactMech = contactMechMock.generateContactMech();
+        ContactMechJpaImpl contactMech = contactMechMock.generateContactMech();
         
         ServiceResult<PartyContactMech> result = createPartyContactMech.createPartyContactMech(party, contactMech, fromDate);
 

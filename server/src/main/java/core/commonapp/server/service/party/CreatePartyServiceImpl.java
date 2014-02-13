@@ -32,10 +32,10 @@ import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
 import core.data.cache.party.PartyTypeKey;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.party.PartyGroupHibernateImpl;
-import core.data.hibernate.party.PartyRelationshipHibernateImpl;
-import core.data.hibernate.party.PartyRoleHibernateImpl;
-import core.data.hibernate.party.PersonHibernateImpl;
+import core.data.model.jpa.party.PartyGroupJpaImpl;
+import core.data.model.jpa.party.PartyRelationshipJpaImpl;
+import core.data.model.jpa.party.PartyRoleJpaImpl;
+import core.data.model.jpa.party.PersonJpaImpl;
 import core.data.model.party.Party;
 import core.data.model.party.PartyGroup;
 import core.data.model.party.PartyRelationship;
@@ -78,7 +78,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
     public ServiceResult<PartyGroup> createPartyGroup(String groupName) 
     {
         log.debug("CreatePartImpl.createPartyGroup({0})", groupName);
-        PartyGroup partyGroup = new PartyGroupHibernateImpl();
+        PartyGroup partyGroup = new PartyGroupJpaImpl();
         partyGroup.setPartyType(getPartyTypeCache().getObject(PartyTypeKey.KEY_PARTY_GROUP));
         partyGroup.setGroupName(groupName);
         
@@ -93,7 +93,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
             RoleType roleTypeTo, Timestamp fromDate)
     {
         log.debug("CreatePartyServiceImpl.createRelationship({0}, {1}, {2}, {3})", partyFrom, roleTypeFrom, partyTo, roleTypeTo);
-        PartyRelationship partyRelationship = new PartyRelationshipHibernateImpl();
+        PartyRelationship partyRelationship = new PartyRelationshipJpaImpl();
         partyRelationship.setPartyFrom(partyFrom);
         partyRelationship.setRoleTypeFrom(roleTypeFrom);
         partyRelationship.setPartyTo(partyTo);
@@ -110,7 +110,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
     public ServiceResult<PartyRole> createPartyRole(Party party, RoleType roleType, Timestamp fromDate)
     {
         log.debug("CreatePartyServiceImpl.createPartyRole({0}, {1})", party, roleType);
-        PartyRole partyRole = new PartyRoleHibernateImpl();
+        PartyRole partyRole = new PartyRoleJpaImpl();
         partyRole.setParty(party);
         partyRole.setRoleType(roleType);
         partyRole.setFromDate(fromDate);
@@ -147,7 +147,7 @@ public class CreatePartyServiceImpl implements CreatePartyService
     public ServiceResult<Person> createPerson(String firstName, String lastName, RoleType[] roleTypes)
     {
         log.debug("CreatePartyImpl.createPerson({0}, {1})", firstName, lastName);
-        Person person = new PersonHibernateImpl();
+        Person person = new PersonJpaImpl();
         person.setFirstName(firstName);
         person.setLastName(lastName);
         

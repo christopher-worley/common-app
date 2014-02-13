@@ -43,11 +43,11 @@ import core.data.cache.KeyedCacheStore;
 import core.data.cache.contact.ContactMechPurposeKey;
 import core.data.helper.contact.PartyContactMechHelper;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.contact.ContactMechHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
 import core.data.model.contact.PhoneNumber;
+import core.data.model.jpa.contact.ContactMechJpaImpl;
 import core.data.model.party.Party;
 import core.service.result.ServiceResult;
 import core.test.commonapp.server.CommonAppServerTest;
@@ -104,7 +104,7 @@ public class TestPartyContactMech extends CommonAppServerTest
         // generate party
         Party party = partyMock.generateParty();
         // generate ContactMech
-        ContactMechHibernateImpl contactMech = contactMechMock.generateContactMech();
+        ContactMechJpaImpl contactMech = contactMechMock.generateContactMech();
 
         // create the PartyContactMech
         ServiceResult<PartyContactMech> result = createPartyContactMech.createPartyContactMech(party, contactMech,
