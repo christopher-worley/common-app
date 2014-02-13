@@ -62,11 +62,9 @@ public class SecurityGroupHibernateImpl implements DataObject, Serializable, Sec
     private String description;
     
     @OneToMany (mappedBy="securityGroup", cascade={CascadeType.ALL}, targetEntity=PermissionSecurityGroupHibernateImpl.class)
-    @JoinColumn(name="security_group_id")
     private List<PermissionSecurityGroup> permissionSecurityGroups;
     
     @OneToMany (mappedBy="securityGroup", cascade={CascadeType.ALL}, targetEntity=UserLoginSecurityGroupHibernateImpl.class)
-    @JoinColumn(name="security_group_id")
     private List<UserLoginSecurityGroup> userLoginSecurityGroups;
 
     public String getCode()

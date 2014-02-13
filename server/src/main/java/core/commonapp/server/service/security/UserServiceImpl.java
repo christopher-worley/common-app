@@ -26,6 +26,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.dao.security.UserLoginDao;
@@ -35,6 +36,7 @@ import core.data.model.party.Person;
 import core.data.model.security.UserLogin;
 import core.service.result.ServiceResult;
 
+@Service
 public class UserServiceImpl implements UserService, ApplicationContextAware
 {
     /** user dao */

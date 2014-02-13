@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.security;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.security.UserLoginHistoryDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.security.UserLoginHistory;
 
+@Repository
 public class UserLoginHistoryDaoHibernateImpl extends BaseDaoJpaImpl<UserLoginHistory> implements UserLoginHistoryDao
 {
 

@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.agreement;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.agreement.AgreementTypeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.agreement.AgreementType;
 
+@Repository
 public class AgreementTypeDaoHibernateImpl extends BaseDaoJpaImpl<AgreementType> implements AgreementTypeDao
 {
     public AgreementTypeDaoHibernateImpl()

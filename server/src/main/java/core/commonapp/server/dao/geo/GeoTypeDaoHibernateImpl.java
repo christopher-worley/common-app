@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.geo;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.geo.GeoTypeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.geo.GeoType;
 
+@Repository
 public class GeoTypeDaoHibernateImpl extends BaseDaoJpaImpl<GeoType> implements GeoTypeDao
 {
 

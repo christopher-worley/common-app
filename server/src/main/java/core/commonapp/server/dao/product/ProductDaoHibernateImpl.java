@@ -19,12 +19,15 @@
  */
 package core.commonapp.server.dao.product;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.product.ProductDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.product.Product;
 
+@Repository
 public class ProductDaoHibernateImpl extends BaseDaoJpaImpl<Product> implements ProductDao
-{;
+{
 
     public ProductDaoHibernateImpl()
     {

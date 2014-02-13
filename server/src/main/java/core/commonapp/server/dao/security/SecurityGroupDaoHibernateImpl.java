@@ -28,6 +28,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.dao.security.SecurityGroupDao;
@@ -38,6 +39,7 @@ import core.data.model.security.UserLoginSecurityGroup;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
+@Repository
 public class SecurityGroupDaoHibernateImpl extends BaseDaoJpaImpl<SecurityGroup> implements SecurityGroupDao
 {
     

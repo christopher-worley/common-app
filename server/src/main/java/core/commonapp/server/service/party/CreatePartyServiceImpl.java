@@ -22,6 +22,7 @@ package core.commonapp.server.service.party;
 import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.party.PartyDao;
 import core.commonapp.client.dao.party.PartyRelationshipDao;
@@ -46,6 +47,7 @@ import core.service.result.ServiceResult;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
+@Service
 public class CreatePartyServiceImpl implements CreatePartyService
 {
     /** logger for this class */

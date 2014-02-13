@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.contact;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.contact.ContactMechPurposeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.contact.ContactMechPurpose;
 
+@Repository
 public class ContactMechPurposeDaoHibernateImpl extends BaseDaoJpaImpl<ContactMechPurpose> implements ContactMechPurposeDao
 {
 

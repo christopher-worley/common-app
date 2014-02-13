@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.party;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.party.PartyTypeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.party.PartyType;
 
+@Repository
 public class PartyTypeDaoHibernateImpl extends BaseDaoJpaImpl<PartyType> implements PartyTypeDao
 {
 

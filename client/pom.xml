@@ -4,7 +4,11 @@
 	<groupId>com.coreinformationsolutions</groupId>
 	<artifactId>core-commonapp-client</artifactId>
 	<name>client</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>com.coreinformationsolutions</groupId>
+		<artifactId>core-commonapp</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 
 	<dependencies>
 		<dependency>
@@ -22,6 +26,7 @@
 			<artifactId>core-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
 	</dependencies>
 
 	<build>

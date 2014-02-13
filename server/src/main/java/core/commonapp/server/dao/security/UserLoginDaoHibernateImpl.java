@@ -19,22 +19,19 @@
  */
 package core.commonapp.server.dao.security;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import core.commonapp.client.dao.security.UserLoginDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
-import core.data.hibernate.security.UserLoginHibernateImpl;
 import core.data.model.security.UserLogin;
 
+@Repository
 public class UserLoginDaoHibernateImpl extends BaseDaoJpaImpl<UserLogin> implements UserLoginDao
 {
     

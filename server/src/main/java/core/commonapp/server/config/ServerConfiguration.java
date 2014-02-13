@@ -16,10 +16,12 @@ import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import core.service.config.ServiceConfiguration;
+
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "core.commonapp.server.service" })
-public class ServerConfiguration {
+@ComponentScan({ "core.commonapp.server.service", "core.commonapp.server.dao", "core.commonapp.cache" })
+public class ServerConfiguration extends ServiceConfiguration, DataModelConfiguration, ClientConfiguration {
 
 	@Bean
 	public DataSource datasource() {

@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.payment;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.payment.PaymentTypeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.payment.PaymentType;
 
+@Repository
 public class PaymentTypeDaoHibernateImpl extends BaseDaoJpaImpl<PaymentType> implements PaymentTypeDao
 {
 

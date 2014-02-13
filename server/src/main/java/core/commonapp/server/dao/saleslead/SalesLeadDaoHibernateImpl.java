@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.saleslead;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.saleslead.SalesLeadDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.saleslead.SalesLead;
 
+@Repository
 public class SalesLeadDaoHibernateImpl extends BaseDaoJpaImpl<SalesLead> implements SalesLeadDao
 {
 

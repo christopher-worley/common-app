@@ -25,11 +25,14 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.security.PermissionSecurityGroupDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.security.PermissionSecurityGroup;
 import core.data.model.security.SecurityGroup;
 
+@Repository
 public class PermissionSecurityGroupDaoHibernateImpl extends BaseDaoJpaImpl<PermissionSecurityGroup> implements PermissionSecurityGroupDao
 {
 

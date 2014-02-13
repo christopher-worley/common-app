@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.status;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.status.StatusDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.status.Status;
 
+@Repository
 public class StatusDaoHibernateImpl extends BaseDaoJpaImpl<Status> implements StatusDao
 {
 

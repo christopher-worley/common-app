@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.status;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.status.StatusTransitionRoleDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.status.StatusTransitionRole;
 
+@Repository
 public class StatusTransitionRoleDaoHibernateImpl extends BaseDaoJpaImpl<StatusTransitionRole> implements StatusTransitionRoleDao
 {
 

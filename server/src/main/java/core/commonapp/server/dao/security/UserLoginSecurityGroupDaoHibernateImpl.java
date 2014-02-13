@@ -27,6 +27,7 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import core.commonapp.client.dao.security.UserLoginSecurityGroupDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
@@ -36,6 +37,7 @@ import core.data.model.security.SecurityGroup;
 import core.data.model.security.UserLogin;
 import core.data.model.security.UserLoginSecurityGroup;
 
+@Repository
 public class UserLoginSecurityGroupDaoHibernateImpl extends BaseDaoJpaImpl<UserLoginSecurityGroup> implements UserLoginSecurityGroupDao
 {
 

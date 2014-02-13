@@ -74,7 +74,6 @@ public class PartyContactMechHibernateImpl implements PartyContactMech
 
     @OneToMany(mappedBy = "partyContactMech", cascade =
     { CascadeType.ALL }, targetEntity = PartyContactMechPurposeHibernateImpl.class)
-    @JoinColumn(name = "party_contact_mech_id")
     private List<PartyContactMechPurpose> partyContactMechPurposes;
 
     @Version

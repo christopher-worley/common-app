@@ -32,6 +32,7 @@ import org.apache.commons.lang.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.dao.party.PersonDao;
@@ -51,6 +52,7 @@ import core.data.model.security.UserLogin;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
+@Repository
 public class PersonDaoHibernateImpl extends BaseDaoJpaImpl<Person> implements PersonDao
 {
 

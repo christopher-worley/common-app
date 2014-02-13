@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.billing;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.billing.BillingAccountTypeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.billing.BillingAccount;
 
+@Repository
 public class BillingAccountTypeDaoHibernateImpl extends BaseDaoJpaImpl<BillingAccount> implements BillingAccountTypeDao
 {
 

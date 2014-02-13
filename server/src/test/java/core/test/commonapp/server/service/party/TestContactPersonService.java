@@ -37,6 +37,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.service.party.ContactPersonService;
 import core.commonapp.client.service.security.UserService;
+import core.commonapp.server.config.ServerConfiguration;
 import core.commonapp.server.service.CommonAppServiceInstantiator;
 import core.data.cache.KeyedCache;
 import core.data.helper.party.PartyHelper;
@@ -64,7 +65,7 @@ import core.tooling.property.SystemPropertyFileReader;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/commonapp-server-test-context.xml")
+@ContextConfiguration(classes=ServerConfiguration.class)
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
 @Transactional
 public class TestContactPersonService extends CommonAppServerTest

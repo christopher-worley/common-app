@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.task;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.task.TaskStatusDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.task.TaskStatus;
 
+@Repository
 public class TaskStatusDaoHibernateImpl extends BaseDaoJpaImpl<TaskStatus> implements TaskStatusDao
 {
 

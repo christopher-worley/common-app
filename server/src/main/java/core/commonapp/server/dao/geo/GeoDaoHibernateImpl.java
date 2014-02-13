@@ -25,11 +25,14 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.geo.GeoDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.geo.Geo;
 import core.data.model.geo.GeoType;
 
+@Repository
 public class GeoDaoHibernateImpl extends BaseDaoJpaImpl<Geo> implements GeoDao
 {
 

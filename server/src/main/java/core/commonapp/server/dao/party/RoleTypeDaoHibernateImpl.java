@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.party;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.party.RoleTypeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.party.RoleType;
 
+@Repository
 public class RoleTypeDaoHibernateImpl extends BaseDaoJpaImpl<RoleType> implements RoleTypeDao
 {
 

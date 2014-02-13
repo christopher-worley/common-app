@@ -26,12 +26,15 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.contact.PartyContactMechDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.contact.PartyContactMech;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
+@Repository
 public class PartyContactMechDaoHibernateImpl extends BaseDaoJpaImpl<PartyContactMech> implements PartyContactMechDao
 {
     /** logger for this class */

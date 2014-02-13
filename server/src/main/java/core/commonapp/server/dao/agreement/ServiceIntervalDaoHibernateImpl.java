@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.agreement;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.agreement.ServiceIntervalDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.agreement.ServiceInterval;
 
+@Repository
 public class ServiceIntervalDaoHibernateImpl extends BaseDaoJpaImpl<ServiceInterval> implements ServiceIntervalDao
 {
 

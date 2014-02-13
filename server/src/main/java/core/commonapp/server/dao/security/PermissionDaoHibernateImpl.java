@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.security;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.security.PermissionDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.security.Permission;
 
+@Repository
 public class PermissionDaoHibernateImpl extends BaseDaoJpaImpl<Permission> implements PermissionDao
 {
 

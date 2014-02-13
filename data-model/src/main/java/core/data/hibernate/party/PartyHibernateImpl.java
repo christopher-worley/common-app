@@ -71,19 +71,15 @@ public class PartyHibernateImpl implements Party
     private PartyType partyType;
 
     @OneToMany (mappedBy="party", cascade={CascadeType.ALL}, fetch=FetchType.EAGER, targetEntity=PartyRoleHibernateImpl.class)
-    @JoinColumn(name="party_id")
     private List<PartyRole> partyRoles;
 
     @OneToMany (mappedBy="party", cascade={CascadeType.ALL}, fetch=FetchType.LAZY, targetEntity=PartyContactMechHibernateImpl.class)
-    @JoinColumn(name="party_id")
     private List<PartyContactMech> partyContactMechs;
 
     @OneToMany (mappedBy="partyTo", cascade={CascadeType.ALL}, fetch=FetchType.LAZY, targetEntity=PartyRelationshipHibernateImpl.class)
-    @JoinColumn(name="party_id_to")
     private List<PartyRelationship> partyToRelationships;
 
     @OneToMany (mappedBy="partyFrom", cascade={CascadeType.ALL}, fetch=FetchType.LAZY, targetEntity=PartyRelationshipHibernateImpl.class)
-    @JoinColumn(name="party_id_from")
     private List<PartyRelationship> partyFromRelationships;
     
     @Version

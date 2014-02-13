@@ -21,6 +21,7 @@ package core.commonapp.server.dao.party;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.dao.party.PartyDao;
@@ -29,6 +30,7 @@ import core.data.model.contact.PartyContactMech;
 import core.data.model.party.Party;
 
 
+@Repository
 public class PartyDaoHibernateImpl extends BaseDaoJpaImpl<Party> implements PartyDao
 {
 

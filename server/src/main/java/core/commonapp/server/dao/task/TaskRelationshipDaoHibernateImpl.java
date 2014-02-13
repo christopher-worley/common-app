@@ -19,10 +19,13 @@
  */
 package core.commonapp.server.dao.task;
 
+import org.springframework.stereotype.Repository;
+
 import core.commonapp.client.dao.task.TaskRelationshipDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
 import core.data.model.task.TaskRelationship;
 
+@Repository
 public class TaskRelationshipDaoHibernateImpl extends BaseDaoJpaImpl<TaskRelationship> implements TaskRelationshipDao
 {
 
