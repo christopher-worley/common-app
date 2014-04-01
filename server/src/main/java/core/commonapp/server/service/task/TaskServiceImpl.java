@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.GenericDAO;
-import core.commonapp.client.dao.task.TaskDAO;
-import core.commonapp.client.dao.task.TaskTypeDAO;
+import core.commonapp.client.dao.task.TaskDao;
+import core.commonapp.client.dao.task.TaskTypeDao;
 import core.commonapp.client.service.task.TaskService;
 import core.data.cache.KeyedCache;
 import core.data.helper.task.TaskHelper;
@@ -24,13 +23,10 @@ public class TaskServiceImpl implements TaskService
 {
     
     @Autowired
-    private TaskTypeDAO taskTypeDAO;
+    private TaskTypeDao taskTypeDao;
     
     @Autowired
-    private TaskDAO taskDAO;
-    
-    @Autowired
-    private GenericDAO genericDAO;
+    private TaskDao taskDao;
     
     @Autowired
     private KeyedCache keyedCache;
@@ -38,16 +34,16 @@ public class TaskServiceImpl implements TaskService
     @Override
     public ServiceResult<List<TaskType>> findAllTaskTypes()
     {
-        return ServiceResult.success("Successfully retreived all TaskType objects.", taskTypeDAO.findAll());
+        return ServiceResult.success("Successfully retreived all TaskType objects.", taskTypeDao.findAll());
     }
 
     @Override
     public ServiceResult changeStatus(Integer taskId, String statusKey)
     {
-        Task task = taskDAO.findById(taskId);
+        Task task = taskDao.findById(taskId);
         TaskHelper helper = new TaskHelper(keyedCache, task);
         helper.changeTaskStatus(statusKey);
-        genericDAO.save(task);
+        taskDao.save(task);
         return ServiceResult.success("Changed task status.");
     }
 

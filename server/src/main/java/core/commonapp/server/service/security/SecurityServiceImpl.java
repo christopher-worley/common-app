@@ -24,7 +24,7 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import core.commonapp.client.dao.security.PermissionDAO;
+import core.commonapp.client.dao.security.PermissionDao;
 import core.commonapp.client.service.security.SecurityService;
 import core.commonapp.domain.InformationContext;
 import core.data.model.security.Permission;
@@ -39,8 +39,8 @@ public class SecurityServiceImpl implements SecurityService, ApplicationContextA
     @Override
     public ServiceResult<List<Permission>> findAllPermissions()
     {
-        PermissionDAO permissionDAO = (PermissionDAO) context.getBean("permissionDAO");
-        return ServiceResult.success("Successfully found permissions.", permissionDAO.findAll());
+        PermissionDao permissionDao = (PermissionDao) context.getBean("permissionDao");
+        return ServiceResult.success("Successfully found permissions.", permissionDao.findAll());
     }
 
 

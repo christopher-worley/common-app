@@ -19,13 +19,13 @@
  */
 package core.commonapp.client.service.contact;
 
-import core.data.hibernate.contact.EmailAddressHibernateImpl;
-import core.data.hibernate.contact.PhoneNumberHibernateImpl;
-import core.data.hibernate.contact.PostalAddressHibernateImpl;
 import core.data.model.contact.EmailAddress;
 import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
 import core.data.model.geo.Geo;
+import core.data.model.jpa.contact.EmailAddressJpaImpl;
+import core.data.model.jpa.contact.PhoneNumberJpaImpl;
+import core.data.model.jpa.contact.PostalAddressJpaImpl;
 import core.service.annotation.InformationBean;
 import core.service.annotation.Service;
 import core.service.result.ServiceResult;
@@ -41,7 +41,7 @@ public interface CreateContactMechService
      * @param emailAddress
      * @return
      */
-    public ServiceResult createEmailAddress(EmailAddressHibernateImpl emailAddress);
+    public ServiceResult createEmailAddress(EmailAddressJpaImpl emailAddress);
     
     /**
      * Persist email address from fields
@@ -59,7 +59,7 @@ public interface CreateContactMechService
      * @param phoneNumber
      * @return
      */
-    public ServiceResult createPhoneNumber(PhoneNumberHibernateImpl phoneNumber);
+    public ServiceResult createPhoneNumber(PhoneNumberJpaImpl phoneNumber);
     
     
     /**
@@ -79,7 +79,7 @@ public interface CreateContactMechService
      * @param postalAddress
      * @return
      */
-    public ServiceResult createPostalAddress(PostalAddressHibernateImpl postalAddress);
+    public ServiceResult createPostalAddress(PostalAddressJpaImpl postalAddress);
 
     /**
      * Persist PostalAddress

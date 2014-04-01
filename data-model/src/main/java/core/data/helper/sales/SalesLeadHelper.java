@@ -21,10 +21,10 @@ package core.data.helper.sales;
 
 import java.util.ArrayList;
 
-import core.data.hibernate.saleslead.SalesLeadContactMechHibernateImpl;
-import core.data.hibernate.saleslead.SalesLeadRoleHibernateImpl;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.ContactMechPurpose;
+import core.data.model.jpa.saleslead.SalesLeadContactMechJpaImpl;
+import core.data.model.jpa.saleslead.SalesLeadRoleJpaImpl;
 import core.data.model.party.Party;
 import core.data.model.party.RoleType;
 import core.data.model.saleslead.SalesLead;
@@ -59,7 +59,7 @@ public class SalesLeadHelper
      */
     public void addSalesLeadContactMech(ContactMech contactMech, ContactMechPurpose purpose)
     {
-        SalesLeadContactMech salesLeadContactMech = new SalesLeadContactMechHibernateImpl();
+        SalesLeadContactMech salesLeadContactMech = new SalesLeadContactMechJpaImpl();
         salesLeadContactMech.setContactMech(contactMech);
         salesLeadContactMech.setContactMechPurpose(purpose);
         addSalesLeadContactMech(salesLeadContactMech);
@@ -86,7 +86,7 @@ public class SalesLeadHelper
      */
     public void addSalesLeadRole(Party party, RoleType roleType)
     {
-        SalesLeadRole role = new SalesLeadRoleHibernateImpl();
+        SalesLeadRole role = new SalesLeadRoleJpaImpl();
         role.setParty(party);
         role.setRoleType(roleType);
         addSalesLeadRole(role);

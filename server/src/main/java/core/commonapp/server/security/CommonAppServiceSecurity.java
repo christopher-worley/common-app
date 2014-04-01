@@ -36,7 +36,7 @@ import core.data.model.security.Permission;
 import core.data.model.security.PermissionSecurityGroup;
 import core.data.model.security.SecurityGroup;
 import core.data.model.security.UserLogin;
-import core.service.Security;
+import core.service.annotation.Security;
 import core.service.exception.ServiceException;
 import core.service.exception.ServiceSecurityException;
 import core.service.result.ServiceResult;

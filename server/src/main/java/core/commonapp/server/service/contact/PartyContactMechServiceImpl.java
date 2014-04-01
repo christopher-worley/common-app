@@ -23,14 +23,14 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.contact.PartyContactMechDAO;
+import core.commonapp.client.dao.contact.PartyContactMechDao;
 import core.commonapp.client.service.contact.PartyContactMechService;
 import core.data.helper.contact.PartyContactMechHelper;
-import core.data.hibernate.contact.PartyContactMechHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.PartyContactMechJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
 import core.service.result.ServiceResult;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
@@ -47,7 +47,7 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
     private static Logger log = LogFactory.getLogger(PartyContactMechServiceImpl.class);
 
     /** generic dao */
-    private PartyContactMechDAO partyContactMechDAO;
+    private PartyContactMechDao partyContactMechDao;
 
     public PartyContactMechServiceImpl()
     {
@@ -56,10 +56,10 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
     }
     
     @Autowired
-    public PartyContactMechServiceImpl(PartyContactMechDAO partyContactMechDAO)
+    public PartyContactMechServiceImpl(PartyContactMechDao partyContactMechDao)
     {
         super();
-        this.partyContactMechDAO = partyContactMechDAO;
+        this.partyContactMechDao = partyContactMechDao;
     }
     
     @Override
@@ -68,7 +68,7 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
         log.debug("PartyContactMechServiceImpl.expirePartyContactMech({0})", partyContactMech);
         // TODO: Use service date
         partyContactMech.setThruDate(new Date());
-        partyContactMech = partyContactMechDAO.save(partyContactMech);
+        partyContactMech = partyContactMechDao.save(partyContactMech);
         log.debug("PartyContactMech expired at {0}.", partyContactMech.getThruDate());
         return ServiceResult.success("Successfully expired contact information.", partyContactMech);
     }
@@ -82,11 +82,11 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
         // expire old
 		partyContactMech.setThruDate(currentDate);
 		
-		partyContactMechDAO.save(partyContactMech);
+		partyContactMechDao.save(partyContactMech);
 		
 		// create new
 		// TODO: should implement clone?
-		PartyContactMech newPartyContactMech = new PartyContactMechHibernateImpl();
+		PartyContactMech newPartyContactMech = new PartyContactMechJpaImpl();
 		newPartyContactMech.setFromDate(currentDate);
 		newPartyContactMech.setParty(partyContactMech.getParty());
 		newPartyContactMech.setContactMech(contactMech);
@@ -95,7 +95,7 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
 			PartyContactMechHelper helper = new PartyContactMechHelper(newPartyContactMech);
 			for (PartyContactMechPurpose purpose : newPartyContactMech.getPartyContactMechPurposes())
 			{
-				PartyContactMechPurpose newPurpose = new PartyContactMechPurposeHibernateImpl();
+				PartyContactMechPurpose newPurpose = new PartyContactMechPurposeJpaImpl();
 				newPurpose.setPartyContactMech(newPartyContactMech);
 				newPurpose.setContactMechPurpose(purpose.getContactMechPurpose());
 				newPurpose.setFromDate(purpose.getFromDate());
@@ -103,7 +103,7 @@ public class PartyContactMechServiceImpl implements PartyContactMechService
 			}
 		}
 		
-		partyContactMechDAO.save(newPartyContactMech);
+		partyContactMechDao.save(newPartyContactMech);
 		
 		return ServiceResult.success("Updated party contact mech.", newPartyContactMech);
 	}

@@ -31,9 +31,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.client.dao.party.PartyDAO;
-import core.commonapp.client.dao.party.PartyRelationshipDAO;
-import core.commonapp.client.dao.party.PartyRoleDAO;
+import core.commonapp.client.dao.party.PartyDao;
+import core.commonapp.client.dao.party.PartyRelationshipDao;
+import core.commonapp.client.dao.party.PartyRoleDao;
 import core.commonapp.client.service.party.CreatePartyService;
 import core.data.model.party.Party;
 import core.data.model.party.PartyGroup;
@@ -60,13 +60,13 @@ public class TestCreateParty extends CommonAppServerTest
     private CreatePartyService createParty;
     
     @Autowired
-    private PartyDAO partyDAO;
+    private PartyDao partyDao;
     
     @Autowired
-    private PartyRoleDAO partyRoleDAO;
+    private PartyRoleDao partyRoleDao;
     
     @Autowired
-    private PartyRelationshipDAO partyRelationshipDAO;
+    private PartyRelationshipDao partyRelationshipDao;
     
     private PartyMock partyMock;
     
@@ -82,7 +82,7 @@ public class TestCreateParty extends CommonAppServerTest
      */
     private void checkParty(Party party)
     {
-        Party foundParty = partyDAO.findById(party.getPartyId());
+        Party foundParty = partyDao.findById(party.getPartyId());
         Assert.assertEquals(party.getPartyId(), foundParty.getId());
         Assert.assertEquals(party.getPartyType().getPartyTypeId(), foundParty.getPartyType().getPartyTypeId());
         // TODO: finish checking values
@@ -107,7 +107,7 @@ public class TestCreateParty extends CommonAppServerTest
         Assert.assertTrue(result.isSuccess());
         // party group
         PartyGroup partyGroup = result.getPayload();
-        PartyGroup foundParty = (PartyGroup) partyDAO.findById(partyGroup.getId());
+        PartyGroup foundParty = (PartyGroup) partyDao.findById(partyGroup.getId());
         Assert.assertEquals(partyGroup.getGroupName(), foundParty.getGroupName());
         
         //  party
@@ -129,7 +129,7 @@ public class TestCreateParty extends CommonAppServerTest
         Assert.assertTrue(result.isSuccess());
         // party relationship
         PartyRelationship partyRelationship = result.getPayload();
-        PartyRelationship foundRelationship = partyRelationshipDAO.findById(partyRelationship.getPartyRelationshipId());
+        PartyRelationship foundRelationship = partyRelationshipDao.findById(partyRelationship.getPartyRelationshipId());
         Assert.assertEquals(partyRelationship.getPartyRelationshipId(), partyRelationship.getPartyRelationshipId());
         Assert.assertEquals(partyRelationship.getPartyFrom().getPartyId(), partyRelationship.getPartyFrom().getId());
         Assert.assertEquals(partyRelationship.getPartyTo().getPartyId(), partyRelationship.getPartyTo().getId());
@@ -152,7 +152,7 @@ public class TestCreateParty extends CommonAppServerTest
         Assert.assertTrue(result.isSuccess());
         // party role
         PartyRole partyRole = result.getPayload();
-        PartyRole foundRole = partyRoleDAO.findById(partyRole.getPartyRoleId());
+        PartyRole foundRole = partyRoleDao.findById(partyRole.getPartyRoleId());
         Assert.assertEquals(partyRole.getPartyRoleId(), foundRole.getPartyRoleId());
         Assert.assertEquals(partyRole.getParty().getPartyId(), foundRole.getParty().getId());
         Assert.assertEquals(partyRole.getRoleType().getRoleTypeId(), foundRole.getRoleType().getId());
@@ -170,7 +170,7 @@ public class TestCreateParty extends CommonAppServerTest
 
         Assert.assertTrue(result.isSuccess());
         Person person = result.getPayload();
-        Person foundPerson = (Person) partyDAO.findById(person.getPartyId());
+        Person foundPerson = (Person) partyDao.findById(person.getPartyId());
         Assert.assertEquals(person.getFirstName(), foundPerson.getFirstName());
         Assert.assertEquals(person.getMiddleName(), foundPerson.getMiddleName());
         Assert.assertEquals(person.getLastName(), foundPerson.getLastName());

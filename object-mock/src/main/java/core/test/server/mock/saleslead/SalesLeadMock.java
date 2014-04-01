@@ -27,8 +27,8 @@ import core.data.cache.contact.ContactMechPurposeKey;
 import core.data.cache.party.RoleTypeKey;
 import core.data.helper.party.PartyHelper;
 import core.data.helper.sales.SalesLeadHelper;
-import core.data.hibernate.saleslead.SalesLeadHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
+import core.data.model.jpa.saleslead.SalesLeadJpaImpl;
 import core.data.model.party.PartyGroup;
 import core.data.model.party.Person;
 import core.data.model.party.RoleType;
@@ -60,10 +60,10 @@ public class SalesLeadMock extends AbstractObjectMock
      * 
      * @return
      */
-    public SalesLeadHibernateImpl generateSalesLead()
+    public SalesLeadJpaImpl generateSalesLead()
     {
         // create sales lead
-        SalesLeadHibernateImpl salesLead = new SalesLeadHibernateImpl();
+        SalesLeadJpaImpl salesLead = new SalesLeadJpaImpl();
         salesLead.setDescription(generateSalesLeadDescription());
         
         SalesLeadHelper helper = new SalesLeadHelper(salesLead);

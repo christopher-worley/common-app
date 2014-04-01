@@ -23,17 +23,17 @@ import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.contact.PartyContactMechDAO;
-import core.commonapp.client.dao.contact.PartyContactMechPurposeDAO;
+import core.commonapp.client.dao.contact.PartyContactMechDao;
+import core.commonapp.client.dao.contact.PartyContactMechPurposeDao;
 import core.commonapp.client.service.contact.CreatePartyContactMechService;
 import core.data.cache.KeyedCache;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.contact.PartyContactMechHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.PartyContactMechJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
 import core.data.model.party.Party;
 import core.service.result.ServiceResult;
 import core.tooling.logging.LogFactory;
@@ -45,10 +45,10 @@ public class CreatePartyContactMechServiceImpl implements CreatePartyContactMech
     private static Logger log = LogFactory.getLogger(CreatePartyContactMechServiceImpl.class);
 
     /** PartyContactMech data access object */
-    private PartyContactMechDAO partyContactMechDAO;
+    private PartyContactMechDao partyContactMechDao;
     
     /** PartyContactMechPurposeType data access object */
-    private PartyContactMechPurposeDAO partyContactMechPurposeDAO;
+    private PartyContactMechPurposeDao partyContactMechPurposeDao;
     
     /** data contstat factory */
     @Autowired
@@ -63,23 +63,23 @@ public class CreatePartyContactMechServiceImpl implements CreatePartyContactMech
     /**
      * Default constructor
      * 
-     * @param partyContactMechDAO
-     * @param partyContactMechPurposeDAO
+     * @param partyContactMechDao
+     * @param partyContactMechPurposeDao
      */
     @Autowired
-    public CreatePartyContactMechServiceImpl(PartyContactMechDAO partyContactMechDAO,
-            PartyContactMechPurposeDAO partyContactMechPurposeDAO)
+    public CreatePartyContactMechServiceImpl(PartyContactMechDao partyContactMechDao,
+            PartyContactMechPurposeDao partyContactMechPurposeDao)
     {
         super();
-        this.partyContactMechDAO = partyContactMechDAO;
-        this.partyContactMechPurposeDAO = partyContactMechPurposeDAO;
+        this.partyContactMechDao = partyContactMechDao;
+        this.partyContactMechPurposeDao = partyContactMechPurposeDao;
     }
 
     @Override
     public ServiceResult<PartyContactMech> createPartyContactMech(Party party, ContactMech contactMech, Timestamp fromDate)
     {
         log.debug("CreatePartyContactMechServiceImpl.createPartyContactMech({0}, {1}, {2})", party, contactMech, fromDate);
-        PartyContactMechHibernateImpl partyContactMech = new PartyContactMechHibernateImpl();
+        PartyContactMechJpaImpl partyContactMech = new PartyContactMechJpaImpl();
         partyContactMech.setParty(party);
         partyContactMech.setContactMech(contactMech);
         partyContactMech.setFromDate(fromDate);
@@ -88,7 +88,7 @@ public class CreatePartyContactMechServiceImpl implements CreatePartyContactMech
         PartyHelper<Party> helper = new PartyHelper<Party>(KeyedCache, party);
         helper.addPartyContactMech(partyContactMech);
 
-        partyContactMechDAO.save(partyContactMech);
+        partyContactMechDao.save(partyContactMech);
         log.debug("PartyContactMech created with id {0}: ", partyContactMech.getId());
         
         return new ServiceResult(partyContactMech);
@@ -99,12 +99,12 @@ public class CreatePartyContactMechServiceImpl implements CreatePartyContactMech
             ContactMechPurpose contactMechPurpose, Timestamp fromDate)
     {
         log.debug("CreatePartyContactMechServiceImpl.createPartyContactMechPurposeType({0}, {1}, {2})", partyContactMech, contactMechPurpose, fromDate);
-        PartyContactMechPurposeHibernateImpl partyContactMechPurpose = new PartyContactMechPurposeHibernateImpl();
+        PartyContactMechPurposeJpaImpl partyContactMechPurpose = new PartyContactMechPurposeJpaImpl();
         partyContactMechPurpose.setPartyContactMech(partyContactMech);
         partyContactMechPurpose.setContactMechPurpose(contactMechPurpose);
         partyContactMechPurpose.setFromDate(fromDate);
 
-        partyContactMechPurposeDAO.save(partyContactMechPurpose);
+        partyContactMechPurposeDao.save(partyContactMechPurpose);
         log.debug("PartyContactMechPurpose created with id {0}: ", partyContactMechPurpose.getId());
         
         return new ServiceResult(partyContactMechPurpose);

@@ -21,27 +21,27 @@ package core.commonapp.server.service.party;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.GenericDAO;
-import core.commonapp.client.dao.party.PartyTypeDAO;
-import core.commonapp.client.dao.party.RoleTypeDAO;
+import core.commonapp.client.dao.party.PartyDao;
+import core.commonapp.client.dao.party.PartyTypeDao;
+import core.commonapp.client.dao.party.RoleTypeDao;
 import core.commonapp.client.service.party.PartyService;
 import core.data.model.party.Party;
 import core.service.result.ServiceResult;
 
 public class PartyServiceImpl implements PartyService
 {
+	/** party dao */
+	@Autowired
+	private PartyDao partyDao;
     
     /** party type dao */
     @Autowired
-    private PartyTypeDAO partyTypeDAO;
+    private PartyTypeDao partyTypeDao;
 
     /** role type dao */
     @Autowired
-    private RoleTypeDAO roleTypeDAO;
-    
-    /** generic dao */
-    @Autowired
-    private GenericDAO genericDAO;
+    private RoleTypeDao roleTypeDao;
+
 
     /**
      * Default constructor
@@ -55,19 +55,19 @@ public class PartyServiceImpl implements PartyService
     @Override
     public ServiceResult findAllPartyTypes()
     {
-        return new ServiceResult(partyTypeDAO.findAll());
+        return new ServiceResult(partyTypeDao.findAll());
     }
 
     @Override
     public ServiceResult findAllRoleTypes()
     {
-        return new ServiceResult(roleTypeDAO.findAll());
+        return new ServiceResult(roleTypeDao.findAll());
     }
 
     @Override
     public ServiceResult<Party> updateParty(Party party)
     {
-        return ServiceResult.success("Successfully updated party.", genericDAO.save(party));
+        return ServiceResult.success("Successfully updated party.", partyDao.save(party));
     }
 
 }

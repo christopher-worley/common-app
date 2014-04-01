@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 import core.commonapp.cache.agreement.AgreementTypeCacheHandler;
 import core.commonapp.cache.agreement.ServiceIntervalCacheHandler;
@@ -50,6 +51,7 @@ import core.data.model.Keyable;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
+@Component
 public class KeyedCacheServerImpl implements KeyedCache, ApplicationContextAware
 {
     /** logger for this class */

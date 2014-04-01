@@ -32,14 +32,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.client.dao.contact.PartyContactMechDAO;
-import core.commonapp.client.dao.contact.PartyContactMechPurposeDAO;
+import core.commonapp.client.dao.contact.PartyContactMechDao;
+import core.commonapp.client.dao.contact.PartyContactMechPurposeDao;
 import core.commonapp.client.service.contact.CreatePartyContactMechService;
 import core.commonapp.server.service.CommonAppServiceInstantiator;
-import core.data.hibernate.contact.ContactMechHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
+import core.data.model.jpa.contact.ContactMechJpaImpl;
 import core.data.model.party.Party;
 import core.service.result.ServiceResult;
 import core.test.commonapp.server.CommonAppServerTest;
@@ -59,10 +59,10 @@ public class TestCreatePartyContactMech extends CommonAppServerTest
     
     /** party contact mech purpose dao */
     @Autowired
-    private PartyContactMechPurposeDAO partyContactMechPurposeDAO;
+    private PartyContactMechPurposeDao partyContactMechPurposeDao;
     
     @Autowired
-    private PartyContactMechDAO partyContactMechDAO;
+    private PartyContactMechDao partyContactMechDao;
 
     /** create timestamp for from date fields */
     private Timestamp fromDate = new Timestamp(System.currentTimeMillis());
@@ -98,13 +98,13 @@ public class TestCreatePartyContactMech extends CommonAppServerTest
     public void testCreatePartyContactMech() 
     {
         Party party = partyMock.generateParty();
-        ContactMechHibernateImpl contactMech = contactMechMock.generateContactMech();
+        ContactMechJpaImpl contactMech = contactMechMock.generateContactMech();
         
         ServiceResult<PartyContactMech> result = createPartyContactMech.createPartyContactMech(party, contactMech, fromDate);
 
         Assert.assertTrue(result.isSuccess());
         PartyContactMech partyContactMech = result.getPayload();
-        PartyContactMech foundPartyContactMech = partyContactMechDAO.findById(partyContactMech.getPartyContactMechId());
+        PartyContactMech foundPartyContactMech = partyContactMechDao.findById(partyContactMech.getPartyContactMechId());
         Assert.assertEquals(partyContactMech.getContactMech().getContactMechId(), foundPartyContactMech.getContactMech().getId());
         Assert.assertEquals(partyContactMech.getParty().getPartyId(), foundPartyContactMech.getParty().getId());
         Assert.assertEquals(partyContactMech.getPartyContactMechId(), foundPartyContactMech.getPartyContactMechId());
@@ -125,7 +125,7 @@ public class TestCreatePartyContactMech extends CommonAppServerTest
 
         Assert.assertTrue(result.isSuccess());
         PartyContactMechPurpose partyContactMechPurpose = result.getPayload();
-        PartyContactMechPurpose foundPurpose = partyContactMechPurposeDAO.findById(partyContactMechPurpose.getPartyContactMechPurposeId());
+        PartyContactMechPurpose foundPurpose = partyContactMechPurposeDao.findById(partyContactMechPurpose.getPartyContactMechPurposeId());
         Assert.assertEquals(partyContactMechPurpose.getPartyContactMechPurposeId(), foundPurpose.getPartyContactMechPurposeId());
         Assert.assertEquals(partyContactMechPurpose.getContactMechPurpose().getContactMechPurposeId(), foundPurpose.getContactMechPurpose().getId());
         Assert.assertEquals(partyContactMechPurpose.getPartyContactMech().getPartyContactMechId(), foundPurpose.getPartyContactMech().getId());

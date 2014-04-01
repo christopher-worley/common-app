@@ -21,7 +21,7 @@ package core.commonapp.server.service.payment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.payment.PaymentTypeDAO;
+import core.commonapp.client.dao.payment.PaymentTypeDao;
 import core.commonapp.client.service.payment.PaymentService;
 import core.service.result.ServiceResult;
 
@@ -29,7 +29,7 @@ public class PaymentServiceImpl implements PaymentService
 {
     
     /** payment type dao */
-    private PaymentTypeDAO paymentTypeDAO;
+    private PaymentTypeDao paymentTypeDao;
 
 
     public PaymentServiceImpl()
@@ -42,20 +42,20 @@ public class PaymentServiceImpl implements PaymentService
     /**
      * Default constructor
      * 
-     * @param paymentDAO
+     * @param paymentDao
      */
     @Autowired
-    public PaymentServiceImpl(PaymentTypeDAO paymentTypeDAO)
+    public PaymentServiceImpl(PaymentTypeDao paymentTypeDao)
     {
         super();
-        this.paymentTypeDAO = paymentTypeDAO;
+        this.paymentTypeDao = paymentTypeDao;
     }
     
     
     @Override
     public ServiceResult findAllPaymentTypes()
     {
-        return new ServiceResult(paymentTypeDAO.findAll());
+        return new ServiceResult(paymentTypeDao.findAll());
     }
 
 }

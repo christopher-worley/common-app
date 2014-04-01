@@ -31,10 +31,6 @@ import core.data.cache.contact.ContactMechPurposeKey;
 import core.data.cache.contact.ContactMechTypeKey;
 import core.data.cache.party.PartyTypeKey;
 import core.data.helper.contact.PartyContactMechHelper;
-import core.data.hibernate.contact.PartyContactMechHibernateImpl;
-import core.data.hibernate.contact.PartyContactMechPurposeHibernateImpl;
-import core.data.hibernate.party.PartyRelationshipHibernateImpl;
-import core.data.hibernate.party.PartyRoleHibernateImpl;
 import core.data.model.contact.ContactMech;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.ContactMechType;
@@ -43,6 +39,10 @@ import core.data.model.contact.PartyContactMech;
 import core.data.model.contact.PartyContactMechPurpose;
 import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
+import core.data.model.jpa.contact.PartyContactMechJpaImpl;
+import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
+import core.data.model.jpa.party.PartyRelationshipJpaImpl;
+import core.data.model.jpa.party.PartyRoleJpaImpl;
 import core.data.model.party.Party;
 import core.data.model.party.PartyGroup;
 import core.data.model.party.PartyRelationship;
@@ -99,14 +99,14 @@ public class PartyHelper<T extends Party>
      */
     public PartyContactMech addContactMech(ContactMech contactMech, ContactMechPurpose purpose)
     {
-        PartyContactMech partyContactMech = new PartyContactMechHibernateImpl();
+        PartyContactMech partyContactMech = new PartyContactMechJpaImpl();
         partyContactMech.setFromDate(new Timestamp(System.currentTimeMillis()));
         partyContactMech.setParty(party);
         partyContactMech.setContactMech(contactMech);
 
         if (purpose != null)
         {
-            PartyContactMechPurpose partyContactMechPurpose = new PartyContactMechPurposeHibernateImpl();
+            PartyContactMechPurpose partyContactMechPurpose = new PartyContactMechPurposeJpaImpl();
             partyContactMechPurpose.setPartyContactMech(partyContactMech);
             partyContactMechPurpose.setContactMechPurpose(purpose);
             partyContactMechPurpose.setFromDate(new Timestamp(System.currentTimeMillis()));
@@ -253,7 +253,7 @@ public class PartyHelper<T extends Party>
     @Deprecated
     public PartyRelationship addRelationshipFrom(Party partyFrom, RoleType roleTypeFrom, RoleType roleTypeTo)
     {
-        PartyRelationship relationship = new PartyRelationshipHibernateImpl();
+        PartyRelationship relationship = new PartyRelationshipJpaImpl();
         relationship.setFromDate(new Timestamp(System.currentTimeMillis()));
         relationship.setPartyFrom(partyFrom);
         relationship.setRoleTypeFrom(roleTypeFrom);
@@ -280,7 +280,7 @@ public class PartyHelper<T extends Party>
      */
     public PartyRelationship addRelationshipFrom(Party partyTo, RoleType roleTypeTo, RoleType roleTypeFrom, Date timestamp)
     {
-        PartyRelationship relationship = new PartyRelationshipHibernateImpl();
+        PartyRelationship relationship = new PartyRelationshipJpaImpl();
         relationship.setFromDate(timestamp);
         relationship.setPartyFrom(party);
         relationship.setRoleTypeFrom(roleTypeFrom);
@@ -322,7 +322,7 @@ public class PartyHelper<T extends Party>
      */
     public PartyRelationship addRelationshipTo(Party partyFrom, RoleType roleTypeFrom, RoleType roleTypeTo, Date timestamp)
     {
-        PartyRelationship relationship = new PartyRelationshipHibernateImpl();
+        PartyRelationship relationship = new PartyRelationshipJpaImpl();
         relationship.setFromDate(timestamp);
         relationship.setPartyFrom(partyFrom);
         relationship.setRoleTypeFrom(roleTypeFrom);
@@ -349,7 +349,7 @@ public class PartyHelper<T extends Party>
             List<PartyRole> partyRoles = new ArrayList<PartyRole>();
             party.setPartyRoles(partyRoles);
         }
-        PartyRole partyRole = new PartyRoleHibernateImpl();
+        PartyRole partyRole = new PartyRoleJpaImpl();
         partyRole.setParty(party);
         partyRole.setRoleType(roleType);
         partyRole.setFromDate(new Date(System.currentTimeMillis()));

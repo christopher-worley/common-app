@@ -21,8 +21,8 @@
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.geo.GeoDAO;
-import core.commonapp.client.dao.geo.GeoTypeDAO;
+import core.commonapp.client.dao.geo.GeoDao;
+import core.commonapp.client.dao.geo.GeoTypeDao;
 import core.commonapp.client.service.geo.GeoService;
 import core.data.model.geo.GeoType;
 import core.service.result.ServiceResult;
@@ -30,10 +30,10 @@ import core.service.result.ServiceResult;
 public class GeoServiceImpl implements GeoService
 {
     /** geo dao */
-    private GeoDAO geoDAO;
+    private GeoDao geoDao;
 
     /** geo type dao */
-    private GeoTypeDAO geoTypeDAO;
+    private GeoTypeDao geoTypeDao;
     
     public GeoServiceImpl()
     {
@@ -45,33 +45,33 @@ public class GeoServiceImpl implements GeoService
     /**
      * default constructor
      * 
-     * @param geoDAO
-     * @param geoTypeDAO
+     * @param geoDao
+     * @param geoTypeDao
      */
     @Autowired
-    public GeoServiceImpl(GeoDAO geoDAO, GeoTypeDAO geoTypeDAO)
+    public GeoServiceImpl(GeoDao geoDao, GeoTypeDao geoTypeDao)
     {
         super();
-        this.geoDAO = geoDAO;
-        this.geoTypeDAO = geoTypeDAO;
+        this.geoDao = geoDao;
+        this.geoTypeDao = geoTypeDao;
     }
 
     @Override
     public ServiceResult findAllGeos()
     {
-        return new ServiceResult(geoDAO.findAll());
+        return new ServiceResult(geoDao.findAll());
     }
 
     @Override
     public ServiceResult findAllGeoTypes()
     {
-        return new ServiceResult(geoTypeDAO.findAll());
+        return new ServiceResult(geoTypeDao.findAll());
     }
 
     @Override
     public ServiceResult findByGeoType(GeoType type)
     {
-        return new ServiceResult(geoDAO.findByGeoType(type));
+        return new ServiceResult(geoDao.findByGeoType(type));
     }
 
 }

@@ -37,16 +37,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.service.party.ContactPersonService;
 import core.commonapp.client.service.security.UserService;
+import core.commonapp.server.config.ServerConfiguration;
+import core.commonapp.server.service.CommonAppServiceInstantiator;
 import core.data.cache.KeyedCache;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.contact.PhoneNumberHibernateImpl;
 import core.data.model.contact.EmailAddress;
 import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
+import core.data.model.jpa.contact.PhoneNumberJpaImpl;
 import core.data.model.party.Person;
 import core.data.model.security.UserLogin;
 import core.service.result.ServiceResult;
 import core.test.commonapp.server.CommonAppServerTest;
+import core.test.server.mock.contact.ContactMechMock;
+import core.test.server.mock.party.PartyMock;
+import core.test.server.mock.security.UserLoginMock;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 import core.tooling.property.SystemPropertyFileReader;
@@ -60,7 +65,7 @@ import core.tooling.property.SystemPropertyFileReader;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/commonapp-server-test-context.xml")
+@ContextConfiguration(classes=ServerConfiguration.class)
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
 @Transactional
 public class TestContactPersonService extends CommonAppServerTest
@@ -207,7 +212,7 @@ public class TestContactPersonService extends CommonAppServerTest
         {
             PhoneNumber partyPhoneNumber = (PhoneNumber) iter.next();
             
-            phoneNumber = new PhoneNumberHibernateImpl();
+            phoneNumber = new PhoneNumberJpaImpl();
             phoneNumber.setContactNumber(partyPhoneNumber.getContactNumber());
             log.debug("*** Find contact person by phoneNumber: [contactNumber]");
             Set<Person> people = findBy(null, phoneNumber, null, null);
@@ -228,7 +233,7 @@ public class TestContactPersonService extends CommonAppServerTest
             Assert.assertTrue(foundPhoneNumber);
             
             
-            phoneNumber = new PhoneNumberHibernateImpl();
+            phoneNumber = new PhoneNumberJpaImpl();
             phoneNumber.setExtension(partyPhoneNumber.getExtension());
             phoneNumber.setAreaCode(partyPhoneNumber.getAreaCode());
             log.debug("*** Find contact person by phoneNumber: [areaCode] [extension]");

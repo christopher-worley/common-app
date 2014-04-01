@@ -27,8 +27,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.client.dao.party.OrganizationUnitDAO;
-import core.commonapp.client.dao.party.PartyGroupDAO;
+import core.commonapp.client.dao.party.OrganizationUnitDao;
+import core.commonapp.client.dao.party.PartyGroupDao;
 import core.commonapp.client.service.party.OrganizationUnitService;
 import core.commonapp.domain.InformationContext;
 import core.data.cache.KeyedCache;
@@ -44,10 +44,10 @@ public class OrganizationUnitServiceImpl implements OrganizationUnitService, App
     private InformationContext context;
     
     @Autowired
-    private OrganizationUnitDAO organizationUnitDAO;
+    private OrganizationUnitDao organizationUnitDao;
     
     @Autowired
-    private PartyGroupDAO partyGroupDAO;
+    private PartyGroupDao partyGroupDao;
     
     @Autowired
     private KeyedCache keyedCache;
@@ -78,7 +78,7 @@ public class OrganizationUnitServiceImpl implements OrganizationUnitService, App
         }
         
         // persist
-        partyGroup = partyGroupDAO.save(partyGroup);
+        partyGroup = partyGroupDao.save(partyGroup);
         
         return ServiceResult.success("Created organization unit successfully.", partyGroup);
     }
@@ -105,7 +105,7 @@ public class OrganizationUnitServiceImpl implements OrganizationUnitService, App
         // TODO: server service date
         unit.setFromDate(new Date());
         
-        unit = organizationUnitDAO.save(unit);
+        unit = organizationUnitDao.save(unit);
         
         return ServiceResult.success("Organization unit role created successfully.", unit);
     }

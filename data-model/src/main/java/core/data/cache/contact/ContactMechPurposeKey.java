@@ -19,10 +19,7 @@
  */
 package core.data.cache.contact;
 
-import core.service.annotation.InformationBean;
-import core.service.annotation.Service;
 
-@InformationBean (beanName="contactMechPurposeCache")
 public interface ContactMechPurposeKey
 {
     /** keys */

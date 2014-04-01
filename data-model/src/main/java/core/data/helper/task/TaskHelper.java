@@ -5,8 +5,8 @@ import java.util.Date;
 
 import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
-import core.data.hibernate.task.TaskRoleHibernateImpl;
-import core.data.hibernate.task.TaskStatusHibernateImpl;
+import core.data.model.jpa.task.TaskRoleJpaImpl;
+import core.data.model.jpa.task.TaskStatusJpaImpl;
 import core.data.model.party.Party;
 import core.data.model.party.RoleType;
 import core.data.model.status.Status;
@@ -37,7 +37,7 @@ public class TaskHelper
     public void addRole(Party party, RoleType roleType)
     {
         // TODO: do not specify impl
-        TaskRole taskRole = new TaskRoleHibernateImpl();
+        TaskRole taskRole = new TaskRoleJpaImpl();
         taskRole.setTask(task);
         taskRole.setParty(party);
         taskRole.setRoleType(roleType);
@@ -74,7 +74,7 @@ public class TaskHelper
             activeStatus.setThruDate(date);
         }
         // TODO: reference impl
-        TaskStatus newStatus = new TaskStatusHibernateImpl();
+        TaskStatus newStatus = new TaskStatusJpaImpl();
         newStatus.setTask(task);
         newStatus.setFromDate(date);
         newStatus.setStatus((Status)keyedCache.getCacheStore(Status.class).getObject(statusKey));

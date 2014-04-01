@@ -33,9 +33,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.cache.KeyedCacheServerImpl;
-import core.commonapp.client.dao.security.PermissionSecurityGroupDAO;
-import core.commonapp.client.dao.security.SecurityGroupDAO;
-import core.commonapp.client.dao.security.UserLoginDAO;
+import core.commonapp.client.dao.security.PermissionSecurityGroupDao;
+import core.commonapp.client.dao.security.SecurityGroupDao;
+import core.commonapp.client.dao.security.UserLoginDao;
 import core.commonapp.client.service.security.SecurityGroupService;
 import core.commonapp.client.service.security.UserService;
 import core.data.cache.KeyedCache;
@@ -71,14 +71,14 @@ public class TestSecurity extends CommonAppServerTest
     private SecurityGroupService securityGroupService;
     
     @Autowired
-    private UserLoginDAO userLoginDAO;
+    private UserLoginDao userLoginDao;
     
     @Autowired
-    private SecurityGroupDAO securityGroupDAO;
+    private SecurityGroupDao securityGroupDao;
     
     /** permission security group dao */
     @Autowired
-    private PermissionSecurityGroupDAO permissionSecurityGroupDAO;
+    private PermissionSecurityGroupDao permissionSecurityGroupDao;
     
     private PartyMock partyMock;
 
@@ -126,7 +126,7 @@ public class TestSecurity extends CommonAppServerTest
         ServiceResult<SecurityGroup> serviceResult = securityGroupService.createSecurityGroup(userLogin, description, code);
         SecurityGroup securityGroup = serviceResult.getPayload();
 
-        SecurityGroup foundSecurityGroup = securityGroupDAO.findById(securityGroup.getSecurityGroupId());
+        SecurityGroup foundSecurityGroup = securityGroupDao.findById(securityGroup.getSecurityGroupId());
         Assert.assertEquals(securityGroup.getCode(), foundSecurityGroup.getCode());
         Assert.assertEquals(securityGroup.getDescription(), foundSecurityGroup.getDescription());
         Assert.assertEquals(securityGroup.getKey(), foundSecurityGroup.getKey());
@@ -145,7 +145,7 @@ public class TestSecurity extends CommonAppServerTest
         UserLogin userLogin = (UserLogin) result.getPayload();
 
         log.debug("Created new user login: {0}", userLogin);
-        UserLogin foundUserLogin = userLoginDAO.findById(userLogin.getUserLoginId());
+        UserLogin foundUserLogin = userLoginDao.findById(userLogin.getUserLoginId());
         Assert.assertEquals(userLogin.getUserLoginId(), foundUserLogin.getUserLoginId());
         Assert.assertEquals(userLogin.getUsername(), foundUserLogin.getUsername());
         Assert.assertEquals(userLogin.getPassword(), foundUserLogin.getPassword());
@@ -181,7 +181,7 @@ public class TestSecurity extends CommonAppServerTest
         permissions.add(modifySecurityGroupPermission);
         securityGroupService.saveSecurityGroup(userLogin, securityGroup, permissions);
         
-        List<PermissionSecurityGroup> testList = permissionSecurityGroupDAO.findAllBySecurityGroup(securityGroup, true);
+        List<PermissionSecurityGroup> testList = permissionSecurityGroupDao.findAllBySecurityGroup(securityGroup, true);
         Assert.assertEquals(testList.size(), 3);
         Assert.assertTrue(testList.contains(createSecurityGroupPermission));
         Assert.assertTrue(testList.contains(createUserLoginPermission));
@@ -192,7 +192,7 @@ public class TestSecurity extends CommonAppServerTest
         permissions.add(modifyUserLoginPermission);
         securityGroupService.saveSecurityGroup(userLogin, securityGroup, permissions);
         
-        testList = permissionSecurityGroupDAO.findAllBySecurityGroup(securityGroup, true);
+        testList = permissionSecurityGroupDao.findAllBySecurityGroup(securityGroup, true);
         Assert.assertEquals(testList.size(), 4);
         Assert.assertFalse(testList.contains(createSecurityGroupPermission));
         Assert.assertFalse(testList.contains(createUserLoginPermission));

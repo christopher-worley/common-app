@@ -23,10 +23,7 @@ import java.util.Date;
 
 import core.data.model.DataObject;
 import core.data.model.Expirable;
-import core.service.annotation.InformationBean;
-import core.service.annotation.Service;
 
-@InformationBean(beanName="organizationUnitModel")
 public interface OrganizationUnit extends DataObject, Expirable
 {
 

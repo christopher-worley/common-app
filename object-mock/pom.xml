@@ -4,7 +4,12 @@
 	<groupId>com.coreinformationsolutions</groupId>
 	<artifactId>core-commonapp-object-mock</artifactId>
 	<name>object-mock</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>com.coreinformationsolutions</groupId>
+		<artifactId>core-commonapp</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<description></description>
 
 	<dependencies>
@@ -36,7 +41,7 @@
 				</configuration>
 			</plugin>
 
-			<!--  Assembly -->
+			<!--  Assembly - ->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -57,7 +62,8 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			-->
+			
 			<!--  surefire -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

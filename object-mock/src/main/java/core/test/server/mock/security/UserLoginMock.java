@@ -20,7 +20,7 @@
 package core.test.server.mock.security;
 
 import core.commonapp.domain.InformationContext;
-import core.data.hibernate.security.UserLoginHibernateImpl;
+import core.data.model.jpa.security.UserLoginJpaImpl;
 import core.data.model.party.Person;
 import core.data.model.security.UserLogin;
 import core.test.server.mock.AbstractObjectMock;
@@ -43,7 +43,7 @@ public class UserLoginMock extends AbstractObjectMock
     public UserLogin createUserLogin()
     {
         Person person = partyMock.generatePerson();
-        UserLogin userLogin = new UserLoginHibernateImpl();
+        UserLogin userLogin = new UserLoginJpaImpl();
         
         userLogin.setParty(person);
         String username = person.getFirstName().substring(0, 1).toLowerCase() + person.getLastName().toLowerCase();

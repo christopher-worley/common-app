@@ -24,8 +24,8 @@ import java.util.Random;
 
 import core.commonapp.domain.InformationContext;
 import core.data.cache.KeyedCacheStore;
-import core.data.hibernate.party.PartyGroupHibernateImpl;
-import core.data.hibernate.party.PersonHibernateImpl;
+import core.data.model.jpa.party.PartyGroupJpaImpl;
+import core.data.model.jpa.party.PersonJpaImpl;
 import core.data.model.party.Party;
 import core.data.model.party.PartyGroup;
 import core.data.model.party.PartyType;
@@ -82,7 +82,7 @@ public class PartyMock extends AbstractObjectMock
      */
     public PartyGroup generatePartyGroup()
     {
-        PartyGroup partyGroup = new PartyGroupHibernateImpl();
+        PartyGroup partyGroup = new PartyGroupJpaImpl();
         //partyGroup.setPartyType(partyTypeCache.getPartyGroupType());
         
         int random = new Random().nextInt(groupNames.length);
@@ -98,7 +98,7 @@ public class PartyMock extends AbstractObjectMock
      */
     public Person generatePerson()
     {
-        Person person = new PersonHibernateImpl();
+        Person person = new PersonJpaImpl();
         //person.setPartyType(partyTypeCache.getPersonType());
         PersonNameUtil nameUtil = PersonNameUtil.getInstance();
         

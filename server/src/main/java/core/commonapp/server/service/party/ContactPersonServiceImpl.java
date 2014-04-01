@@ -19,20 +19,15 @@
  */
 package core.commonapp.server.service.party;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.client.dao.GenericDAO;
-import core.commonapp.client.dao.party.PartyDAO;
-import core.commonapp.client.dao.party.PersonDAO;
+import core.commonapp.client.dao.party.PartyDao;
+import core.commonapp.client.dao.party.PersonDao;
 import core.commonapp.client.service.contact.CreateContactMechService;
 import core.commonapp.client.service.contact.CreatePartyContactMechService;
 import core.commonapp.client.service.party.ContactPersonService;
@@ -44,13 +39,13 @@ import core.data.cache.contact.ContactMechPurposeKey;
 import core.data.cache.contact.ContactMechTypeKey;
 import core.data.cache.party.RoleTypeKey;
 import core.data.helper.party.PartyHelper;
-import core.data.hibernate.contact.EmailAddressHibernateImpl;
-import core.data.hibernate.contact.PostalAddressHibernateImpl;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.contact.ContactMechType;
 import core.data.model.contact.EmailAddress;
 import core.data.model.contact.PhoneNumber;
 import core.data.model.contact.PostalAddress;
+import core.data.model.jpa.contact.EmailAddressJpaImpl;
+import core.data.model.jpa.contact.PostalAddressJpaImpl;
 import core.data.model.party.Person;
 import core.data.model.party.RoleType;
 import core.data.model.security.UserLogin;
@@ -59,14 +54,12 @@ import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
 @ServiceImpl(clientInterface = ContactPersonService.class)
+@Service
 public class ContactPersonServiceImpl implements ContactPersonService
 {
     /** logger for this class */
     private Logger log = LogFactory.getLogger(ContactPersonServiceImpl.class);
 
-    /** hibernate template */
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
     /** create party service */
     @Autowired
     private CreatePartyService createPartyService;
@@ -79,15 +72,12 @@ public class ContactPersonServiceImpl implements ContactPersonService
     /** data Cache factory */
     @Autowired
     private KeyedCache keyedCache;
-    /** generic dao */
-    @Autowired
-    private GenericDAO genericDAO;
     /** party dao */
     @Autowired
-    private PartyDAO partyDAO;
+    private PartyDao partyDao;
     /** person dao */
     @Autowired
-    private PersonDAO personDAO;
+    private PersonDao personDao;
 
     public ContactPersonServiceImpl()
     {
@@ -145,60 +135,49 @@ public class ContactPersonServiceImpl implements ContactPersonService
     public ServiceResult<Person> createContactPerson(final Person person, final PostalAddress postalAddress,
             final EmailAddress emailAddress, final List<PhoneNumber> phoneNumbers, final UserLogin userLogin)
     {
-        // relationship to user
-        return (ServiceResult<Person>) hibernateTemplate.execute(new HibernateCallback()
+        // ???: will this work?  i removed the hibernate template after spring upgrade.
+        UserLogin securityUserLogin = (UserLogin) userLogin;
+
+        PartyHelper<Person> helper = new PartyHelper<Person>(keyedCache, person);
+        helper.addRelationshipFrom(securityUserLogin.getParty(), getRoleTypeCache().getObject(RoleTypeKey.KEY_CONTACT_PERSON),
+                getRoleTypeCache().getObject(RoleTypeKey.KEY_SALES_PERSON));
+
+        // postal address
+        // TODO: Hibernate specific code move it to a helper
+        if (postalAddress != null && !((PostalAddressJpaImpl) postalAddress).isEmpty())
         {
+            postalAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_POSTAL_ADDRESS));
+            helper.addPostalAddress(postalAddress, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
+        }
 
-            @Override
-            public Object doInHibernate(Session session) throws HibernateException, SQLException
+        // create email address
+        if (emailAddress != null && !((EmailAddressJpaImpl) emailAddress).isEmpty())
+        {
+            helper.addEmailAddress(emailAddress, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
+            emailAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_EMAIL_ADDRESS));
+        }
+
+        // create phone numbers
+        if (phoneNumbers != null)
+        {
+            for (PhoneNumber phoneNumber : phoneNumbers)
             {
-                // TODO: Research and see if this is the best way to avoid the
-                // two session problems
-                UserLogin securityUserLogin = (UserLogin) session.load(userLogin.getClass(), userLogin.getId());
-
-                PartyHelper<Person> helper = new PartyHelper<Person>(keyedCache, person);
-                helper.addRelationshipFrom(securityUserLogin.getParty(), getRoleTypeCache().getObject(RoleTypeKey.KEY_CONTACT_PERSON),
-                        getRoleTypeCache().getObject(RoleTypeKey.KEY_SALES_PERSON));
-
-                // postal address
-                // TODO: Hibernate specific code move it to a helper
-                if (postalAddress != null && !((PostalAddressHibernateImpl) postalAddress).isEmpty())
-                {
-                    postalAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_POSTAL_ADDRESS));
-                    helper.addPostalAddress(postalAddress, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
-                }
-
-                // create email address
-                if (emailAddress != null && !((EmailAddressHibernateImpl) emailAddress).isEmpty())
-                {
-                    helper.addEmailAddress(emailAddress, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
-                    emailAddress.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_EMAIL_ADDRESS));
-                }
-
-                // create phone numbers
-                if (phoneNumbers != null)
-                {
-                    for (PhoneNumber phoneNumber : phoneNumbers)
-                    {
-                        phoneNumber.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_PHONE_NUMBER));
-                        helper.addPhoneNumber(phoneNumber, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
-                    }
-                }
-
-                // create new Person
-                ServiceResult result = createPartyService.createPerson(helper.getParty(), new RoleType[]
-                { getRoleTypeCache().getObject(RoleTypeKey.KEY_CONTACT_PERSON) });
-                if (result.isError())
-                {
-                    return ServiceResult.error("Failed to create person with contact role: " + result.getMessage());
-                }
-                Person newPerson = (Person) result.getPayload();
-
-                // find party and return success
-                return ServiceResult.success("", newPerson);
+                phoneNumber.setContactMechType(getContactMechTypeCache().getObject(ContactMechTypeKey.KEY_PHONE_NUMBER));
+                helper.addPhoneNumber(phoneNumber, getContactMechPurposeCache().getObject(ContactMechPurposeKey.KEY_PRIMARY));
             }
+        }
 
-        });
+        // create new Person
+        ServiceResult result = createPartyService.createPerson(helper.getParty(), new RoleType[]
+        { getRoleTypeCache().getObject(RoleTypeKey.KEY_CONTACT_PERSON) });
+        if (result.isError())
+        {
+            return ServiceResult.error("Failed to create person with contact role: " + result.getMessage());
+        }
+        Person newPerson = (Person) result.getPayload();
+
+        // find party and return success
+        return ServiceResult.success("", newPerson);
     }
 
     @Override
@@ -206,7 +185,7 @@ public class ContactPersonServiceImpl implements ContactPersonService
     {
         log.debug("CotnactPersonServiceImpl.findAllContactPeople({0})", partyId);
         
-        List<Person> people = personDAO.findAllContactPeople(partyId);
+        List<Person> people = personDao.findAllContactPeople(partyId);
         
         return ServiceResult.success("Successfully found all contact people for party.", people);
     }
@@ -216,7 +195,7 @@ public class ContactPersonServiceImpl implements ContactPersonService
     {
         log.debug("CotnactPersonServiceImpl.findContactPerson({0})", partyId);
 
-        Person person = personDAO.findById(partyId, true, true, false, false);
+        Person person = personDao.findById(partyId, true, true, false, false);
         return ServiceResult.success("Successfully found person.", person);
     }
 
@@ -230,7 +209,7 @@ public class ContactPersonServiceImpl implements ContactPersonService
     {
         log.debug("CotnactPersonServiceImpl.findContactPerson({0}, {1}, {2}, {3}, {4})", partyName, phoneNumber,
                 postalAddress, emailAddress, userLogin);
-        ServiceResult result = ServiceResult.success("", personDAO.findContactPerson(partyName, phoneNumber,
+        ServiceResult result = ServiceResult.success("", personDao.findContactPerson(partyName, phoneNumber,
                 postalAddress, emailAddress, userLogin));
         return result;
     }

@@ -21,8 +21,8 @@ package core.commonapp.server.service.agreement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import core.commonapp.client.dao.agreement.AgreementTypeDAO;
-import core.commonapp.client.dao.agreement.ServiceIntervalDAO;
+import core.commonapp.client.dao.agreement.AgreementTypeDao;
+import core.commonapp.client.dao.agreement.ServiceIntervalDao;
 import core.commonapp.client.service.agreement.AgreementService;
 import core.service.result.ServiceResult;
 
@@ -30,10 +30,10 @@ public class AgreementServiceImpl implements AgreementService
 {
 
     /** agreement type dao */
-    private AgreementTypeDAO agreementTypeDAO;
+    private AgreementTypeDao agreementTypeDao;
 
     /** service interval dao */
-    private ServiceIntervalDAO serviceIntervalDAO;
+    private ServiceIntervalDao serviceIntervalDao;
     
     public AgreementServiceImpl()
     {
@@ -45,14 +45,14 @@ public class AgreementServiceImpl implements AgreementService
     /**
      * Default constructor
      * 
-     * @param agreementTypeDAO
+     * @param agreementTypeDao
      */
     @Autowired(required=true)
-    public AgreementServiceImpl(AgreementTypeDAO agreementTypeDAO, ServiceIntervalDAO serviceIntervalDAO)
+    public AgreementServiceImpl(AgreementTypeDao agreementTypeDao, ServiceIntervalDao serviceIntervalDao)
     {
         super();
-        this.agreementTypeDAO = agreementTypeDAO;
-        this.serviceIntervalDAO = serviceIntervalDAO;
+        this.agreementTypeDao = agreementTypeDao;
+        this.serviceIntervalDao = serviceIntervalDao;
     }
 
 
@@ -60,7 +60,7 @@ public class AgreementServiceImpl implements AgreementService
     @Override
     public ServiceResult findAllAgreementTypes()
     {
-        return new ServiceResult(agreementTypeDAO.findAll());
+        return new ServiceResult(agreementTypeDao.findAll());
     }
 
 
@@ -68,7 +68,7 @@ public class AgreementServiceImpl implements AgreementService
     @Override
     public ServiceResult findAllServiceIntervals()
     {
-        return new ServiceResult(serviceIntervalDAO.findAll());
+        return new ServiceResult(serviceIntervalDao.findAll());
     }
 
 }

@@ -31,7 +31,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.cache.KeyedCacheServerImpl;
-import core.commonapp.client.dao.contact.ContactMechDAO;
+import core.commonapp.client.dao.contact.ContactMechDao;
 import core.commonapp.client.service.contact.CreateContactMechService;
 import core.data.cache.KeyedCacheStore;
 import core.data.cache.geo.GeoKey;
@@ -55,7 +55,7 @@ public class TestCreateContactMech extends CommonAppServerTest
     private CreateContactMechService createContactMech;
     
     @Autowired
-    private ContactMechDAO contactMechDAO;
+    private ContactMechDao contactMechDao;
 
     /**
      * Default constructor
@@ -72,7 +72,7 @@ public class TestCreateContactMech extends CommonAppServerTest
      */
     private void checkContactMech(ContactMech contactMech)
     {
-        ContactMech foundContactMech = contactMechDAO.findById(contactMech.getContactMechId());
+        ContactMech foundContactMech = contactMechDao.findById(contactMech.getContactMechId());
         Assert.assertEquals(contactMech.getContactMechId(), foundContactMech.getContactMechId());
         Assert.assertEquals(contactMech.getContactMechType().getContactMechTypeId(), foundContactMech.getContactMechType().getId());
     }
@@ -93,7 +93,7 @@ public class TestCreateContactMech extends CommonAppServerTest
         
         Assert.assertTrue(result.isSuccess());
         EmailAddress emailAddress = result.getPayload();
-        EmailAddress foundEmailAddress = (EmailAddress) contactMechDAO.findById(emailAddress.getContactMechId());
+        EmailAddress foundEmailAddress = (EmailAddress) contactMechDao.findById(emailAddress.getContactMechId());
         // email
         Assert.assertEquals(emailAddress.getEmailAddress(), foundEmailAddress.getEmailAddress());
         Assert.assertEquals(emailAddress.getContactMechId(), foundEmailAddress.getContactMechId());
@@ -112,7 +112,7 @@ public class TestCreateContactMech extends CommonAppServerTest
         
         Assert.assertTrue(result.isSuccess());
         PhoneNumber phoneNumber = result.getPayload();
-        PhoneNumber foundNumber = (PhoneNumber) contactMechDAO.findById(phoneNumber.getContactMechId());
+        PhoneNumber foundNumber = (PhoneNumber) contactMechDao.findById(phoneNumber.getContactMechId());
         // phone number
         Assert.assertEquals(phoneNumber.getAreaCode(), foundNumber.getAreaCode());
         Assert.assertEquals(phoneNumber.getContactNumber(), foundNumber.getContactNumber());
@@ -134,7 +134,7 @@ public class TestCreateContactMech extends CommonAppServerTest
         
         Assert.assertTrue(result.isSuccess());
         PostalAddress postalAddress = result.getPayload();
-        PostalAddress foundAddress = (PostalAddress) contactMechDAO.findById(postalAddress.getContactMechId());
+        PostalAddress foundAddress = (PostalAddress) contactMechDao.findById(postalAddress.getContactMechId());
         // phone number
         Assert.assertEquals(postalAddress.getAddressLine1(), foundAddress.getAddressLine1());
         Assert.assertEquals(postalAddress.getAddressLine2(), foundAddress.getAddressLine2());
