@@ -20,6 +20,7 @@
  package core.commonapp.server.service.geo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.geo.GeoDao;
 import core.commonapp.client.dao.geo.GeoTypeDao;
@@ -27,6 +28,7 @@ import core.commonapp.client.service.geo.GeoService;
 import core.data.model.geo.GeoType;
 import core.service.result.ServiceResult;
 
+@Service
 public class GeoServiceImpl implements GeoService
 {
     /** geo dao */

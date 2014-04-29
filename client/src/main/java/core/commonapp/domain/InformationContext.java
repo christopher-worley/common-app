@@ -42,7 +42,8 @@ public class InformationContext
     {
         super();
         this.applicationContext = applicationContext;
-        this.serviceFactory = (ServiceFactory) applicationContext.getBean("serviceFactory");
+        // ????: commented out after upgrade refactor
+        //this.serviceFactory = (ServiceFactory) applicationContext.getBean("serviceFactory");
     }
     
     /**

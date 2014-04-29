@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.security;
+package core.commonapp.server.cache.contact;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.security.SecurityService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.contact.ContactMechService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.security.Permission;
+import core.data.model.contact.ContactMechType;
 import core.service.result.ServiceResult;
 
-public class PermissionCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class ContactMechTypeCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private ContactMechService contactMechService;
+
+	@Override
     public Class getDataClass()
     {
-        return Permission.class;
+        return ContactMechType.class;
     }
 
     @Override
@@ -47,12 +53,12 @@ public class PermissionCacheHandler extends AbstractCacheHandler implements Keye
     @Override
     public List getObjects()
     {
-        SecurityService securityService = (SecurityService) getInformationContext().getBean("securityService");
-        ServiceResult<List<Permission>> result = securityService.findAllPermissions();
-        if (!result.isSuccess()) {
-            throw new KeyedCacheException("Failed to load permission objects.");
+        ServiceResult result = contactMechService.findAllContactMechTypes();
+        if (result.isSuccess()) 
+        {
+            return (List) result.getPayload();
         }
-        return result.getPayload();
+        throw new KeyedCacheException("Failed to successfully get objects for archive: " + result.getMessage());
     }
 
 }

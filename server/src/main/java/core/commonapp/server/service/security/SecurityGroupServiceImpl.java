@@ -27,6 +27,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.security.PermissionSecurityGroupDao;
 import core.commonapp.client.dao.security.SecurityGroupDao;
@@ -43,6 +44,7 @@ import core.service.annotation.Security;
 import core.service.exception.ServiceException;
 import core.service.result.ServiceResult;
 
+@Service
 public class SecurityGroupServiceImpl implements SecurityGroupService, ApplicationContextAware
 {
 

@@ -23,10 +23,10 @@ import org.springframework.stereotype.Repository;
 
 import core.commonapp.client.dao.party.PartyTypeDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
-import core.data.model.party.PartyType;
+import core.data.model.jpa.party.PartyTypeJpaImpl;
 
 @Repository
-public class PartyTypeDaoHibernateImpl extends BaseDaoJpaImpl<PartyType> implements PartyTypeDao
+public class PartyTypeDaoHibernateImpl extends BaseDaoJpaImpl<PartyTypeJpaImpl> implements PartyTypeDao
 {
 
     public PartyTypeDaoHibernateImpl()
@@ -36,8 +36,8 @@ public class PartyTypeDaoHibernateImpl extends BaseDaoJpaImpl<PartyType> impleme
     }
 
 	@Override
-	public Class<PartyType> getPersistClass() {
-		return PartyType.class;
+	public Class<PartyTypeJpaImpl> getPersistClass() {
+		return PartyTypeJpaImpl.class;
 	}
 
 

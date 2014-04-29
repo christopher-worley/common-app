@@ -20,12 +20,14 @@
 package core.commonapp.server.service.agreement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.agreement.AgreementTypeDao;
 import core.commonapp.client.dao.agreement.ServiceIntervalDao;
 import core.commonapp.client.service.agreement.AgreementService;
 import core.service.result.ServiceResult;
 
+@Service
 public class AgreementServiceImpl implements AgreementService
 {
 

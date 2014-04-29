@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.agreement;
+package core.commonapp.server.cache.product;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.agreement.AgreementService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.product.ProductService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.agreement.ServiceInterval;
+import core.data.model.product.ProductType;
 import core.service.result.ServiceResult;
 
-public class ServiceIntervalCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class ProductTypeCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private ProductService productService;
+
+	@Override
     public Class getDataClass()
     {
-        return ServiceInterval.class;
+        return ProductType.class;
     }
 
     @Override
@@ -47,9 +53,8 @@ public class ServiceIntervalCacheHandler extends AbstractCacheHandler implements
     @Override
     public List getObjects()
     {
-        AgreementService agreementService = (AgreementService) getInformationContext().createService(AgreementService.class);
-        ServiceResult result = agreementService.findAllServiceIntervals();
-        if (result.isSuccess()) 
+        ServiceResult result = productService.findAllProductTypes();
+        if (result.isSuccess())
         {
             return (List) result.getPayload();
         }

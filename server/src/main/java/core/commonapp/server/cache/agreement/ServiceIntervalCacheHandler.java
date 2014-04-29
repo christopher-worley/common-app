@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.party;
+package core.commonapp.server.cache.agreement;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.party.PartyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.agreement.AgreementService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.party.RoleType;
+import core.data.model.agreement.ServiceInterval;
 import core.service.result.ServiceResult;
 
-public class RoleTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class ServiceIntervalCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private AgreementService agreementService;
+
+	@Override
     public Class getDataClass()
     {
-        return RoleType.class;
+        return ServiceInterval.class;
     }
 
     @Override
@@ -47,13 +53,11 @@ public class RoleTypeCacheHandler extends AbstractCacheHandler implements KeyedC
     @Override
     public List getObjects()
     {
-        PartyService partyService = (PartyService) getInformationContext().createService(PartyService.class);
-        ServiceResult result = partyService.findAllRoleTypes();
-        if (result.isSuccess())
+        ServiceResult result = agreementService.findAllServiceIntervals();
+        if (result.isSuccess()) 
         {
             return (List) result.getPayload();
         }
-        
         throw new KeyedCacheException("Failed to successfully get objects for archive: " + result.getMessage());
     }
 

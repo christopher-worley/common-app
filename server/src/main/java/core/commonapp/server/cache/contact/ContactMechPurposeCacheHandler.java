@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.payment;
+package core.commonapp.server.cache.contact;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.payment.PaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.contact.ContactMechService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.payment.PaymentType;
+import core.data.model.contact.ContactMechPurpose;
 import core.service.result.ServiceResult;
 
-public class PaymentTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class ContactMechPurposeCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private ContactMechService contactMechService;
+
+	@Override
     public Class getDataClass()
     {
-        return PaymentType.class;
+        return ContactMechPurpose.class;
     }
 
     @Override
@@ -47,13 +53,11 @@ public class PaymentTypeCacheHandler extends AbstractCacheHandler implements Key
     @Override
     public List getObjects()
     {
-        PaymentService partyService = (PaymentService) getInformationContext().createService(PaymentService.class);
-        ServiceResult result = partyService.findAllPaymentTypes();
-        if (result.isSuccess())
+        ServiceResult result = contactMechService.findAllContactMechPurposes();
+        if (result.isSuccess()) 
         {
             return (List) result.getPayload();
         }
-        
         throw new KeyedCacheException("Failed to successfully get objects for archive: " + result.getMessage());
     }
 

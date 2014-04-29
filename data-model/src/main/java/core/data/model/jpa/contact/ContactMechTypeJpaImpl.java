@@ -26,6 +26,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import core.data.model.contact.ContactMechType;
 import core.data.model.util.DataUtil;
 
@@ -37,6 +40,7 @@ import core.data.model.util.DataUtil;
  */
 @Entity
 @Table(name = "contact_mech_type")
+@Component("contactMechTypeModel")
 public class ContactMechTypeJpaImpl implements ContactMechType
 {
     

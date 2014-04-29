@@ -25,6 +25,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import core.commonapp.client.dao.party.OrganizationUnitDao;
@@ -39,6 +40,7 @@ import core.data.model.party.RoleType;
 import core.data.model.security.UserLogin;
 import core.service.result.ServiceResult;
 
+@Service
 public class OrganizationUnitServiceImpl implements OrganizationUnitService, ApplicationContextAware
 {
     private InformationContext context;

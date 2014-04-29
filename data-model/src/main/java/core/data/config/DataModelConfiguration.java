@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@ComponentScan({ "core.data.hibernate" })
+@ComponentScan({ "core.data.model.jpa" })
 public class DataModelConfiguration {
 
 }

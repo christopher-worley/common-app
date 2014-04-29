@@ -20,11 +20,13 @@
 package core.commonapp.server.service.billing;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.billing.BillingAccountTypeDao;
 import core.commonapp.client.service.billing.BillingAccountService;
 import core.service.result.ServiceResult;
 
+@Service
 public class BillingAccountServiceImpl implements BillingAccountService
 {
     

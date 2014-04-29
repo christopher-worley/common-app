@@ -28,12 +28,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import core.data.model.DataObject;
 import core.data.model.contact.ContactMechPurpose;
 import core.data.model.util.DataUtil;
 
 @Entity
 @Table(name = "contact_mech_purpose")
+@Component("contactMechPurposeModel")
 public class ContactMechPurposeJpaImpl implements DataObject, ContactMechPurpose, Serializable
 {
     

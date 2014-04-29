@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.contact.ContactMechPurposeDao;
 import core.commonapp.client.dao.contact.ContactMechTypeDao;
@@ -39,6 +40,7 @@ import core.data.model.jpa.contact.PartyContactMechJpaImpl;
 import core.data.model.jpa.contact.PartyContactMechPurposeJpaImpl;
 import core.service.result.ServiceResult;
 
+@Service
 public class ContactMechServiceImpl implements ContactMechService
 {
     /** contact mech purpose dao */

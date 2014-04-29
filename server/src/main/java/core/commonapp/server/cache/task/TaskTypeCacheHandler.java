@@ -1,8 +1,10 @@
-package core.commonapp.cache.task;
+package core.commonapp.server.cache.task;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import core.commonapp.client.service.task.TaskService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
@@ -10,10 +12,14 @@ import core.data.model.Keyable;
 import core.data.model.task.TaskType;
 import core.service.result.ServiceResult;
 
-public class TaskTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class TaskTypeCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private TaskService taskService;
+
+	@Override
     public Class getDataClass()
     {
         return TaskType.class;
@@ -28,7 +34,6 @@ public class TaskTypeCacheHandler extends AbstractCacheHandler implements KeyedC
     @Override
     public List getObjects()
     {
-        TaskService taskService = (TaskService) getInformationContext().createService(TaskService.class);
         ServiceResult result = taskService.findAllTaskTypes();
         if (!result.isSuccess())
         {

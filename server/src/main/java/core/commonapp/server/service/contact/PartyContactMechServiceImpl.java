@@ -22,6 +22,7 @@ package core.commonapp.server.service.contact;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.contact.PartyContactMechDao;
 import core.commonapp.client.service.contact.PartyContactMechService;
@@ -41,6 +42,7 @@ import core.tooling.logging.Logger;
  * @author worleyc
  *
  */
+@Service
 public class PartyContactMechServiceImpl implements PartyContactMechService
 {
     /** logger for this class */

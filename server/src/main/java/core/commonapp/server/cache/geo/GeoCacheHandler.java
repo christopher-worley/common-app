@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.geo;
+package core.commonapp.server.cache.geo;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import core.commonapp.client.service.geo.GeoService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.geo.GeoType;
+import core.data.model.geo.Geo;
 import core.service.result.ServiceResult;
 
-public class GeoTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class GeoCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private GeoService geoService;
+
+	@Override
     public Class getDataClass()
     {
-        return GeoType.class;
+        return Geo.class;
     }
 
     @Override
@@ -47,8 +53,7 @@ public class GeoTypeCacheHandler extends AbstractCacheHandler implements KeyedCa
     @Override
     public List getObjects()
     {
-        GeoService geoService = (GeoService) getInformationContext().createService(GeoService.class);
-        ServiceResult result = geoService.findAllGeoTypes();
+        ServiceResult result = geoService.findAllGeos();
         if (result.isSuccess())
         {
             return (List) result.getPayload();

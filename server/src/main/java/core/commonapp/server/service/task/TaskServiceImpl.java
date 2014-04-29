@@ -3,6 +3,7 @@ package core.commonapp.server.service.task;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.task.TaskDao;
 import core.commonapp.client.dao.task.TaskTypeDao;
@@ -19,6 +20,7 @@ import core.service.result.ServiceResult;
  * @author worleyc
  *
  */
+@Service
 public class TaskServiceImpl implements TaskService
 {
     

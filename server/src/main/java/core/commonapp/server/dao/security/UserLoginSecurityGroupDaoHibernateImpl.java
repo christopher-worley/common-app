@@ -25,14 +25,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import core.commonapp.client.dao.security.UserLoginSecurityGroupDao;
 import core.commonapp.server.dao.BaseDaoJpaImpl;
-import core.data.model.jpa.security.UserLoginSecurityGroupJpaImpl;
-import core.data.model.security.PermissionSecurityGroup;
 import core.data.model.security.SecurityGroup;
 import core.data.model.security.UserLogin;
 import core.data.model.security.UserLoginSecurityGroup;

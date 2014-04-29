@@ -30,9 +30,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.cache.KeyedCacheServerImpl;
 import core.commonapp.client.dao.contact.ContactMechDao;
 import core.commonapp.client.service.contact.CreateContactMechService;
+import core.commonapp.server.cache.KeyedCacheServerImpl;
+import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
 import core.data.cache.geo.GeoKey;
 import core.data.model.contact.ContactMech;
@@ -56,6 +57,9 @@ public class TestCreateContactMech extends CommonAppServerTest
     
     @Autowired
     private ContactMechDao contactMechDao;
+    
+    @Autowired
+    private KeyedCache keyedCache;
 
     /**
      * Default constructor
@@ -129,7 +133,7 @@ public class TestCreateContactMech extends CommonAppServerTest
     @Test
     public void testCreatePostalAddress()
     {
-        KeyedCacheStore<Geo> store = KeyedCacheServerImpl.getInstance().getCacheStore(Geo.class); 
+        KeyedCacheStore<Geo> store = keyedCache.getCacheStore(Geo.class); 
         ServiceResult<PostalAddress> result = createContactMech.createPostalAddress("address1", "address2", "city", "11134", store.getObject(GeoKey.KEY_COLORADO), store.getObject(GeoKey.KEY_UNITED_STATES));
         
         Assert.assertTrue(result.isSuccess());

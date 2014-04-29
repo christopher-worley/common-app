@@ -32,12 +32,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import core.commonapp.cache.KeyedCacheServerImpl;
 import core.commonapp.client.dao.security.PermissionSecurityGroupDao;
 import core.commonapp.client.dao.security.SecurityGroupDao;
 import core.commonapp.client.dao.security.UserLoginDao;
 import core.commonapp.client.service.security.SecurityGroupService;
 import core.commonapp.client.service.security.UserService;
+import core.commonapp.server.cache.KeyedCacheServerImpl;
 import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
 import core.data.cache.security.PermissionKey;
@@ -79,6 +79,9 @@ public class TestSecurity extends CommonAppServerTest
     /** permission security group dao */
     @Autowired
     private PermissionSecurityGroupDao permissionSecurityGroupDao;
+    
+    @Autowired
+    private KeyedCache keyedCache;
     
     private PartyMock partyMock;
 
@@ -168,7 +171,7 @@ public class TestSecurity extends CommonAppServerTest
         SecurityGroup securityGroup = serviceResult.getPayload();
         
         KeyedCache keyedCache = (KeyedCache) getInformationContext().getBean(KeyedCache.class);
-        KeyedCacheStore<Permission> permissionStore = KeyedCacheServerImpl.getInstance().getCacheStore(Permission.class);
+        KeyedCacheStore<Permission> permissionStore = keyedCache.getCacheStore(Permission.class);
         
         Permission createSecurityGroupPermission = permissionStore.getObject(PermissionKey.KEY_CREATE_SECURITY_GROUP);
         Permission createUserLoginPermission = permissionStore.getObject(PermissionKey.KEY_CREATE_USER_LOGIN);

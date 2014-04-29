@@ -20,6 +20,7 @@
 package core.commonapp.server.service.party;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.party.PartyDao;
 import core.commonapp.client.dao.party.PartyTypeDao;
@@ -28,6 +29,7 @@ import core.commonapp.client.service.party.PartyService;
 import core.data.model.party.Party;
 import core.service.result.ServiceResult;
 
+@Service
 public class PartyServiceImpl implements PartyService
 {
 	/** party dao */

@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.agreement;
+package core.commonapp.server.cache.geo;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.agreement.AgreementService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.geo.GeoService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.agreement.AgreementType;
+import core.data.model.geo.GeoType;
 import core.service.result.ServiceResult;
 
-public class AgreementTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class GeoTypeCacheHandler implements KeyedCacheHandler
 {
-    
-     @Override
+
+	@Autowired
+    private GeoService geoService;
+
+	@Override
     public Class getDataClass()
     {
-        return AgreementType.class;
+        return GeoType.class;
     }
 
     @Override
@@ -47,12 +53,12 @@ public class AgreementTypeCacheHandler extends AbstractCacheHandler implements K
     @Override
     public List getObjects()
     {
-        AgreementService agreementService = (AgreementService) getInformationContext().createService(AgreementService.class);
-        ServiceResult result = agreementService.findAllAgreementTypes();
-        if (result.isSuccess()) 
+        ServiceResult result = geoService.findAllGeoTypes();
+        if (result.isSuccess())
         {
             return (List) result.getPayload();
         }
+        
         throw new KeyedCacheException("Failed to successfully get objects for archive: " + result.getMessage());
     }
 
