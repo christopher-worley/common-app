@@ -26,7 +26,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -36,7 +35,6 @@ import core.commonapp.client.dao.party.PartyDao;
 import core.commonapp.client.dao.party.PartyRelationshipDao;
 import core.commonapp.client.dao.party.PartyRoleDao;
 import core.commonapp.client.service.party.CreatePartyService;
-import core.commonapp.server.service.CommonAppServiceInstantiator;
 import core.data.model.party.Party;
 import core.data.model.party.PartyGroup;
 import core.data.model.party.PartyRelationship;
@@ -44,8 +42,8 @@ import core.data.model.party.PartyRole;
 import core.data.model.party.Person;
 import core.data.model.party.RoleType;
 import core.service.result.ServiceResult;
+import core.test.commonapp.PartyMock;
 import core.test.commonapp.server.CommonAppServerTest;
-import core.test.server.mock.party.PartyMock;
 import core.tooling.property.SystemPropertyFileReader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
