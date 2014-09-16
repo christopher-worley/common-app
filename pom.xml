@@ -13,7 +13,21 @@
 		<module>data-model</module>
 		<module>object-mock</module>
 	</modules>
+	
+	<distributionManagement>
+		<repository>
+			<id>cable</id>
+			<name>cable-releases</name>
+			<url>http://localhost:8081/artifactory/libs-release-local</url>
+		</repository>
 
+		<snapshotRepository>
+			<id>cable</id>
+			<name>cable-snapshots</name>
+			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
 	<build>
 		<pluginManagement>
 			<plugins>
