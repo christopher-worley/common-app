@@ -31,5 +31,5 @@ public interface PartyTypeDao
      * 
      * @return
      */
-    public List<PartyType> findAll();
+    public List<? extends PartyType> findAll();
 }

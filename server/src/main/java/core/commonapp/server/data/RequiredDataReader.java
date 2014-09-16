@@ -27,15 +27,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.SubnodeConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.configuration.tree.ConfigurationNode;
+import org.springframework.context.ApplicationContext;
 
-import core.commonapp.domain.InformationContext;
+import core.commonapp.server.dao.DefaultDao;
+import core.data.cache.KeyedCache;
+import core.data.cache.KeyedCacheStore;
 import core.data.model.Keyable;
+import core.data.model.party.PartyType;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
@@ -52,12 +54,12 @@ public class RequiredDataReader
 
     private Map<String, Object> referenceMap = new HashMap<String, Object>();
 
-    private InformationContext context;
+    private ApplicationContext context;
     
     /**
      * Default Constructor
      */
-    public RequiredDataReader(InformationContext context)
+    public RequiredDataReader(ApplicationContext context)
     {
         this.context = context;
     }
@@ -111,7 +113,6 @@ public class RequiredDataReader
      */
     public void read(String filename)
     {
-    	EntityManager entityManager = (EntityManager) context.getBean(EntityManager.class);
 
         try
         {
@@ -132,7 +133,20 @@ public class RequiredDataReader
                 if (object instanceof Keyable &&  key != null)
                 {
                     Keyable keyable = (Keyable) object;
-                    dbObject = entityManager.createQuery(" from " + object.getClass() + " where key = " + key);
+
+// FIXME: Find existing record             
+//            		KeyedCache cache = context.getBean(KeyedCache.class);
+//            		
+//            		
+//            		KeyedCacheStore<?> store = cache.getCacheStore(object.getClass());
+//            		
+//            		
+//
+//            		
+//                    Object dao = context.getBean("defaultDao");
+//                    dbObject = ((DefaultDao) dao).getEntityManager().createQuery(" from " + object.getClass() + " where key = " + key);
+                    
+                    
                     if (dbObject != null)
                     {
                         log.debug("Found keyed object in database (dbObject={0}).", dbObject);

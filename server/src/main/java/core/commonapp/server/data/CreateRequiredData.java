@@ -26,9 +26,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import core.commonapp.domain.InformationContext;
+import core.commonapp.server.config.ServerConfiguration;
 import core.data.model.DataObject;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
@@ -59,7 +59,7 @@ public class CreateRequiredData
     /** logger for this class */
     Logger log = LogFactory.getLogger(CreateRequiredData.class);
     
-    private InformationContext context;
+    private ApplicationContext context;
 
     /**
      * Default constructor
@@ -68,7 +68,7 @@ public class CreateRequiredData
      */
     public CreateRequiredData()
     {
-        context = new InformationContext(new ClassPathXmlApplicationContext("commonapp-server-context.xml"));
+        context = new AnnotationConfigApplicationContext(ServerConfiguration.class);
     }
 
     /**
@@ -76,7 +76,7 @@ public class CreateRequiredData
      */
     public CreateRequiredData(ApplicationContext applicationContext)
     {
-        context = new InformationContext(applicationContext);
+        context = applicationContext;
     }
     
     /**

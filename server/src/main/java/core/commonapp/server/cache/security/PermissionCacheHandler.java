@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.billing;
+package core.commonapp.server.cache.security;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.billing.BillingAccountService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.security.SecurityService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.jpa.billing.BillingAccountTypeJpaImpl;
+import core.data.model.security.Permission;
 import core.service.result.ServiceResult;
 
-public class BillingAccountTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class PermissionCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private SecurityService securityService;
+
+	@Override
     public Class getDataClass()
     {
-        return BillingAccountTypeJpaImpl.class;
+        return Permission.class;
     }
 
     @Override
@@ -47,13 +53,11 @@ public class BillingAccountTypeCacheHandler extends AbstractCacheHandler impleme
     @Override
     public List getObjects()
     {
-        BillingAccountService billingAccountService = (BillingAccountService) getInformationContext().createService(BillingAccountService.class);
-        ServiceResult result = billingAccountService.findAllBillingAccountTypes();
-        if (result.isSuccess()) 
-        {
-            return (List) result.getPayload();
+        ServiceResult<List<Permission>> result = securityService.findAllPermissions();
+        if (!result.isSuccess()) {
+            throw new KeyedCacheException("Failed to load permission objects.");
         }
-        throw new KeyedCacheException("Failed to successfully get objects for archive: " + result.getMessage());
+        return result.getPayload();
     }
 
 }

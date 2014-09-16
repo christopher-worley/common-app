@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.contact;
+package core.commonapp.server.cache.party;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.contact.ContactMechService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.party.PartyService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.contact.ContactMechType;
+import core.data.model.party.PartyType;
 import core.service.result.ServiceResult;
 
-public class ContactMechTypeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class PartyTypeCacheHandler implements KeyedCacheHandler
 {
+	
+	@Autowired
+	private PartyService partyService;
 
     @Override
     public Class getDataClass()
     {
-        return ContactMechType.class;
+        return PartyType.class;
     }
 
     @Override
@@ -47,13 +53,12 @@ public class ContactMechTypeCacheHandler extends AbstractCacheHandler implements
     @Override
     public List getObjects()
     {
-        ContactMechService contactMechService = (ContactMechService) getInformationContext().createService(ContactMechService.class);
-        ServiceResult result = contactMechService.findAllContactMechTypes();
-        if (result.isSuccess()) 
+        ServiceResult result = partyService.findAllPartyTypes();
+        if (!result.isSuccess())
         {
-            return (List) result.getPayload();
+            throw new KeyedCacheException("Failed to successfully get objects for archive: " + result.getMessage());
         }
-        throw new KeyedCacheException("Failed to successfully get objects for archive: " + result.getMessage());
+        return (List) result.getPayload();
     }
 
 }

@@ -20,11 +20,13 @@
 package core.commonapp.server.service.payment;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.payment.PaymentTypeDao;
 import core.commonapp.client.service.payment.PaymentService;
 import core.service.result.ServiceResult;
 
+@Service
 public class PaymentServiceImpl implements PaymentService
 {
     

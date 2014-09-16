@@ -1,8 +1,10 @@
-package core.commonapp.cache.status;
+package core.commonapp.server.cache.status;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import core.commonapp.client.service.status.StatusService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
@@ -10,10 +12,14 @@ import core.data.model.Keyable;
 import core.data.model.status.Status;
 import core.service.result.ServiceResult;
 
-public class StatusCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class StatusCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private StatusService statusService;
+
+	@Override
     public Class getDataClass()
     {
         return Status.class;
@@ -28,7 +34,6 @@ public class StatusCacheHandler extends AbstractCacheHandler implements KeyedCac
     @Override
     public List getObjects()
     {
-        StatusService statusService = (StatusService) getInformationContext().createService(StatusService.class);
         ServiceResult result = statusService.findAll();
         if (!result.isSuccess())
         {

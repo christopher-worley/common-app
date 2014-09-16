@@ -17,33 +17,17 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache;
+package core.commonapp.server.cache;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-import core.commonapp.cache.agreement.AgreementTypeCacheHandler;
-import core.commonapp.cache.agreement.ServiceIntervalCacheHandler;
-import core.commonapp.cache.billing.BillingAccountTypeCacheHandler;
-import core.commonapp.cache.contact.ContactMechPurposeCacheHandler;
-import core.commonapp.cache.contact.ContactMechTypeCacheHandler;
-import core.commonapp.cache.geo.GeoCacheHandler;
-import core.commonapp.cache.geo.GeoTypeCacheHandler;
-import core.commonapp.cache.party.PartyTypeCacheHandler;
-import core.commonapp.cache.party.RoleTypeCacheHandler;
-import core.commonapp.cache.payment.PaymentTypeCacheHandler;
-import core.commonapp.cache.product.ProductTypeCacheHandler;
-import core.commonapp.cache.security.PermissionCacheHandler;
-import core.commonapp.cache.status.StatusCacheHandler;
-import core.commonapp.cache.task.TaskTypeCacheHandler;
-import core.commonapp.domain.InformationContext;
-import core.commonapp.exception.CoreInitializeException;
 import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheHandler;
 import core.data.cache.KeyedCacheStore;
@@ -52,7 +36,7 @@ import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
 @Component
-public class KeyedCacheServerImpl implements KeyedCache, ApplicationContextAware
+public class KeyedCacheServerImpl implements KeyedCache
 {
     /** logger for this class */
     private static Logger log = LogFactory.getLogger(KeyedCacheServerImpl.class);
@@ -63,76 +47,24 @@ public class KeyedCacheServerImpl implements KeyedCache, ApplicationContextAware
     /** cached stores keyed by class */
     private Map<Class, KeyedCacheStore> stores;
     
-    /** information context */
-    private InformationContext context;
+//    /** information context */
+//    private InformationContext context;
+    
+    /** application context used to instantiate this */
+    @Autowired
+    private ApplicationContext context;
     
     private static volatile Object syncObject = new Object();
-    
-    /** handler classes for static data */
-    private Class[] handlerClasses = 
-    {
-            // TODO: handlers in the sales-* projects are not list here, please review design
-            AgreementTypeCacheHandler.class,
-            BillingAccountTypeCacheHandler.class,
-            ContactMechPurposeCacheHandler.class,
-            ContactMechTypeCacheHandler.class,
-            GeoCacheHandler.class,
-            GeoTypeCacheHandler.class,
-            PartyTypeCacheHandler.class,
-            PaymentTypeCacheHandler.class,
-            PermissionCacheHandler.class,
-            ProductTypeCacheHandler.class,
-            RoleTypeCacheHandler.class,
-            ServiceIntervalCacheHandler.class,
-            StatusCacheHandler.class,
-            TaskTypeCacheHandler.class,
-    };
-    
-    /** singleton instance */
-    private volatile static KeyedCacheServerImpl instance = null;
+
 
     /**
-     * return singleton instance
-     * 
-     * @return
+     * Default constructor 
      */
-    public static KeyedCacheServerImpl getInstance()
-    {
-        if (instance == null)
-        {
-            synchronized (syncObject)
-            {
-                if (instance == null)
-                {
-                    instance = new KeyedCacheServerImpl();
-                }
-            }
-        }
-        return instance;        
-    }
-    
-    /**
-     * Default constructor
-     */
-    protected KeyedCacheServerImpl()
-    {
-        stores = new HashMap<Class, KeyedCacheStore>();
-        handlers = new HashMap();
-        log.debug("Keyed cache has been created.");
-//        initialize();
-    }
-    
-    /**
-     * Add archive data handler 
-     * 
-     * @param handler
-     */
-    public void addHandler(KeyedCacheHandler handler)
-    {
-        handlers.put(handler.getDataClass(), handler);
-    }
-    
-    /**
+    public KeyedCacheServerImpl() {
+		super();
+	}
+
+	/**
      * Create keyed map for objects.
      * @param objects
      * @param handler
@@ -159,8 +91,11 @@ public class KeyedCacheServerImpl implements KeyedCache, ApplicationContextAware
      */
     public KeyedCacheStore getCacheStore(Class cachedClass)
     {
-        if (stores.get(cachedClass) == null) 
-        {
+    	if (stores == null) {
+    		initialize();
+    	}
+    	
+        if (stores.get(cachedClass) == null) {
             reload(cachedClass);
         }
         return stores.get(cachedClass);
@@ -172,28 +107,12 @@ public class KeyedCacheServerImpl implements KeyedCache, ApplicationContextAware
     private void initialize() 
     {
         stores = new HashMap<Class, KeyedCacheStore>();
-        handlers = new HashMap();
+        handlers = new HashMap<Class, KeyedCacheHandler>();
         log.debug("Keyed cache is initializing.");
-        try
-        {
-            for (int index = 0; index < handlerClasses.length; index++)
-            {
-                KeyedCacheHandler handler = (KeyedCacheHandler) handlerClasses[index].newInstance();
-                // TODO: review if this is necessary
-                if (context != null && handler instanceof ApplicationContextAware)
-                {
-                    ((ApplicationContextAware)handler).setApplicationContext(context.getApplicationContext());
-                }
-                addHandler(handler);
-            }
-        }
-        catch (InstantiationException e)
-        {
-            throw new CoreInitializeException("Failed to initialize static data chace.", e);
-        }
-        catch (IllegalAccessException e)
-        {
-            throw new CoreInitializeException("Failed to initialize static data chace.", e);
+        Map<String, KeyedCacheHandler> handlerBeans = context.getBeansOfType(KeyedCacheHandler.class);
+        for (String name : handlerBeans.keySet()) {
+        	KeyedCacheHandler handler = handlerBeans.get(name);
+        	handlers.put(handler.getDataClass(), handler);
         }
     }
     
@@ -251,11 +170,4 @@ public class KeyedCacheServerImpl implements KeyedCache, ApplicationContextAware
     }
 
 
-    @Override
-    public void setApplicationContext(ApplicationContext context)
-    {
-        this.context = new InformationContext(context);
-    }
-
-    
 }

@@ -23,12 +23,10 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
-import core.commonapp.cache.KeyedCacheServerImpl;
 import core.commonapp.client.service.security.SecurityGroupService;
-import core.commonapp.domain.InformationContext;
 import core.data.cache.KeyedCache;
 import core.data.cache.KeyedCacheStore;
 import core.data.cache.security.PermissionKey;
@@ -45,7 +43,7 @@ import core.service.session.ClientServiceSession;
 import core.tooling.logging.LogFactory;
 import core.tooling.logging.Logger;
 
-public class CommonAppServiceSecurity implements ServiceSecurity, ApplicationContextAware
+public class CommonAppServiceSecurity implements ServiceSecurity
 {
     /** logger for this class */
     Logger logger = LogFactory.getLogger(CommonAppServiceSecurity.class);
@@ -56,9 +54,12 @@ public class CommonAppServiceSecurity implements ServiceSecurity, ApplicationCon
     /** permission cache store */
     private KeyedCacheStore<Permission> permissionStore;
     
-    /** set when bean is created */
-    private InformationContext context;
-
+    @Autowired
+    private KeyedCache keyedCache;
+    
+    @Autowired
+    private ApplicationContext context;
+    
     @Override
     public void authenticate(ClientServiceSession session, Class serviceInterface, Method method, Object[] args)
     {
@@ -128,8 +129,7 @@ public class CommonAppServiceSecurity implements ServiceSecurity, ApplicationCon
     {
         if (permissionStore == null)
         {
-            KeyedCache keyedCache = (KeyedCache) context.getBean(KeyedCache.class);
-            permissionStore = KeyedCacheServerImpl.getInstance().getCacheStore(Permission.class);
+            permissionStore = keyedCache.getCacheStore(Permission.class);
         }
         return permissionStore;
     }
@@ -144,7 +144,6 @@ public class CommonAppServiceSecurity implements ServiceSecurity, ApplicationCon
      */
     private Set<SecurityGroup> getSecurityGroups(UserLogin userLogin)
     {
-        SecurityGroupService securityGroupService = getSecurityGroupService();
         ServiceResult<Set<SecurityGroup>> result = securityGroupService.findAllSecurityGroupsForUserLogin(userLogin);
         if (!result.isSuccess())
         {
@@ -154,25 +153,4 @@ public class CommonAppServiceSecurity implements ServiceSecurity, ApplicationCon
         return securityGroups == null ? new HashSet<SecurityGroup>(0) : securityGroups;
     }
 
-    /**
-     * lazy getter for securityGroupService
-     * 
-     * @return
-     */
-    private SecurityGroupService getSecurityGroupService()
-    {
-        if (securityGroupService == null)
-        {
-            securityGroupService = (SecurityGroupService) context.createService(
-                    SecurityGroupService.class);
-        }
-        return securityGroupService;
-    }
-
-
-    @Override
-    public void setApplicationContext(ApplicationContext context)
-    {
-        this.context = new InformationContext(context);
-    }
 }

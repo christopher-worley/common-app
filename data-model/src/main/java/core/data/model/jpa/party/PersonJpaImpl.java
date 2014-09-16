@@ -24,6 +24,8 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import core.data.model.party.Person;
 import core.data.model.util.DataUtil;
 
@@ -36,6 +38,7 @@ import core.data.model.util.DataUtil;
 @Entity
 @Table(name = "person")
 @PrimaryKeyJoinColumn(name="party_id")
+@Component("personModel")
 public class PersonJpaImpl extends PartyJpaImpl implements Person
 {
 

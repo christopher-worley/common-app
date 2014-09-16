@@ -20,11 +20,13 @@
 package core.commonapp.server.service.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.product.ProductTypeDao;
 import core.commonapp.client.service.product.ProductService;
 import core.service.result.ServiceResult;
 
+@Service
 public class ProductServiceImpl implements ProductService
 {
     /** product type dao */

@@ -17,25 +17,31 @@
  * with Core CommonApp Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package core.commonapp.cache.contact;
+package core.commonapp.server.cache.billing;
 
 import java.util.List;
 
-import core.commonapp.cache.AbstractCacheHandler;
-import core.commonapp.client.service.contact.ContactMechService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import core.commonapp.client.service.billing.BillingAccountService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;
-import core.data.model.contact.ContactMechPurpose;
+import core.data.model.jpa.billing.BillingAccountTypeJpaImpl;
 import core.service.result.ServiceResult;
 
-public class ContactMechPurposeCacheHandler extends AbstractCacheHandler implements KeyedCacheHandler
+@Component
+public class BillingAccountTypeCacheHandler implements KeyedCacheHandler
 {
 
-    @Override
+	@Autowired
+    private BillingAccountService billingAccountService;
+
+	@Override
     public Class getDataClass()
     {
-        return ContactMechPurpose.class;
+        return BillingAccountTypeJpaImpl.class;
     }
 
     @Override
@@ -47,8 +53,7 @@ public class ContactMechPurposeCacheHandler extends AbstractCacheHandler impleme
     @Override
     public List getObjects()
     {
-        ContactMechService contactMechService = (ContactMechService) getInformationContext().createService(ContactMechService.class);
-        ServiceResult result = contactMechService.findAllContactMechPurposes();
+        ServiceResult result = billingAccountService.findAllBillingAccountTypes();
         if (result.isSuccess()) 
         {
             return (List) result.getPayload();

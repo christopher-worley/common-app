@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Service;
 
 import core.commonapp.client.dao.security.PermissionDao;
 import core.commonapp.client.service.security.SecurityService;
@@ -30,6 +31,7 @@ import core.commonapp.domain.InformationContext;
 import core.data.model.security.Permission;
 import core.service.result.ServiceResult;
 
+@Service
 public class SecurityServiceImpl implements SecurityService, ApplicationContextAware
 {
 
