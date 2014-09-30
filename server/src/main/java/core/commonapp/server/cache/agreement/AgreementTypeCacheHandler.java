@@ -24,7 +24,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import core.commonapp.client.service.agreement.AgreementService;
 import core.data.cache.KeyedCacheException;
 import core.data.cache.KeyedCacheHandler;
 import core.data.model.Keyable;

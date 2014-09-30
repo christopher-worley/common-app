@@ -42,8 +42,8 @@ import core.data.model.party.PartyRole;
 import core.data.model.party.Person;
 import core.data.model.party.RoleType;
 import core.service.result.ServiceResult;
-import core.test.commonapp.PartyMock;
 import core.test.commonapp.server.CommonAppServerTest;
+import core.test.server.mock.party.PartyMock;
 import core.tooling.property.SystemPropertyFileReader;
 
 @RunWith(SpringJUnit4ClassRunner.class)

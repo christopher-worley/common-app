@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -10,10 +11,16 @@
 	<modules>
 		<module>client</module>
 		<module>server</module>
-		<module>data-model</module>
+		<module>data-tooling</module>
 		<module>object-mock</module>
+		<module>core-commonapp-dao-api</module>
+		<module>core-commonapp-service-api</module>
+		<module>core-commonapp-dao-impl</module>
+		<module>core-commonapp-service-impl</module>
+		<module>core-commonapp-model-api</module>
+		<module>core-commonapp-model-jpa</module>
 	</modules>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>cable</id>
@@ -27,7 +34,7 @@
 			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -189,10 +196,25 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.12</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.coreinformationsolutions</groupId>
+			<artifactId>core-tooling</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

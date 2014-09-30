@@ -24,7 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import core.commonapp.client.config.ClientConfiguration;
-import core.data.config.DataModelConfiguration;
+import core.data.model.jpa.config.DataModelConfiguration;
 import core.service.config.ServiceConfiguration;
 
 @Configuration
